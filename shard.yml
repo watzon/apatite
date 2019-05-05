@@ -1,0 +1,9 @@
+name: apatite
+version: 0.1.0
+
+authors:
+  - Chris Watson <chris@watzon.me>
+
+crystal: 0.28.0
+
+license: MIT
