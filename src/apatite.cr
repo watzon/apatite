@@ -1,5 +1,8 @@
-require "./apatite/core_ext/*"
-require "./apatite/narray"
+require "./apatite/core_ext/array"
+
+require "./apatite/matrix/ndarray"
+require "./apatite/matrix/vector"
+require "./apatite/matrix/matrix"
 
 # Apatite is a fundimental package for scientific computing in Crystal. If that
 # sounds like a modified version of the first line from the NumPy homepage,
@@ -9,16 +12,8 @@ require "./apatite/narray"
 module Apatite
   VERSION = "0.1.0"
 
-  # def self.zeros(shape : Array(Int32))
-  #   curr = shape.shift
-  #   Array.new(curr) do
-  #     if shape.empty?
-  #       Array.new(curr, 0)
-  #     else
-  #       self.zeros(shape)
-  #     end
-  #   end
-  # end
+  class_property precision = 1e-6
+  class_property approx_precision = 1e-5
 
   ## ## ## ## ## ## ## ## ## ## ## ## ##
   # # Array Creation
@@ -132,6 +127,18 @@ module Apatite
   ## ## ## ## ## ## ## ## ## ## ## ## ##
   # # Array Manipulation
   ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+  def self.shape(input : Iterable(U) | U) forall U
+    if input.is_a?(Iterable(U))
+      if input.size > 0
+        [input.size].concat(self.shape(input[0]))
+      else
+        [0]
+      end
+    else
+      [] of U
+    end
+  end
 
   def self.copyto
   end
@@ -531,10 +538,16 @@ module Apatite
   # # Logic Functions
   ## ## ## ## ## ## ## ## ## ## ## ## ##
 
-  def self.all?(arr : Enumerable)
+  def self.all?(arr : Enumerable, axis : Int32? | Array(Int32)? = nil, keepdims = false)
+    raise "axis of #{axis} out of bounds for array of size #{arr.size}" unless axis.nil? || axis < arr.size
+
+    if axis.nil? && !keepdims
+      arr.flatten.each { |i| return false unless i == true }
+      return true
+    end
   end
 
-  def self.any?
+  def self.any?(arr : Enumerable, axis : Int32? | Array(Int32) = nil, keepdims = false)
   end
 
   def self.finite?

@@ -1,6 +1,6 @@
 # Apatite
 
-Apatite is a fundimental package for scientific computing in Crystal. If that sounds like a modified version of the first line from the NumPy homepage, that's because it is. Apatite has (ok, will have) all of the goodness of NumPy sitting atop the blazing speed and beautiful syntax of Crystal.
+Apatite is meant to be a collecion of mathmatical and scientific computing algorithms for the Crystal programming language. I don't expect it to ever reach the level of completeness as numpy, but hopefully it can save some people the trouble of implementing these methods on their own.
 
 ## Installation
 
@@ -25,25 +25,16 @@ TODO: Write usage instructions here, but first write the library...
 ## Roadmap
 
 - [ ] Apetite
-	- [ ] Array Objects
-		- [ ] NArray (see [numpy.ndarray](https://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html))
-		- [ ] DType  (see [numpy.dtype](https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html))
-		- [ ] Scalars
-		- [ ] Indexing
-	- [ ] Routines
-		- [ ] Binary Operations
-		- [ ] String Operations
-		- [ ] FFT    (see [numpy.fft](https://docs.scipy.org/doc/numpy/reference/routines.fft.html))
-		- [ ] Financial Functions
-		- [ ] LinAlg (see [numpy.linalg](https://docs.scipy.org/doc/numpy/reference/routines.linalg.html))
-		- [ ] Logic Functions
-		- [ ] Mathematical Functions
-		- [ ] Matlib (see [numpy.matlib](https://docs.scipy.org/doc/numpy/reference/routines.matlib.html))
-		- [ ] Padding Arrays
-		- [ ] Polynomials
-		- [ ] Random (see [numpy.random](https://docs.scipy.org/doc/numpy/reference/routines.random.html))
-		- [ ] Sorting, Searching, and Counting
-		- [ ] Statistics
+	- [ ] Vector Math
+		- [ ] Matrix
+		- [ ] NDArray
+		- [x] Vector
+		- [ ] Line
+		- [ ] Plane
+		- [ ] Polygon
+		- [ ] LinkedList
+	
+
 
 ## Contributing
 

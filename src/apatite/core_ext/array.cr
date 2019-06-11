@@ -20,4 +20,8 @@ class Array(T)
     max = max_by { |i| i.is_a?(Array) ? i.size : i }
     max.is_a?(Array) ? [size, max.size] : [max]
   end
+
+  def to_vec
+    Apatite::Vector.create(self)
+  end
 end
