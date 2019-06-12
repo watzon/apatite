@@ -614,7 +614,7 @@ module Apatite
 
     # Transpose this vector into a 1xn `Matrix`
     def transpose
-      Matrix.column_vector(self)
+      Matrix.col_vector(self)
     end
 
     # Returns a copy of the vector with elements set to `value` if
@@ -739,7 +739,7 @@ module Apatite
     end
 
     def to_s(io)
-      io << "Vector{"
+      io << "{"
       join ", ", io, &.inspect(io)
       io << "}"
     end
@@ -810,9 +810,9 @@ module Apatite
         return map { |v| yield(v, value) }
       end
 
-      values = value.is_a?(Vector) ? value.elements : value
+      values = value.is_a?(Vector) ? value : Vector.create(value)
 
-      unless @elements.size == values.size
+      unless size == values.size
         raise "Cannot perform operations on vectors with different dimensions."
       end
 
