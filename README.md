@@ -20,19 +20,18 @@ Apatite is meant to be a collecion of mathmatical and scientific computing algor
 require "apatite"
 ```
 
-TODO: Write usage instructions here, but first write the library...
+Check out the [documentation](https://watzon.github.io/apatite/) for usage examples.
 
 ## Roadmap
 
-- [ ] Apetite
-	- [ ] Vector Math
-		- [ ] Matrix
-		- [ ] NDArray
-		- [x] Vector
-		- [ ] Line
-		- [ ] Plane
-		- [ ] Polygon
-		- [ ] LinkedList
+- [ ] Linear Algebra
+	- [x] Vector
+	- [ ] Matrix (_in progress_)
+	- [ ] NDArray
+	- [ ] Line
+	- [ ] Plane
+	- [ ] Polygon
+	- [ ] LinkedList
 	
 
 
