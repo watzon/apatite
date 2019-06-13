@@ -123,13 +123,13 @@ module Apatite::LinearAlgebra
       vec
     end
 
-    # Generates a random vector of size `n` with elements
-    # in `range`.
-    def self.random(n, range = Float64::MIN..Float64::MAX)
-      random = Random.new
+    # Creates a new `Vector` of size `n` filled with random numbers. A `range`
+    # can optionally be passed in if you want to limit the random numbers
+    # to a given range.
+    def self.random(n, range = nil)
       vec = Vector.new(n)
       n.times do
-        vec.push random.rand(range)
+        vec.push rand(range || -1e+1..1e+1)
       end
       vec
     end

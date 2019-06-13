@@ -122,7 +122,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L4" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L4" target="_blank">
         apatite/linear_algebra/matrix.cr
       </a>
     
@@ -137,7 +137,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28rows%2Ccolumn_count%3AInt32%3Drows%5B0%5D.size%29-class-method" class="signature"><strong>.new</strong>(rows, column_count : Int32 = rows[<span class="n">0</span>].size)</a>
+        <a href="#new%28rows%2Ccolumn_count%3AInt32%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(rows, column_count : Int32? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -194,6 +194,13 @@
         <a href="#empty%28row_count%3D0%2Ccolumn_count%3D0%29-class-method" class="signature"><strong>.empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Creates a empty matrix of <code>row_count x column_count</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eye%28n%29-class-method" class="signature"><strong>.eye</strong>(n)</a>
+        
+          <div class="summary"><p>Creates a new diagonal matrix of size <code>n</code> with ones in the diagonal and zeros elsewhere.</p></div>
         
       </li>
     
@@ -521,18 +528,18 @@
 
   <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new(rows,column_count:Int32=rows[0].size)-class-method">
+    <div class="entry-detail" id="new(rows,column_count:Int32?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(rows, column_count : Int32 = rows[<span class="n">0</span>].size)
+        def self.<strong>new</strong>(rows, column_count : Int32? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28rows%2Ccolumn_count%3AInt32%3Drows%5B0%5D.size%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28rows%2Ccolumn_count%3AInt32%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -555,7 +562,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -574,7 +581,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -592,7 +599,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -610,7 +617,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -628,7 +635,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -646,7 +653,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -665,7 +672,26 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eye(n)-class-method">
+      <div class="signature">
+        
+        def self.<strong>eye</strong>(n)
+
+        <a class="method-permalink" href="#eye%28n%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new diagonal matrix of size <code>n</code> with ones in the diagonal
+and zeros elsewhere.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -683,7 +709,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L103" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -701,7 +727,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -719,7 +745,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -737,7 +763,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L117" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -755,7 +781,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -773,7 +799,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L131" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -791,7 +817,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L129" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L135" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -812,7 +838,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L134" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -828,7 +854,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L154" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -844,7 +870,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -860,7 +886,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L167" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -876,7 +902,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L170" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -892,7 +918,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L182" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -908,7 +934,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L199" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L205" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -924,7 +950,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L193" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -940,7 +966,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L204" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L210" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -956,7 +982,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L208" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L214" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -972,7 +998,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L215" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L221" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -990,7 +1016,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L222" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L228" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1008,7 +1034,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L227" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L233" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1026,7 +1052,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L233" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1044,7 +1070,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L241" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L247" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1062,7 +1088,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L268" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1080,7 +1106,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L259" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L265" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1098,7 +1124,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L250" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L256" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1114,7 +1140,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1132,7 +1158,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L277" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L283" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1148,7 +1174,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L348" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L354" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1164,7 +1190,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L423" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L429" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1182,7 +1208,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L298" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L304" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1200,7 +1226,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L444" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L450" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1216,7 +1242,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L510" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L516" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1232,7 +1258,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L469" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L475" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1248,7 +1274,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L480" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1264,7 +1290,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1280,7 +1306,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L478" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L484" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1296,7 +1322,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L486" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L492" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1312,7 +1338,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L496" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L502" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1328,7 +1354,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L490" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L496" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1344,7 +1370,7 @@ the given block, passing the current row and column.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L519" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/matrix.cr#L525" target="_blank">View source</a>]
         
       </div>
     </div>

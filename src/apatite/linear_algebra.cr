@@ -8,9 +8,9 @@ module Apatite
 
     # Calculates the sigmoid curve for a numeric input.
     #
-    # f(x) = 1/(1 + e^-x)
+    # `f(x) = 1/(1 + e^-x)`
     #
-    # See also: [Sigmoid function [WikiWand]](https://www.wikiwand.com/en/Sigmoid_function)
+    # See also: [Sigmoid function (WikiWand)](https://www.wikiwand.com/en/Sigmoid_function)
     def sigmoid(input : Number)
       num = input.to_f64
       1 / (1 + Math.exp(-num))
@@ -18,7 +18,7 @@ module Apatite
 
     # Calculates the derivative sigmoid curve for a numeric input.
     #
-    # f'(x) = f(x)(1 - f(x)),
+    # `f'(x) = f(x)(1 - f(x)),`
     def sigmoid_d(input : Number)
       num = input.to_f64
       num * (1 - num)

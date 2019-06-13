@@ -131,28 +131,28 @@ of Crystal.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
         apatite/linear_algebra/ndarray.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra.cr#L5" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/linear_algebra.cr#L5" target="_blank">
         apatite/linear_algebra.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L10" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L10" target="_blank">
         apatite.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/version.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite/version.cr#L1" target="_blank">
         apatite/version.cr
       </a>
     
@@ -172,6 +172,8 @@ of Crystal.</p>
       
       <dd class="entry-const-doc">
         <p>Cartesian unit vector I</p>
+
+<p><code><a href="Apatite/LinearAlgebra/Vector.html">Vector</a>{1.0, 0.0, 0.0}</code></p>
       </dd>
       
     
@@ -181,6 +183,8 @@ of Crystal.</p>
       
       <dd class="entry-const-doc">
         <p>Cartesian unit vector J</p>
+
+<p><code><a href="Apatite/LinearAlgebra/Vector.html">Vector</a>{0.0, 1.0, 0.0}</code></p>
       </dd>
       
     
@@ -190,6 +194,8 @@ of Crystal.</p>
       
       <dd class="entry-const-doc">
         <p>Cartesian unit vector K</p>
+
+<p><code><a href="Apatite/LinearAlgebra/Vector.html">Vector</a>{0.0, 0.0, 1.0}</code></p>
       </dd>
       
     
@@ -203,31 +209,6 @@ of Crystal.</p>
 
 
 
-
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#approx_precision-class-method" class="signature"><strong>.approx_precision</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#approx_precision%3D%28approx_precision%29-class-method" class="signature"><strong>.approx_precision=</strong>(approx_precision)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#precision-class-method" class="signature"><strong>.precision</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#precision%3D%28precision%29-class-method" class="signature"><strong>.precision=</strong>(precision)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -244,7 +225,14 @@ of Crystal.</p>
       <li class="entry-summary">
         <a href="#basis%28size%2Cindex%29-instance-method" class="signature"><strong>#basis</strong>(size, index)</a>
         
-          <div class="summary"><p>Returns a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
+          <div class="summary"><p>Creates a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#diagonal%28values%29-instance-method" class="signature"><strong>#diagonal</strong>(values)</a>
+        
+          <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
         
       </li>
     
@@ -256,6 +244,20 @@ of Crystal.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#empty_matrix%28row_count%3D0%2Ccolumn_count%3D0%29-instance-method" class="signature"><strong>#empty_matrix</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Creates a new empty matrix with the given <code>row_count</code> and <code>column_count</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eye%28n%29-instance-method" class="signature"><strong>#eye</strong>(n)</a>
+        
+          <div class="summary"><p>Creates a new diagonal matrix of size <code>n</code> with ones in the diagonal and zeros elsewhere.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#full%28n%2Ci%29-instance-method" class="signature"><strong>#full</strong>(n, i)</a>
         
           <div class="summary"><p>Returns a new vector of size <code>n</code> filled with <code>i</code></p></div>
@@ -263,9 +265,37 @@ of Crystal.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#identity%28n%29-instance-method" class="signature"><strong>#identity</strong>(n)</a>
+        
+          <div class="summary"><p>Creates a <code>n x n</code> identity matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#ones%28n%29-instance-method" class="signature"><strong>#ones</strong>(n)</a>
         
           <div class="summary"><p>Returns a new vector filled with <code>n</code> ones.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#random%28n%2Crange%3Dnil%29-instance-method" class="signature"><strong>#random</strong>(n, range = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Creates a new vector of size <code>n</code> filled with random numbers.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row_vector%28row%29-instance-method" class="signature"><strong>#row_vector</strong>(row)</a>
+        
+          <div class="summary"><p>Creates a single-row matrix where the values of that row are as given in <code>row</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28n%2Cvalue%29-instance-method" class="signature"><strong>#scalar</strong>(n, value)</a>
+        
+          <div class="summary"><p>Creates an <code>n</code> by <code>n</code> diagonal matrix where each diagonal element is value.</p></div>
         
       </li>
     
@@ -320,73 +350,6 @@ of Crystal.</p>
 
 
 
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="approx_precision-class-method">
-      <div class="signature">
-        
-        def self.<strong>approx_precision</strong>
-
-        <a class="method-permalink" href="#approx_precision-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L17" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="approx_precision=(approx_precision)-class-method">
-      <div class="signature">
-        
-        def self.<strong>approx_precision=</strong>(approx_precision)
-
-        <a class="method-permalink" href="#approx_precision%3D%28approx_precision%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="precision-class-method">
-      <div class="signature">
-        
-        def self.<strong>precision</strong>
-
-        <a class="method-permalink" href="#precision-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L16" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="precision=(precision)-class-method">
-      <div class="signature">
-        
-        def self.<strong>precision=</strong>(precision)
-
-        <a class="method-permalink" href="#precision%3D%28precision%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L20" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
   <h2>Instance Method Detail</h2>
@@ -405,7 +368,7 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -418,12 +381,30 @@ of Crystal.</p>
         <a class="method-permalink" href="#basis%28size%2Cindex%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
+        <div class="doc"><p>Creates a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L66" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="diagonal(values)-instance-method">
+      <div class="signature">
+        
+        def <strong>diagonal</strong>(values)
+
+        <a class="method-permalink" href="#diagonal%28values%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -441,7 +422,46 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty_matrix(row_count=0,column_count=0)-instance-method">
+      <div class="signature">
+        
+        def <strong>empty_matrix</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#empty_matrix%28row_count%3D0%2Ccolumn_count%3D0%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new empty matrix with the given <code>row_count</code> and
+<code>column_count</code>. At lease one of <code>row_count</code> or
+<code>column_count</code> must be zero.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eye(n)-instance-method">
+      <div class="signature">
+        
+        def <strong>eye</strong>(n)
+
+        <a class="method-permalink" href="#eye%28n%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new diagonal matrix of size <code>n</code> with ones in the diagonal
+and zeros elsewhere.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -459,7 +479,25 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="identity(n)-instance-method">
+      <div class="signature">
+        
+        def <strong>identity</strong>(n)
+
+        <a class="method-permalink" href="#identity%28n%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code>n x n</code> identity matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -477,7 +515,63 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="random(n,range=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>random</strong>(n, range = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#random%28n%2Crange%3Dnil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new vector of size <code>n</code> filled with random numbers. A <code>range</code>
+can optionally be passed in if you want to limit the random numbers
+to a given range.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L73" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row_vector(row)-instance-method">
+      <div class="signature">
+        
+        def <strong>row_vector</strong>(row)
+
+        <a class="method-permalink" href="#row_vector%28row%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a single-row matrix where the values of that row are as given in <code>row</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(n,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>scalar</strong>(n, value)
+
+        <a class="method-permalink" href="#scalar%28n%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates an <code>n</code> by <code>n</code> diagonal matrix where each diagonal element is value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L110" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -496,7 +590,7 @@ for each index of <code>self</code>, assigning the block's value in that index.<
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -514,7 +608,7 @@ for each index of <code>self</code>, assigning the block's value in that index.<
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/bb0f2c43324c0d6ab61bd78a63170c4d2e671d2f/src/apatite.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>

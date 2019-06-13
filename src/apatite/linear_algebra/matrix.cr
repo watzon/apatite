@@ -12,10 +12,10 @@ module Apatite::LinearAlgebra
 
     @buffer : Pointer(Vector)
 
-    def initialize(rows, column_count : Int32 = rows[0].size)
+    def initialize(rows, column_count : Int32? = nil)
       @buffer = rows.map { |r| Vector.create(r) }.to_a.to_unsafe
       @row_count = rows.size
-      @column_count = column_count
+      @column_count = column_count || rows[0].size
     end
 
     # Creates a matrix where each argument is a row.
@@ -91,6 +91,12 @@ module Apatite::LinearAlgebra
       raise ArgumentError.new("One size must be 0") if column_count != 0 && row_count != 0
       raise ArgumentError.new("Negative size") if column_count < 0 || row_count < 0
       Matrix.new(([] of Vector) * row_count, column_count)
+    end
+
+    # Creates a new diagonal matrix of size `n` with ones in the diagonal
+    # and zeros elsewhere.
+    def self.eye(n)
+      Matrix.diagonal([1] * n)
     end
 
     # TODO
