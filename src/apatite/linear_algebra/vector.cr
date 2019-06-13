@@ -1,6 +1,4 @@
-require "../../apatite"
-
-module Apatite
+module Apatite::LinearAlgebra
   # Represents a mathematical vector, and also constitutes a row or column
   # of a `Matrix`
   class Vector
@@ -8,8 +6,13 @@ module Apatite
     include Indexable(Float64)
     include Comparable(Vector)
 
+    # Cartesian unit vector I
     I = Vector.create([1.0, 0.0, 0.0])
+
+    # Cartesian unit vector J
     J = Vector.create([0.0, 1.0, 0.0])
+
+    # Cartesian unit vector K
     K = Vector.create([0.0, 0.0, 1.0])
 
     @buffer : Pointer(Float64)
@@ -386,8 +389,6 @@ module Apatite
       Matrix[*vs].rank.equal?(vs.count)
     end
 
-
-
     # Invokes the given block for each element of `self`, replacing the element
     # with the value returned by the block. Returns `self`.
     #
@@ -525,9 +526,9 @@ module Apatite
         Vector[-@buffer[1], @buffer[0]]
       when 3
         v = vs[0]
-        Vector[ v[2] * @buffer[1] - v[1] * @buffer[2],
+        Vector[v[2] * @buffer[1] - v[1] * @buffer[2],
           v[0] * @buffer[2] - v[2] * @buffer[0],
-          v[1] * @buffer[0] - v[0] * @buffer[1] ]
+          v[1] * @buffer[0] - v[0] * @buffer[1]]
       else
         # TODO
         # rows = [self, *vs, Vector.new(size) {|i| Vector.basis(size: size, index: i) }]
@@ -701,6 +702,12 @@ module Apatite
       map_with_index { |x, i| q[i - 1] + (q[i - 1] - x) }
     end
 
+    # Sums the numbers in the vector and returns a sigmoid value
+    # across the whole vector.
+    def sigmoid
+      LinearAlgebra.sigmoid(sum)
+    end
+
     # Utility to make sure vectors are 3D. If they are 2D, a zero
     # z-component is added.
     def to_3d
@@ -782,7 +789,6 @@ module Apatite
       all?(&.zero?)
     end
 
-    # :nodoc:
     protected def size=(size : Int)
       @size = size.to_i
     end

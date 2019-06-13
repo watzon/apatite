@@ -1,4 +1,4 @@
-module Apatite
+module Apatite::LinearAlgebra
   class NDArray
     include Enumerable(Float64)
     include Indexable(Float64)

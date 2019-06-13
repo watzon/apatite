@@ -1,6 +1,6 @@
 require "./vector"
 
-module Apatite
+module Apatite::LinearAlgebra
   class Matrix
     include Enumerable(Vector)
     include Indexable(Vector)
@@ -467,7 +467,7 @@ module Apatite
     end
 
     def row(i, &block)
-      @rows.fetch(i){return self}.each(&block)
+      @rows.fetch(i) { return self }.each(&block)
       self
     end
 
