@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../../";
+</script>
+
+  <meta id="repository-name" content="github.com/watzon/apatite">
+  <title>Apatite::LinearAlgebra::Matrix - github.com/watzon/apatite</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/watzon/apatite/Apatite" data-name="apatite">
+      <a href="../../Apatite.html">Apatite</a>
+      
+        <ul>
+  
+  <li class="parent open current" data-id="github.com/watzon/apatite/Apatite/LinearAlgebra" data-name="apatite::linearalgebra">
+      <a href="../../Apatite/LinearAlgebra.html">LinearAlgebra</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/Matrix" data-name="apatite::linearalgebra::matrix">
+      <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/NDArray" data-name="apatite::linearalgebra::ndarray">
+      <a href="../../Apatite/LinearAlgebra/NDArray.html">NDArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/Vector" data-name="apatite::linearalgebra::vector">
+      <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Array" data-name="array(t)">
+      <a href="../../Array.html">Array</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Apatite::LinearAlgebra::Matrix
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Apatite/LinearAlgebra/Matrix.html">Apatite::LinearAlgebra::Matrix</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Comparable(<a href="../../Apatite/LinearAlgebra/Matrix.html">Apatite::LinearAlgebra::Matrix</a>)</li>
+  
+    <li class="other-type">Enumerable(<a href="../../Apatite/LinearAlgebra/Vector.html">Apatite::LinearAlgebra::Vector</a>)</li>
+  
+    <li class="other-type">Indexable(<a href="../../Apatite/LinearAlgebra/Vector.html">Apatite::LinearAlgebra::Vector</a>)</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L4" target="_blank">
+        apatite/linear_algebra/matrix.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28rows%2Ccolumn_count%3AInt32%3Drows%5B0%5D.size%29-class-method" class="signature"><strong>.new</strong>(rows, column_count : Int32 = rows[<span class="n">0</span>].size)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28%2Arows%29-class-method" class="signature"><strong>.[]</strong>(*rows)</a>
+        
+          <div class="summary"><p>Creates a matrix where each argument is a row.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#build%28row_count%2Ccolumn_count%3Drow_count%2C%26block%29-class-method" class="signature"><strong>.build</strong>(row_count, column_count = row_count, &block)</a>
+        
+          <div class="summary"><p>Creates a matrix of size <code>row_count x column_count</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#col_vector%28column%29-class-method" class="signature"><strong>.col_vector</strong>(column)</a>
+        
+          <div class="summary"><p>Creates a single-column matrix where the values of that column are as given in column.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#columns%28columns%29-class-method" class="signature"><strong>.columns</strong>(columns)</a>
+        
+          <div class="summary"><p>Creates a matrix using <code><a href="../../Apatite/LinearAlgebra/Matrix.html#columns%28columns%29-class-method">.columns</a></code> as an array of column vectors.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#diagonal%28values%29-class-method" class="signature"><strong>.diagonal</strong>(values)</a>
+        
+          <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#diagonal%28%2Avalues%29-class-method" class="signature"><strong>.diagonal</strong>(*values)</a>
+        
+          <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty%28row_count%3D0%2Ccolumn_count%3D0%29-class-method" class="signature"><strong>.empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Creates a empty matrix of <code>row_count x column_count</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hstack%28x%2C%2Amatrices%29-class-method" class="signature"><strong>.hstack</strong>(x, *matrices)</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span> </p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#identity%28n%29-class-method" class="signature"><strong>.identity</strong>(n)</a>
+        
+          <div class="summary"><p>Creates a <code>n x n</code> identity matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row_vector%28row%29-class-method" class="signature"><strong>.row_vector</strong>(row)</a>
+        
+          <div class="summary"><p>Creates a single-row matrix where the values of that row are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row%28i%2C%26block%29-instance-method">#row</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rows%28rows%29-class-method" class="signature"><strong>.rows</strong>(rows)</a>
+        
+          <div class="summary"><p>Creates a matrix where rows is an array of arrays, each of which is a row of the matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28n%2Cvalue%29-class-method" class="signature"><strong>.scalar</strong>(n, value)</a>
+        
+          <div class="summary"><p>Creates an <code>n</code> by <code>n</code> diagonal matrix where each diagonal element is value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vstack%28x%2Cy%29-class-method" class="signature"><strong>.vstack</strong>(x, y)</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span> </p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#zero%28row_count%2Ccolumn_count%3Drow_count%29-class-method" class="signature"><strong>.zero</strong>(row_count, column_count = row_count)</a>
+        
+          <div class="summary"><p>Creates a zero matrix.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%2A%28other%3AMatrix%29-instance-method" class="signature"><strong>#*</strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28int%3AInt%29-instance-method" class="signature"><strong>#*</strong>(int : Int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28ind%3AIndexable%29-instance-method" class="signature"><strong>#*</strong>(ind : Indexable)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%2A%28int%29-instance-method" class="signature"><strong>#**</strong>(int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28other%3AMatrix%29-instance-method" class="signature"><strong>#+</strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28vec%3AIndexable%29-instance-method" class="signature"><strong>#+</strong>(vec : Indexable)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28vec%3AIndexable%29-instance-method" class="signature"><strong>#-</strong>(vec : Indexable)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3AMatrix%29-instance-method" class="signature"><strong>#-</strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2F%28other%3AMatrix%29-instance-method" class="signature"><strong>#/</strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2F%28vec%3AIndexable%29-instance-method" class="signature"><strong>#/</strong>(vec : Indexable)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3AMatrix%29-instance-method" class="signature"><strong>#==</strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28row%3AInt%2Ccol%3AInt%29-instance-method" class="signature"><strong>#[]</strong>(row : Int, col : Int)</a>
+        
+          <div class="summary"><p>Returns element <code>(row, col)</code> of the matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28row%3AInt%2Ccol%3AInt%29-instance-method" class="signature"><strong>#[]?</strong>(row : Int, col : Int)</a>
+        
+          <div class="summary"><p>Returns element <code>(row, col)</code> of the matrix, or nil if the index is not found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#adjugate-instance-method" class="signature"><strong>#adjugate</strong></a>
+        
+          <div class="summary"><p>Returns the adjugate of the matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cofactor%28row%2Ccolumn%29-instance-method" class="signature"><strong>#cofactor</strong>(row, column)</a>
+        
+          <div class="summary"><p>Returns the (row, column) cofactor which is obtained by multiplying the first minor by (-1)**(row + column)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column%28j%2C%26block%29-instance-method" class="signature"><strong>#column</strong>(j, &block)</a>
+        
+          <div class="summary"><p>Iterates over the specified column in the matrix, returning the Vector's items.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column%28j%29-instance-method" class="signature"><strong>#column</strong>(j)</a>
+        
+          <div class="summary"><p>Returns column vector number <code>j</code> of the matrix as a <code><a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a></code> (starting at 0 like an array).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column%3F%28j%29-instance-method" class="signature"><strong>#column?</strong>(j)</a>
+        
+          <div class="summary"><p>Returns column vector number <code>j</code> of the matrix as a <code><a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a></code> (starting at 0 like an array).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column_count%3AInt32-instance-method" class="signature"><strong>#column_count</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column_vectors-instance-method" class="signature"><strong>#column_vectors</strong></a>
+        
+          <div class="summary"><p>Returns an array of the column vectors of the matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#determinant-instance-method" class="signature"><strong>#determinant</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first_minor%28row%2Ccolumn%29-instance-method" class="signature"><strong>#first_minor</strong>(row, column)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse-instance-method" class="signature"><strong>#inverse</strong></a>
+        
+          <div class="summary"><p>Returns the inverse of the matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#laplace_expansion%28%2A%2Crow%3Dnil%2Ccolumn%3Dnil%29-instance-method" class="signature"><strong>#laplace_expansion</strong>(*, row = <span class="n">nil</span>, column = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Returns the Laplace expansion along given row or column.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pretty_print%28pp%29%3ANil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row%28i%2C%26block%29-instance-method" class="signature"><strong>#row</strong>(i, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row%28i%29-instance-method" class="signature"><strong>#row</strong>(i)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row_count%3AInt32-instance-method" class="signature"><strong>#row_count</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rows-instance-method" class="signature"><strong>#rows</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#square%3F-instance-method" class="signature"><strong>#square?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transpose-instance-method" class="signature"><strong>#transpose</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_fetch%28index%3AInt%29-instance-method" class="signature"><strong>#unsafe_fetch</strong>(index : Int)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(rows,column_count:Int32=rows[0].size)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(rows, column_count : Int32 = rows[<span class="n">0</span>].size)
+
+        <a class="method-permalink" href="#new%28rows%2Ccolumn_count%3AInt32%3Drows%5B0%5D.size%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="[](*rows)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]</strong>(*rows)
+
+        <a class="method-permalink" href="#%5B%5D%28%2Arows%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix where each argument is a row.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="build(row_count,column_count=row_count,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build</strong>(row_count, column_count = row_count, &block)
+
+        <a class="method-permalink" href="#build%28row_count%2Ccolumn_count%3Drow_count%2C%26block%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix of size <code>row_count x column_count</code>. It fills the values by calling
+the given block, passing the current row and column.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="col_vector(column)-class-method">
+      <div class="signature">
+        
+        def self.<strong>col_vector</strong>(column)
+
+        <a class="method-permalink" href="#col_vector%28column%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a single-column matrix where the values of that column are as given in column.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="columns(columns)-class-method">
+      <div class="signature">
+        
+        def self.<strong>columns</strong>(columns)
+
+        <a class="method-permalink" href="#columns%28columns%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix using <code><a href="../../Apatite/LinearAlgebra/Matrix.html#columns%28columns%29-class-method">.columns</a></code> as an array of column vectors.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="diagonal(values)-class-method">
+      <div class="signature">
+        
+        def self.<strong>diagonal</strong>(values)
+
+        <a class="method-permalink" href="#diagonal%28values%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="diagonal(*values)-class-method">
+      <div class="signature">
+        
+        def self.<strong>diagonal</strong>(*values)
+
+        <a class="method-permalink" href="#diagonal%28%2Avalues%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty(row_count=0,column_count=0)-class-method">
+      <div class="signature">
+        
+        def self.<strong>empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#empty%28row_count%3D0%2Ccolumn_count%3D0%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a empty matrix of <code>row_count x column_count</code>. At least one of
+<code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count%3AInt32-instance-method">#row_count</a></code> or <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count%3AInt32-instance-method">#column_count</a></code> must be 0.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hstack(x,*matrices)-class-method">
+      <div class="signature">
+        
+        def self.<strong>hstack</strong>(x, *matrices)
+
+        <a class="method-permalink" href="#hstack%28x%2C%2Amatrices%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p><span class="flag orange">TODO</span> </p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="identity(n)-class-method">
+      <div class="signature">
+        
+        def self.<strong>identity</strong>(n)
+
+        <a class="method-permalink" href="#identity%28n%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code>n x n</code> identity matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L101" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row_vector(row)-class-method">
+      <div class="signature">
+        
+        def self.<strong>row_vector</strong>(row)
+
+        <a class="method-permalink" href="#row_vector%28row%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a single-row matrix where the values of that row are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row%28i%2C%26block%29-instance-method">#row</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rows(rows)-class-method">
+      <div class="signature">
+        
+        def self.<strong>rows</strong>(rows)
+
+        <a class="method-permalink" href="#rows%28rows%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a matrix where rows is an array of arrays, each of which is a row of the matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(n,value)-class-method">
+      <div class="signature">
+        
+        def self.<strong>scalar</strong>(n, value)
+
+        <a class="method-permalink" href="#scalar%28n%2Cvalue%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates an <code>n</code> by <code>n</code> diagonal matrix where each diagonal element is value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L120" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vstack(x,y)-class-method">
+      <div class="signature">
+        
+        def self.<strong>vstack</strong>(x, y)
+
+        <a class="method-permalink" href="#vstack%28x%2Cy%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p><span class="flag orange">TODO</span> </p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="zero(row_count,column_count=row_count)-class-method">
+      <div class="signature">
+        
+        def self.<strong>zero</strong>(row_count, column_count = row_count)
+
+        <a class="method-permalink" href="#zero%28row_count%2Ccolumn_count%3Drow_count%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a zero matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L129" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="*(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#%2A%28other%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(int:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(int : Int)
+
+        <a class="method-permalink" href="#%2A%28int%3AInt%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(ind:Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(ind : Indexable)
+
+        <a class="method-permalink" href="#%2A%28ind%3AIndexable%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="**(int)-instance-method">
+      <div class="signature">
+        
+        def <strong>**</strong>(int)
+
+        <a class="method-permalink" href="#%2A%2A%28int%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L161" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#%2B%28other%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L170" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(vec:Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(vec : Indexable)
+
+        <a class="method-permalink" href="#%2B%28vec%3AIndexable%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L182" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(vec:Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(vec : Indexable)
+
+        <a class="method-permalink" href="#-%28vec%3AIndexable%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L199" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#-%28other%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#%2F%28other%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L204" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(vec:Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(vec : Indexable)
+
+        <a class="method-permalink" href="#%2F%28vec%3AIndexable%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L208" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#%3D%3D%28other%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L215" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](row:Int,col:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(row : Int, col : Int)
+
+        <a class="method-permalink" href="#%5B%5D%28row%3AInt%2Ccol%3AInt%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns element <code>(row, col)</code> of the matrix. Throws error on index error.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L222" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(row:Int,col:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(row : Int, col : Int)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28row%3AInt%2Ccol%3AInt%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns element <code>(row, col)</code> of the matrix, or nil if the index is not found.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L227" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="adjugate-instance-method">
+      <div class="signature">
+        
+        def <strong>adjugate</strong>
+
+        <a class="method-permalink" href="#adjugate-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the adjugate of the matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L233" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cofactor(row,column)-instance-method">
+      <div class="signature">
+        
+        def <strong>cofactor</strong>(row, column)
+
+        <a class="method-permalink" href="#cofactor%28row%2Ccolumn%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the (row, column) cofactor which is obtained by multiplying the first minor by (-1)**(row + column)</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L241" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column(j,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>column</strong>(j, &block)
+
+        <a class="method-permalink" href="#column%28j%2C%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Iterates over the specified column in the matrix, returning the Vector's items.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L268" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column(j)-instance-method">
+      <div class="signature">
+        
+        def <strong>column</strong>(j)
+
+        <a class="method-permalink" href="#column%28j%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns column vector number <code>j</code> of the matrix as a <code><a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a></code> (starting at 0 like an array).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L259" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column?(j)-instance-method">
+      <div class="signature">
+        
+        def <strong>column?</strong>(j)
+
+        <a class="method-permalink" href="#column%3F%28j%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns column vector number <code>j</code> of the matrix as a <code><a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a></code> (starting at 0 like an array).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L250" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column_count:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>column_count</strong> : Int32
+
+        <a class="method-permalink" href="#column_count%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column_vectors-instance-method">
+      <div class="signature">
+        
+        def <strong>column_vectors</strong>
+
+        <a class="method-permalink" href="#column_vectors-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns an array of the column vectors of the matrix. See <code><a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L277" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="determinant-instance-method">
+      <div class="signature">
+        
+        def <strong>determinant</strong>
+
+        <a class="method-permalink" href="#determinant-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L348" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first_minor(row,column)-instance-method">
+      <div class="signature">
+        
+        def <strong>first_minor</strong>(row, column)
+
+        <a class="method-permalink" href="#first_minor%28row%2Ccolumn%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L423" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse-instance-method">
+      <div class="signature">
+        
+        def <strong>inverse</strong>
+
+        <a class="method-permalink" href="#inverse-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the inverse of the matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L298" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="laplace_expansion(*,row=nil,column=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>laplace_expansion</strong>(*, row = <span class="n">nil</span>, column = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#laplace_expansion%28%2A%2Crow%3Dnil%2Ccolumn%3Dnil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the Laplace expansion along given row or column.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L444" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pretty_print(pp):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>pretty_print</strong>(pp) : Nil
+
+        <a class="method-permalink" href="#pretty_print%28pp%29%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L510" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row(i,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong>(i, &block)
+
+        <a class="method-permalink" href="#row%28i%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L469" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row(i)-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong>(i)
+
+        <a class="method-permalink" href="#row%28i%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L474" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row_count:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>row_count</strong> : Int32
+
+        <a class="method-permalink" href="#row_count%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rows-instance-method">
+      <div class="signature">
+        
+        def <strong>rows</strong>
+
+        <a class="method-permalink" href="#rows-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L478" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="square?-instance-method">
+      <div class="signature">
+        
+        def <strong>square?</strong>
+
+        <a class="method-permalink" href="#square%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L486" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io)
+
+        <a class="method-permalink" href="#to_s%28io%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L496" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="transpose-instance-method">
+      <div class="signature">
+        
+        def <strong>transpose</strong>
+
+        <a class="method-permalink" href="#transpose-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L490" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_fetch(index:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>unsafe_fetch</strong>(index : Int)
+
+        <a class="method-permalink" href="#unsafe_fetch%28index%3AInt%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/matrix.cr#L519" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

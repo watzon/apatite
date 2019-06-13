@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/watzon/apatite">
+  <title>Apatite - github.com/watzon/apatite</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/watzon/apatite/Apatite" data-name="apatite">
+      <a href="Apatite.html">Apatite</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra" data-name="apatite::linearalgebra">
+      <a href="Apatite/LinearAlgebra.html">LinearAlgebra</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/Matrix" data-name="apatite::linearalgebra::matrix">
+      <a href="Apatite/LinearAlgebra/Matrix.html">Matrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/NDArray" data-name="apatite::linearalgebra::ndarray">
+      <a href="Apatite/LinearAlgebra/NDArray.html">NDArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra/Vector" data-name="apatite::linearalgebra::vector">
+      <a href="Apatite/LinearAlgebra/Vector.html">Vector</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/apatite/Array" data-name="array(t)">
+      <a href="Array.html">Array</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Apatite
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Apatite is a fundimental package for scientific computing in Crystal. If that
+sounds like a modified version of the first line from the NumPy homepage,
+that's because it is. Apatite has (ok, will have) all of the goodness
+of NumPy sitting atop the blazing speed and beautiful syntax
+of Crystal.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Apatite/LinearAlgebra.html">Apatite::LinearAlgebra</a></li>
+  
+  </ul>
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Apatite.html">Apatite</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
+        apatite/linear_algebra/ndarray.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/linear_algebra.cr#L5" target="_blank">
+        apatite/linear_algebra.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L10" target="_blank">
+        apatite.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite/version.cr#L1" target="_blank">
+        apatite/version.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="I">
+        <strong>I</strong> = <code><span class="t">Vector</span><span class="t">::</span><span class="t">I</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Cartesian unit vector I</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="J">
+        <strong>J</strong> = <code><span class="t">Vector</span><span class="t">::</span><span class="t">J</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Cartesian unit vector J</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="K">
+        <strong>K</strong> = <code><span class="t">Vector</span><span class="t">::</span><span class="t">K</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Cartesian unit vector K</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#approx_precision-class-method" class="signature"><strong>.approx_precision</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#approx_precision%3D%28approx_precision%29-class-method" class="signature"><strong>.approx_precision=</strong>(approx_precision)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision-class-method" class="signature"><strong>.precision</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision%3D%28precision%29-class-method" class="signature"><strong>.precision=</strong>(precision)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#as_vector%28input%3AIndexable%29-instance-method" class="signature"><strong>#as_vector</strong>(input : Indexable)</a>
+        
+          <div class="summary"><p>Creates a new vector from the given <code>input</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#basis%28size%2Cindex%29-instance-method" class="signature"><strong>#basis</strong>(size, index)</a>
+        
+          <div class="summary"><p>Returns a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty-instance-method" class="signature"><strong>#empty</strong></a>
+        
+          <div class="summary"><p>Returns a new empty <code><a href="Apatite/LinearAlgebra/Vector.html">Vector</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#full%28n%2Ci%29-instance-method" class="signature"><strong>#full</strong>(n, i)</a>
+        
+          <div class="summary"><p>Returns a new vector of size <code>n</code> filled with <code>i</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ones%28n%29-instance-method" class="signature"><strong>#ones</strong>(n)</a>
+        
+          <div class="summary"><p>Returns a new vector filled with <code>n</code> ones.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vector%28n%2C%26block%29-instance-method" class="signature"><strong>#vector</strong>(n, &block)</a>
+        
+          <div class="summary"><p>Creates a new vector of size <code>n</code>, and invokes the block once for each index of <code>self</code>, assigning the block's value in that index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#zeros%28n%29-instance-method" class="signature"><strong>#zeros</strong>(n)</a>
+        
+          <div class="summary"><p>Returns a new vector filled with <code>n</code> zeros.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Apatite/LinearAlgebra.html">Apatite::LinearAlgebra</a></code></h3>
+  
+  
+    <a href="Apatite/LinearAlgebra.html#sigmoid%28input%3ANumber%29-instance-method" class="tooltip">
+      <span>sigmoid(input : Number)</span>
+    sigmoid</a>, 
+    
+  
+    <a href="Apatite/LinearAlgebra.html#sigmoid_d%28input%3ANumber%29-instance-method" class="tooltip">
+      <span>sigmoid_d(input : Number)</span>
+    sigmoid_d</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="approx_precision-class-method">
+      <div class="signature">
+        
+        def self.<strong>approx_precision</strong>
+
+        <a class="method-permalink" href="#approx_precision-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="approx_precision=(approx_precision)-class-method">
+      <div class="signature">
+        
+        def self.<strong>approx_precision=</strong>(approx_precision)
+
+        <a class="method-permalink" href="#approx_precision%3D%28approx_precision%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision-class-method">
+      <div class="signature">
+        
+        def self.<strong>precision</strong>
+
+        <a class="method-permalink" href="#precision-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision=(precision)-class-method">
+      <div class="signature">
+        
+        def self.<strong>precision=</strong>(precision)
+
+        <a class="method-permalink" href="#precision%3D%28precision%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="as_vector(input:Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong>as_vector</strong>(input : Indexable)
+
+        <a class="method-permalink" href="#as_vector%28input%3AIndexable%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new vector from the given <code>input</code>. Input can be any
+<code>Indexable</code> type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="basis(size,index)-instance-method">
+      <div class="signature">
+        
+        def <strong>basis</strong>(size, index)
+
+        <a class="method-permalink" href="#basis%28size%2Cindex%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a standard basis-n vector of the given <code>size</code> and <code>index</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty-instance-method">
+      <div class="signature">
+        
+        def <strong>empty</strong>
+
+        <a class="method-permalink" href="#empty-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a new empty <code><a href="Apatite/LinearAlgebra/Vector.html">Vector</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="full(n,i)-instance-method">
+      <div class="signature">
+        
+        def <strong>full</strong>(n, i)
+
+        <a class="method-permalink" href="#full%28n%2Ci%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a new vector of size <code>n</code> filled with <code>i</code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ones(n)-instance-method">
+      <div class="signature">
+        
+        def <strong>ones</strong>(n)
+
+        <a class="method-permalink" href="#ones%28n%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a new vector filled with <code>n</code> ones.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vector(n,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>vector</strong>(n, &block)
+
+        <a class="method-permalink" href="#vector%28n%2C%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new vector of size <code>n</code>, and invokes the block once
+for each index of <code>self</code>, assigning the block's value in that index.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="zeros(n)-instance-method">
+      <div class="signature">
+        
+        def <strong>zeros</strong>(n)
+
+        <a class="method-permalink" href="#zeros%28n%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a new vector filled with <code>n</code> zeros.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/6c8ee1fded2782d2cc9fcd30ca82bd149f6eb9a3/src/apatite.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
