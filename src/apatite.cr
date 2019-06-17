@@ -9,7 +9,11 @@ require "./apatite/linear_algebra"
 # of Crystal.
 module Apatite
   extend self
+
   include Apatite::LinearAlgebra
+
+  class_property precision = 1e-6
+  class_property approx_precision = 1e-5
 
   ## ## ## ## ## ## ## ## ## ## ## ## ##
   # # Vector Creation
@@ -109,5 +113,75 @@ module Apatite
   # Creates an `n` by `n` diagonal matrix where each diagonal element is value.
   def scalar(n, value)
     Matrix.scalar(n, value)
+  end
+
+  ## ## ## ## ## ## ## ## ## ## ## ##
+  # # Vector Manipulation
+  ## ## ## ## ## ## ## ## ## ## ## ##
+
+  # Get the scalar (dot) product of two vectors.
+  #
+  # [https://en.wikipedia.org/wiki/Scalar_product](https://en.wikipedia.org/wiki/Scalar_product
+  def dot(x, y)
+    unless x.size == y.size
+      raise "Cannot compute the dot product of vectors with different dimensionality"
+    end
+
+    (0...x.size).reduce(0) do |acc, i|
+      acc + x[i] * y[i]
+    end
+  end
+
+  # Compute the cosine similarity between two vectors.
+  def similarity(x, y)
+    dot(x, y) / (
+      Math.sqrt(dot(x, x)) *
+      Math.sqrt(dot(y, y))
+    )
+  end
+
+  # Returns the angle between this vector and another in radians.
+  # If the vectors are mirrored across their axes this will return `nil`.
+  def angle_from(a, b)
+    unless a.size == b.size
+      raise "Cannot compute the angle between vectors with different dimensionality"
+    end
+
+    dot = 0_f64
+    mod1 = 0_f64
+    mod2 = 0_f64
+
+    a.zip(b).each do |x, v|
+      dot += x * v
+      mod1 += x * x
+      mod2 += v * v
+    end
+
+    mod1 = Math.sqrt(mod1)
+    mod2 = Math.sqrt(mod2)
+
+    if mod2 * mod2 == 0
+      return 0.0
+    end
+
+    theta = (dot / (mod1 * mod2)).clamp(-1, 1)
+    Math.acos(theta)
+  end
+
+  # Returns whether the vectors are parallel to each other.
+  def parallel_to?(a, b)
+    angle = angle_from(a, b)
+    angle <= precision
+  end
+
+  # Returns whether the vectors are antiparallel to each other.
+  def antiparallel_to?(a, b)
+    angle = angle_from(a, b)
+    (angle - Math::PI).abs <= precision
+  end
+
+  # Returns whether the vectors are perpendicular to each other.
+  def perpendicular_to?(a, b)
+    (dot(a, b)).abs <= precision
   end
 end

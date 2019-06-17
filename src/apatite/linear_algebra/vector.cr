@@ -371,6 +371,10 @@ module Apatite::LinearAlgebra
       multiply(other)
     end
 
+    def /(other)
+      divide(other)
+    end
+
     def clone
       Vector.create(@elements.clone)
     end
@@ -435,51 +439,35 @@ module Apatite::LinearAlgebra
       r == 0 ? dup : map { |x| x.to_f64 / r }
     end
 
+    # ditto
+    def normalize
+      to_unit_vector
+    end
+
     # Returns the angle between this vector and another in radians.
     # If the vectors are mirrored across their axes this will return `nil`.
     def angle_from(vector)
-      v = vector.is_a?(Vector) ? vector : Vector.create(vector)
+      Apatite.angle_from(self, vector)
+    end
 
-      unless size == v.size
-        raise "Cannot compute the angle between vectors with different dimensionality"
-      end
-
-      dot = 0_f64
-      mod1 = 0_f64
-      mod2 = 0_f64
-
-      zip(vector).each do |x, v|
-        dot += x * v
-        mod1 += x * x
-        mod2 += v * v
-      end
-
-      mod1 = Math.sqrt(mod1)
-      mod2 = Math.sqrt(mod2)
-
-      if mod2 * mod2 == 0
-        return 0.0
-      end
-
-      theta = (dot / (mod1 * mod2)).clamp(-1, 1)
-      Math.acos(theta)
+    # Compute the cosine similarity between this vector and another.
+    def similarity(other)
+      Apatite.similarity(self, other)
     end
 
     # Returns whether the vectors are parallel to each other.
     def parallel_to?(vector)
-      angle = angle_from(vector)
-      angle <= Apatite.precision
+      Apatite.parallel_to?(self, vector)
     end
 
     # Returns whether the vectors are antiparallel to each other.
     def antiparallel_to?(vector)
-      angle = angle_from(vector)
-      (angle - Math::PI).abs <= Apatite.precision
+      Apatite.antiparallel_to?(self, vector)
     end
 
     # Returns whether the vectors are perpendicular to each other.
     def perpendicular_to?(vector)
-      (dot(vector)).abs <= Apatite.precision
+      Apatite.perpendicular_to?(self, vector)
     end
 
     # When the input is a number, this returns the result of adding
@@ -501,6 +489,13 @@ module Apatite::LinearAlgebra
     # will be element-wise multiplied.
     def multiply(value)
       run_binary_op(value) { |a, b| a * b }
+    end
+
+    # When the input is a number, this returns the result of dividing
+    # it to all vector elements. When it's a vector, the vectors
+    # will be element-wise divided.
+    def divide(value)
+      run_binary_op(value) { |a, b| a / b }
     end
 
     # Returns the sum of all elements in the vector.
@@ -573,16 +568,7 @@ module Apatite::LinearAlgebra
     # [https://en.wikipedia.org/wiki/Scalar_product](https://en.wikipedia.org/wiki/Scalar_product)
     def dot(other)
       other = other.is_a?(Vector) ? other : Vector.create(other)
-      unless size == other.size
-        raise "Cannot compute the dot product of vectors with different dimensionality"
-      end
-
-      product = 0
-      (0...size).each do |i|
-        product += self[i] * other[i]
-      end
-
-      product
+      Apatite.dot(self, other)
     end
 
     # Returns the (absolute) largest element in this vector.
@@ -811,8 +797,9 @@ module Apatite::LinearAlgebra
     end
 
     # Call a block on the value
-    private def run_binary_op(value, &block : (T, T) -> T)
+    private def run_binary_op(value, &block : (Float64, Float64) -> Float64)
       if value.is_a?(Number)
+        value = value.to_f64
         return map { |v| yield(v, value) }
       end
 
