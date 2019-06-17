@@ -132,12 +132,17 @@ module Apatite
     end
   end
 
-  # Compute the cosine similarity between two vectors.
+  # Compute the cosine similarity of two vectors.
   def similarity(x, y)
     dot(x, y) / (
       Math.sqrt(dot(x, x)) *
       Math.sqrt(dot(y, y))
     )
+  end
+
+  # Compute the cosine distance between two vectors.
+  def cosine(x, y)
+    1.0 - similarity(x, y)
   end
 
   # Returns the angle between this vector and another in radians.

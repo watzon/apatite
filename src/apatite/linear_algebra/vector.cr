@@ -450,9 +450,14 @@ module Apatite::LinearAlgebra
       Apatite.angle_from(self, vector)
     end
 
-    # Compute the cosine similarity between this vector and another.
+    # Compute the cosine similarity of this vector and another.
     def similarity(other)
       Apatite.similarity(self, other)
+    end
+
+    # Compute the cosine distance between this vector and another.
+    def cosine(other)
+      Apatite.cosine(self, other)
     end
 
     # Returns whether the vectors are parallel to each other.
