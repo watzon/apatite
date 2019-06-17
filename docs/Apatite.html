@@ -131,28 +131,28 @@ of Crystal.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
         apatite/linear_algebra/ndarray.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite/linear_algebra.cr#L5" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite/linear_algebra.cr#L5" target="_blank">
         apatite/linear_algebra.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L10" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L10" target="_blank">
         apatite.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite/version.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite/version.cr#L1" target="_blank">
         apatite/version.cr
       </a>
     
@@ -210,10 +210,49 @@ of Crystal.</p>
 
 
 
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#approx_precision-class-method" class="signature"><strong>.approx_precision</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#approx_precision%3D%28approx_precision%29-class-method" class="signature"><strong>.approx_precision=</strong>(approx_precision)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision-class-method" class="signature"><strong>.precision</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision%3D%28precision%29-class-method" class="signature"><strong>.precision=</strong>(precision)</a>
+        
+      </li>
+    
+  </ul>
+
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#angle_from%28a%2Cb%29-instance-method" class="signature"><strong>#angle_from</strong>(a, b)</a>
+        
+          <div class="summary"><p>Returns the angle between this vector and another in radians.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#antiparallel_to%3F%28a%2Cb%29-instance-method" class="signature"><strong>#antiparallel_to?</strong>(a, b)</a>
+        
+          <div class="summary"><p>Returns whether the vectors are antiparallel to each other.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#as_vector%28input%3AIndexable%29-instance-method" class="signature"><strong>#as_vector</strong>(input : Indexable)</a>
@@ -233,6 +272,13 @@ of Crystal.</p>
         <a href="#diagonal%28values%29-instance-method" class="signature"><strong>#diagonal</strong>(values)</a>
         
           <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dot%28x%2Cy%29-instance-method" class="signature"><strong>#dot</strong>(x, y)</a>
+        
+          <div class="summary"><p>Get the scalar (dot) product of two vectors.</p></div>
         
       </li>
     
@@ -279,6 +325,20 @@ of Crystal.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#parallel_to%3F%28a%2Cb%29-instance-method" class="signature"><strong>#parallel_to?</strong>(a, b)</a>
+        
+          <div class="summary"><p>Returns whether the vectors are parallel to each other.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#perpendicular_to%3F%28a%2Cb%29-instance-method" class="signature"><strong>#perpendicular_to?</strong>(a, b)</a>
+        
+          <div class="summary"><p>Returns whether the vectors are perpendicular to each other.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#random%28n%2Crange%3Dnil%29-instance-method" class="signature"><strong>#random</strong>(n, range = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Creates a new vector of size <code>n</code> filled with random numbers.</p></div>
@@ -296,6 +356,13 @@ of Crystal.</p>
         <a href="#scalar%28n%2Cvalue%29-instance-method" class="signature"><strong>#scalar</strong>(n, value)</a>
         
           <div class="summary"><p>Creates an <code>n</code> by <code>n</code> diagonal matrix where each diagonal element is value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#similarity%28x%2Cy%29-instance-method" class="signature"><strong>#similarity</strong>(x, y)</a>
+        
+          <div class="summary"><p>Compute the cosine similarity between two vectors.</p></div>
         
       </li>
     
@@ -350,9 +417,113 @@ of Crystal.</p>
 
 
 
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="approx_precision-class-method">
+      <div class="signature">
+        
+        def self.<strong>approx_precision</strong>
+
+        <a class="method-permalink" href="#approx_precision-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="approx_precision=(approx_precision)-class-method">
+      <div class="signature">
+        
+        def self.<strong>approx_precision=</strong>(approx_precision)
+
+        <a class="method-permalink" href="#approx_precision%3D%28approx_precision%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision-class-method">
+      <div class="signature">
+        
+        def self.<strong>precision</strong>
+
+        <a class="method-permalink" href="#precision-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision=(precision)-class-method">
+      <div class="signature">
+        
+        def self.<strong>precision=</strong>(precision)
+
+        <a class="method-permalink" href="#precision%3D%28precision%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
   <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="angle_from(a,b)-instance-method">
+      <div class="signature">
+        
+        def <strong>angle_from</strong>(a, b)
+
+        <a class="method-permalink" href="#angle_from%28a%2Cb%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the angle between this vector and another in radians.
+If the vectors are mirrored across their axes this will return <code>nil</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L145" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="antiparallel_to?(a,b)-instance-method">
+      <div class="signature">
+        
+        def <strong>antiparallel_to?</strong>(a, b)
+
+        <a class="method-permalink" href="#antiparallel_to%3F%28a%2Cb%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns whether the vectors are antiparallel to each other.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="as_vector(input:Indexable)-instance-method">
       <div class="signature">
@@ -368,7 +539,7 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -386,7 +557,7 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -404,7 +575,27 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dot(x,y)-instance-method">
+      <div class="signature">
+        
+        def <strong>dot</strong>(x, y)
+
+        <a class="method-permalink" href="#dot%28x%2Cy%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Get the scalar (dot) product of two vectors.</p>
+
+<p>[https://en.wikipedia.org/wiki/Scalar_product](https://en.wikipedia.org/wiki/Scalar_product</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -422,7 +613,7 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -442,7 +633,7 @@ of Crystal.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -461,7 +652,7 @@ and zeros elsewhere.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -479,7 +670,7 @@ and zeros elsewhere.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -497,7 +688,7 @@ and zeros elsewhere.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -515,7 +706,43 @@ and zeros elsewhere.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parallel_to?(a,b)-instance-method">
+      <div class="signature">
+        
+        def <strong>parallel_to?</strong>(a, b)
+
+        <a class="method-permalink" href="#parallel_to%3F%28a%2Cb%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns whether the vectors are parallel to each other.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L172" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="perpendicular_to?(a,b)-instance-method">
+      <div class="signature">
+        
+        def <strong>perpendicular_to?</strong>(a, b)
+
+        <a class="method-permalink" href="#perpendicular_to%3F%28a%2Cb%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns whether the vectors are perpendicular to each other.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -535,7 +762,7 @@ to a given range.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -553,7 +780,7 @@ to a given range.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -571,7 +798,25 @@ to a given range.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L114" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="similarity(x,y)-instance-method">
+      <div class="signature">
+        
+        def <strong>similarity</strong>(x, y)
+
+        <a class="method-permalink" href="#similarity%28x%2Cy%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Compute the cosine similarity between two vectors.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -590,7 +835,7 @@ for each index of <code>self</code>, assigning the block's value in that index.<
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -608,7 +853,7 @@ for each index of <code>self</code>, assigning the block's value in that index.<
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/49a30afcc07bc5354f335c6a6fb5244ed514b63b/src/apatite.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/ef28e84ecc4b7dc21e66c18464fec0892633d420/src/apatite.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
