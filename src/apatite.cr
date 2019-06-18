@@ -89,6 +89,11 @@ module Apatite
     Matrix.empty(row_count, column_count)
   end
 
+  # Creates a matrix of the given shape with random vectors.
+  def random_matrix(row_count, column_count, range = nil)
+    Matrix.random(row_count, column_count, range)
+  end
+
   # Creates a matrix where the diagonal elements are composed of `values`.
   def diagonal(values)
     Matrix.diagonal(values)

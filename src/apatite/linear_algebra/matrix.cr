@@ -108,6 +108,13 @@ module Apatite::LinearAlgebra
       scalar(n, 1)
     end
 
+    # Creates a matrix of the given shape with random vectors.
+    def self.random(num_rows, num_columns, range = nil)
+      Matrix.build(num_rows, num_columns) do |i, j|
+        rand(range || -1e+1..1e+1)
+      end
+    end
+
     # Creates a single-row matrix where the values of that row are as given in `row`.
     def self.row_vector(row)
       Matrix.new([row], 0)
