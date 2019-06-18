@@ -86,7 +86,7 @@ module Apatite
   # `column_count`. At lease one of `row_count` or
   # `column_count` must be zero.
   def empty_matrix(row_count = 0, column_count = 0)
-    Matrix.new(row_count, column_count)
+    Matrix.empty(row_count, column_count)
   end
 
   # Creates a matrix where the diagonal elements are composed of `values`.
