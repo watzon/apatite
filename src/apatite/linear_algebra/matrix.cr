@@ -1,3 +1,4 @@
+require "json"
 require "./vector"
 
 module Apatite::LinearAlgebra
@@ -16,6 +17,21 @@ module Apatite::LinearAlgebra
       @buffer = rows.map { |r| Vector.create(r) }.to_a.to_unsafe
       @row_count = rows.size
       @column_count = column_count || rows[0].size
+    end
+
+    # Creates a new `Vector` instance from a `JSON::PullParser`
+    def self.new(pull : JSON::PullParser)
+      arr = [] of Vector
+      new(pull) do |element|
+        arr << element
+      end
+      rows(arr)
+    end
+
+    def self.new(pull : JSON::PullParser, &block)
+      pull.read_array do
+        yield Vector.new(pull)
+      end
     end
 
     # Creates a matrix where each argument is a row.
@@ -525,6 +541,12 @@ module Apatite::LinearAlgebra
         pp.group do
           vec.to_a.pretty_print(pp)
         end
+      end
+    end
+
+    def to_json(json : JSON::Builder)
+      json.array do
+        each &.to_json(json)
       end
     end
 

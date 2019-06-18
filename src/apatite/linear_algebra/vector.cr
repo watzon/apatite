@@ -1,3 +1,5 @@
+require "json"
+
 module Apatite::LinearAlgebra
   # Represents a mathematical vector, and also constitutes a row or column
   # of a `Matrix`
@@ -72,6 +74,21 @@ module Apatite::LinearAlgebra
         @buffer = Pointer(Float64).null
       else
         @buffer = Pointer(Float64).malloc(size, value)
+      end
+    end
+
+    # Creates a new `Vector` instance from a `JSON::PullParser`
+    def self.new(pull : JSON::PullParser)
+      vec = new
+      new(pull) do |element|
+        vec << element
+      end
+      vec
+    end
+
+    def self.new(pull : JSON::PullParser, &block)
+      pull.read_array do
+        yield Float64.new(pull)
       end
     end
 
@@ -740,6 +757,20 @@ module Apatite::LinearAlgebra
       io << "{"
       join ", ", io, &.inspect(io)
       io << "}"
+    end
+
+    def to_json(json : JSON::Builder)
+      json.array do
+        each &.to_json(json)
+      end
+    end
+
+    def from_json(string_or_io)
+      parser = JSON::PullParser.new(string_or_io)
+      new(parser) do |element|
+        yield element
+      end
+      nil
     end
 
     def pretty_print(pp) : Nil
