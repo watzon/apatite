@@ -313,6 +313,20 @@ module Apatite::LinearAlgebra
     #   Matrix.combine(self, matrices, &block)
     # end
 
+    # Iterates over each column, yielding the column
+    def each_column(&block)
+      vectors = column_vectors.map { |vec| yield(vec) }
+      @buffer = Matrix.columns(vectors).to_unsafe
+      vectors
+    end
+
+    # Iterates over each row, yielding the row
+    def each_row(&block)
+      vectors = rows.map { |vec| yield(vec) }
+      @buffer = Matrix.rows(vectors).to_unsafe
+      vectors
+    end
+
     # # Hadamard product
     # def hadamard_product(m)
     #   combine(m){|a, b| a * b}
@@ -496,7 +510,7 @@ module Apatite::LinearAlgebra
     end
 
     def row(i, &block)
-      @rows.fetch(i) { return self }.each(&block)
+      rows.fetch(i) { return self }.each(&block)
       self
     end
 
@@ -548,6 +562,10 @@ module Apatite::LinearAlgebra
       json.array do
         each &.to_json(json)
       end
+    end
+
+    def to_unsafe
+      @buffer
     end
 
     @[AlwaysInline]
