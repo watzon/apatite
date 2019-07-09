@@ -278,19 +278,13 @@ module Apatite::LinearAlgebra
     # Returns column vector number `j` of the matrix as a `Vector` (starting at 0 like an array).
     def column?(j)
       return nil if j >= column_count || j < -column_count
-      col = Array(Float64).new(row_count) { |i|
-        rows[i][j]
-      }
-      Vector.create(col)
+      Vector.new(row_count) { |i| rows[i][j] }
     end
 
     # Returns column vector number `j` of the matrix as a `Vector` (starting at 0 like an array).
     def column(j)
       raise "Index out of range" if j >= column_count || j < -column_count
-      col = Array(Float64).new(row_count) { |i|
-        rows[i][j]
-      }
-      Vector.create(col)
+      Vector.new(row_count) { |i| rows[i][j] }
     end
 
     # Iterates over the specified column in the matrix, returning the Vector's items.
@@ -304,7 +298,7 @@ module Apatite::LinearAlgebra
 
     # Returns an array of the column vectors of the matrix. See `Vector`.
     def column_vectors
-      Array(Vector).new(column_count) { |i|
+      Matrix.new(column_count) { |i|
         column(i)
       }
     end
@@ -509,18 +503,13 @@ module Apatite::LinearAlgebra
       end
     end
 
-    def row(i, &block)
-      rows.fetch(i) { return self }.each(&block)
-      self
-    end
-
     def row(i)
-      Vector.create(rows.fetch(i) { [] of Float64 })
+      self[i - 1].dup
     end
 
-    def rows
+    def rows(start = 0, stop = row_count)
       rows = [] of Vector
-      row_count.times do |i|
+      start.upto(stop) do |i|
         rows << self[i - 1]
       end
       rows

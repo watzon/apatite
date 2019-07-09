@@ -1,5 +1,6 @@
-require "./linear_algebra/ndarray"
-require "./linear_algebra/matrix"
+require "./linear_algebra/error"
+# require "./linear_algebra/ndarray"
+# require "./linear_algebra/matrix"
 require "./linear_algebra/vector"
 
 module Apatite
