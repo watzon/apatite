@@ -243,6 +243,12 @@ module Apatite::LinearAlgebra
       map{ |e| e.round(ndigits) }
     end
 
+    # Attempt to coerce the elements in the vector to another type.
+    def coerce(klass)
+      els = @elements.map { |e| klass.new(e) }
+      Vector.elements(els)
+    end
+
     # Returns the elements of the vector in an array.
     def to_a
       @elements.dup
@@ -263,7 +269,7 @@ module Apatite::LinearAlgebra
     end
 
     def inspect
-      "<##{self.class} #{@elements.join(", ")}>"
+      "<#Vector(#{T}) [#{@elements.join(", ")}]>"
     end
 
     def unsafe_fetch(i)

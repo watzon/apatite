@@ -10,5 +10,4 @@ require "./apatite/linear_algebra"
 module Apatite
   extend self
   include Apatite::LinearAlgebra
-
 end

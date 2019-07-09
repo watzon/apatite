@@ -37,8 +37,8 @@ module Apatite::LinearAlgebra
         row.to_a
       end
       size = (rows[0] || [] of T).size
-      rows.each do |row|
-        raise ErrDimensionMismatch.new("row size differs (#{row.size} should be #{size})") unless row.size == size
+      rows.each_with_index do |row, i|
+        raise ErrDimensionMismatch.new("row size differs (row at index `#{i}` should contain #{size} elements, instead has #{row.size})") unless row.size == size
       end
       new(rows, size)
     end
@@ -65,7 +65,7 @@ module Apatite::LinearAlgebra
     # m = Matrix.build(3) { rand }
     # # => a 3x3 matrix with random elements
     # ```
-    def self.build(row_count, column_count = row_count, &block)
+    def self.build(row_count, column_count = row_count, &block : Int32, Int32 -> T)
       row_count = row_count.to_i
       column_count = column_count.to_i
       raise ArgumentError.new if row_count < 0 || column_count < 0
@@ -119,7 +119,7 @@ module Apatite::LinearAlgebra
     # # => [ 1, 0,
     # #      0, 1 ]
     # ```
-    def self.identity(n : T)
+    def self.identity(n)
       scalar(n, T.new(1))
     end
 
@@ -192,7 +192,7 @@ module Apatite::LinearAlgebra
     # Matrix.vstack(x, y)
     # # => Matrix[[1, 2], [3, 4], [5, 6], [7, 8]]
     # ```
-    def Matrix.vstack(x, *matrices)
+    def self.vstack(x, *matrices)
       result = x.rows
       matrices.each do |m|
         m = m.is_a?(Matrix) ? m : rows(m)
@@ -212,7 +212,7 @@ module Apatite::LinearAlgebra
     # Matrix.hstack(x, y)
     # # => Matrix[[1, 2, 5, 6], [3, 4, 7, 8]]
     # ```
-    def Matrix.hstack(x, *matrices)
+    def self.hstack(x, *matrices)
       result = x.rows
       total_column_count = x.column_count
 
@@ -263,7 +263,8 @@ module Apatite::LinearAlgebra
       Matrix.combine(self, *matrices, &block)
     end
 
-    private def initialize(rows : Array(Array(T)), column_count = nil)
+    # :nodoc:
+    protected def initialize(rows : Array(Array(T)), column_count = nil)
       # No checking is done at this point. rows must be an Array of Arrays.
       # column_count must be the size of the first row, if there is one,
       # otherwise it *must* be specified and can be any integer >= 0
@@ -271,8 +272,20 @@ module Apatite::LinearAlgebra
       @column_count = column_count || rows[0].try &.size
     end
 
+    # Returns row `i` of the matrix as an Array. Raises if the
+    # index is not found.
+    def [](i)
+      @rows[i]
+    end
+
+    # Returns row `i` of the matrix as an Array. Returns nil if the
+    # index is not found.
+    def []?(i)
+      @rows[i]?
+    end
+
     # Returns element (`i`, `j`) of the matrix.  That is: row `i`, column `j`.
-    # Throws if either index is not found.
+    # Raises if either index is not found.
     def [](i, j)
       @rows[i][j]
     end
@@ -295,6 +308,797 @@ module Apatite::LinearAlgebra
 
     # Returns the number of columns.
     getter column_count : Int32
+
+    # Returns row vector number `i` of the Matrix as a Vector (starting
+    # at 0 like a good boy). Raises if the row doesn't exist.
+    def row(i)
+      raise IndexError.new if i >= row_count || i < -row_count
+      Vector.elements(self[i])
+    end
+
+    # Returns a block which yields every Vector in the row (starting at 0).
+    def row(i, &block : Vector ->)
+      row(i).each(&block)
+    end
+
+    # Returns row vector number `i` of the Matrix as a Vector (starting
+    # at 0 like a good boy). Returns nil if the row doesn't exist.
+    def row?(i)
+      row(i)
+    rescue IndexError
+      nil
+    end
+
+    # Returns column vector `j` of the Matrix as a Vector (starting at 0).
+    # Raises if the column doesn't exist.
+    def column(j)
+      raise IndexError.new if j >= column_count || j < -column_count
+      col = Array(T).new(row_count) do |i|
+        @rows[i][j]
+      end
+      Vector.elements(col, false)
+    end
+
+    # Returns column vector `j` of the Matrix as a Vector (starting at 0).
+    # Returns nil if the column doesn't exist.
+    def column?(j)
+      column(j)
+    rescue IndexError
+      nil
+    end
+
+    # Returns a block which yields every item in column `j` of the Matrix.
+    def column(j, &block : T ->)
+      column(j).each(&block)
+    end
+
+    # Returns a Matrix that is the result of iteration of the given block
+    # over all elements in the matrix.
+    def map(&block : T -> T)
+      rows = @rows.map { |row| row.map(&block) }
+      Matrix.new(rows, column_count)
+    end
+
+    # Yields all elements of the matrix, starting with those of the first row,
+    # or returns an Enumerator if no block given.
+    # Elements can be restricted by passing an argument:
+    # * :all (default): yields all elements
+    # * :diagonal: yields only elements on the diagonal
+    # * :off_diagonal: yields all elements except on the diagonal
+    # * :lower: yields only elements on or below the diagonal
+    # * :strict_lower: yields only elements below the diagonal
+    # * :strict_upper: yields only elements above the diagonal
+    # * :upper: yields only elements on or above the diagonal
+    #
+    # ```
+    # Matrix[ [1,2], [3,4] ].each { |e| puts e }
+    # # => prints the numbers 1 to 4
+    # Matrix[ [1,2], [3,4] ].each(:strict_lower).to_a # => [3]
+    # ```
+    def each(which = :all, &block : T ->)
+      last = column_count
+      case which.to_s
+      when "all"
+        @rows.each do |row|
+          row.each(&block)
+        end
+      when "diagonal"
+        @rows.each_with_index do |row, row_index|
+          yield row.fetch(row_index){ return self }
+        end
+      when "off_diagonal"
+        @rows.each_with_index do |row, row_index|
+          column_count.times do |col_index|
+            yield row[col_index] unless row_index == col_index
+          end
+        end
+      when "lower"
+        @rows.each_with_index do |row, row_index|
+          0.upto([row_index, last].min) do |col_index|
+            yield row[col_index]
+          end
+        end
+      when "strict_lower"
+        @rows.each_with_index do |row, row_index|
+          [row_index, column_count].min.times do |col_index|
+            yield row[col_index]
+          end
+        end
+      when "strict_upper"
+        @rows.each_with_index do |row, row_index|
+          (row_index+1).upto(last - 1) do |col_index|
+            yield row[col_index]
+          end
+        end
+      when "upper"
+        @rows.each_with_index do |row, row_index|
+          row_index.upto(last - 1) do |col_index|
+            yield row[col_index]
+          end
+        end
+      else
+        raise ArgumentError.new("expected #{which.inspect} to be one of :all, :diagonal, :off_diagonal, :lower, :strict_lower, :strict_upper or :upper")
+      end
+    end
+
+    # Same as #each, but the row index and column index in addition to the element
+    #
+    # ```
+    # Matrix[ [1,2], [3,4] ].each_with_index do |e, row, col|
+    # puts "#{e} at #{row}, #{col}"
+    # end
+    # # => Prints:
+    # #    1 at 0, 0
+    # #    2 at 0, 1
+    # #    3 at 1, 0
+    # #    4 at 1, 1
+    # ```
+    def each_with_index(which = :all, &block : T, Int32, Int32 ->)
+      last = column_count
+      case which.to_s
+      when "all"
+        @rows.each_with_index do |row, row_index|
+          row.each_with_index do |e, col_index|
+            block.call(e, row_index, col_index)
+          end
+        end
+      when "diagonal"
+        @rows.each_with_index do |row, row_index|
+          block.call(row.fetch(row_index){return self}, row_index, row_index)
+        end
+      when "off_diagonal"
+        @rows.each_with_index do |row, row_index|
+          column_count.times do |col_index|
+            block.call(row[col_index], row_index, col_index)
+          end
+        end
+      when "lower"
+        @rows.each_with_index do |row, row_index|
+          0.upto([row_index, last].min) do |col_index|
+            block.call(row[col_index], row_index, col_index)
+          end
+        end
+      when "strict_lower"
+        @rows.each_with_index do |row, row_index|
+          [row_index, column_count].min.times do |col_index|
+            block.call(row[col_index], row_index, col_index)
+          end
+        end
+      when "strict_upper"
+        @rows.each_with_index do |row, row_index|
+          (row_index+1).upto(last - 1) do |col_index|
+            block.call(row[col_index], row_index, col_index)
+          end
+        end
+      when "upper"
+        @rows.each_with_index do |row, row_index|
+          row_index.upto(last - 1) do |col_index|
+            block.call(row[col_index], row_index, col_index)
+          end
+        end
+      else
+        raise ArgumentError.new("expected #{which.inspect} to be one of :all, :diagonal, :off_diagonal, :lower, :strict_lower, :strict_upper or :upper")
+      end
+    end
+
+    SELECTORS = {all: true, diagonal: true, off_diagonal: true, lower: true, strict_lower: true, strict_upper: true, upper: true}
+
+    # The index method is specialized to return the index as {row, column}
+    # It also accepts an optional `selector` argument, see `#each` for details.
+    #
+    # ```
+    # Matrix[ [1,1], [1,1] ].index(1, :strict_lower)
+    # # => {1, 0}
+    # ```
+    def index(i, selector = :all)
+      res = nil
+      each_with_index(selector) do |e, row_index, col_index|
+        if e == i
+          res = {row_index, col_index}
+          next
+        end
+      end
+      res
+    end
+
+    # Returns the index as {row, column}, using `&block` to filter the
+    # result. It also accepts an optional `selector` argument, see
+    # `#each` for details.
+    #
+    # ```
+    # Matrix[ [1,2], [3,4] ].index(&.even?)
+    # # => {0, 1}
+    # ```
+    def index(selector = :all, &block : T -> Bool)
+      res = nil
+      each_with_index(selector) do |e, row_index, col_index|
+        if block.call(e)
+          res = {row_index, col_index}
+          next
+        end
+      end
+      res
+    end
+
+    # Returns a section of the Matrix.
+    #
+    # ```
+    # Matrix.diagonal(9, 5, -3).minor(0..1, 0..2)
+    # # => [ 9, 0, 0,
+    # #      0, 5, 0 ]
+    # ```
+    def minor(row_range : Range, col_range : Range)
+      from_row = row_range.first
+      from_row += row_count if from_row < 0
+      to_row = row_range.end
+      to_row += row_count if to_row < 0
+      to_row += 1 unless row_range.excludes_end?
+      size_row = to_row - from_row
+
+      from_col = col_range.first
+      from_col += column_count if from_col < 0
+      to_col = col_range.end
+      to_col += column_count if to_col < 0
+      to_col += 1 unless col_range.excludes_end?
+      size_col = to_col - from_col
+
+      return nil if from_row > row_count || from_col > column_count || from_row < 0 || from_col < 0
+
+      rows = @rows[from_row, size_row].map do |row|
+        row[from_col, size_col]
+      end
+
+      Matrix.new(rows, [column_count - from_col, size_col].min)
+    end
+
+    # Returns a section of the Matrix.
+    #
+    # ```
+    # Matrix.diagonal(9, 5, -3).minor(0, 2, 0, 3)
+    # # => [ 9, 0, 0,
+    # #      0, 5, 0 ]
+    # ```
+    def minor(from_row : Int, nrows : Int, from_col : Int, ncols : Int)
+      return nil if nrows < 0 || ncols < 0
+      from_row += row_count if from_row < 0
+      from_col += column_count if from_col < 0
+
+      return nil if from_row > row_count || from_col > column_count || from_row < 0 || from_col < 0
+
+      rows = @rows[from_row, nrows].map do |row|
+        row[from_col, ncols]
+      end
+
+      Matrix.new(rows, [column_count - from_col, ncols].min)
+    end
+
+    # Returns the submatrix obtained by deleting the specified row and column.
+    #
+    # ```
+    # Matrix.diagonal(9, 5, -3, 4).first_minor(1, 2)
+    # # => [ 9, 0, 0,
+    # #      0, 0, 0,
+    # #      0, 0, 4 ]
+    # ```
+    def first_minor(row, column)
+      raise "first_minor of empty matrix is not defined" if empty?
+
+      unless 0 <= row && row < row_count
+        raise ArgumentError.new("invalid row (#{row.inspect} for 0..#{row_count - 1})")
+      end
+
+      unless 0 <= column && column < column_count
+        raise ArgumentError.new("invalid column (#{column.inspect} for 0..#{column_count - 1})")
+      end
+
+      arrays = to_a
+      arrays.delete_at(row)
+      arrays.each do |array|
+        array.delete_at(column)
+      end
+
+      Matrix.new(arrays, column_count - 1)
+    end
+
+    # Returns the (row, column) cofactor which is obtained by multiplying
+    # the first minor by (-1)**(row + column).
+    #
+    # ```
+    # Matrix.diagonal(9, 5, -3, 4).cofactor(1, 1)
+    # # => -108
+    # ```
+    def cofactor(row, column)
+      raise "cofactor of empty matrix is not defined" if empty?
+      raise ErrDimensionMismatch.new unless square?
+
+      det_of_minor = first_minor(row, column).determinant
+      det_of_minor * (-1) ** (row + column)
+    end
+
+    # Returns the adjugate of the matrix.
+    #
+    # Matrix[ [7,6],[3,9] ].adjugate
+    # # => [ 9, -6,
+    # #     -3,  7 ]
+    # ```
+    def adjugate
+      raise ErrDimensionMismatch.new unless square?
+      Matrix.build(row_count, column_count) do |row, column|
+        cofactor(column, row)
+      end
+    end
+
+    # Returns the Laplace expansion along given row or column.
+    #
+    # ```
+    # Matrix[[7,6], [3,9]].laplace_expansion(column: 1)
+    # # => 45
+    #
+    # Matrix[[Vector[1, 0], Vector[0, 1]], [2, 3]].laplace_expansion(row: 0)
+    # # => Vector[3, -2]
+    # ```
+    def laplace_expansion(*, row = nil, column = nil)
+      num = row || column
+
+      if !num || (row && column)
+        raise ArgumentError.new("exactly one the row or column arguments must be specified")
+      end
+
+      raise ErrDimensionMismatch.new unless square?
+      raise "laplace_expansion of empty matrix is not defined" if empty?
+
+      unless 0 <= num && num < row_count
+        raise ArgumentError, "invalid num (#{num.inspect} for 0..#{row_count - 1})"
+      end
+
+      if row
+        row(num).map_with_index do |e, k|
+          e * cofactor(num, k)
+        end.reduce(&.+)
+      else
+        col(num).map_with_index do |e, k|
+          e * cofactor(k, num)
+        end.reduce(&.+)
+      end
+    end
+
+    # Swaps `row1` and `row2`
+    def swap_rows(row1, row2)
+      raise IndexError.new if row1 >= row_count || row2 >= row_count
+      row1 += row_count if row1 < 0
+      row2 += row_count if row2 < 0
+      raise IndexError.new if row1 < 0 || row2 < 0
+      column_count.times do |i|
+        self[row1, i], self[row2, i] = self[row2, i], self[row1, i]
+      end
+      self
+    end
+
+    # Swaps `col1` and `col2`
+    def swap_columns(col1, col2)
+      raise IndexError.new if col1 >= column_count || col2 >= column_count
+      col1 += column_count if col1 < 0
+      col2 += column_count if col2 < 0
+      raise IndexError.new if col1 < 0 || col2 < 0
+      row_count.times do |i|
+        self[i, col1], self[i, col2] = self[i, col2], self[i, col1]
+      end
+      self
+    end
+
+    #--
+    # TESTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
+    # Returns `true` if this is a diagonal matrix.
+    #
+    def diagonal?
+      return false unless square?
+      els = [] of T
+      each(:off_diagonal) { |e| els << e }
+      els.all?(&.zero?)
+    end
+
+    # Returns true if this matrix is empty.
+    def empty?
+      column_count == 0 || row_count == 0
+    end
+
+    # Returns `true` if this is an hermitian matrix.
+    def hermitian?
+      return false unless square?
+      els = [] of Tuple(T, Int32, Int32)
+      each_with_index(:upper) { |e, i, j| els << {e, i, j} }
+      els.all? do |e, row, col|
+        e == rows[col][row]
+      end
+    end
+
+    # Returns true if this matrix is a lower triangular matrix.
+    def lower_triangular?
+      els = [] of T
+      each(:strict_upper) { |e| els << e }
+      els.all?(&.zero?)
+    end
+
+    # Returns `true` if this is a normal matrix.
+    #
+    # ```
+    # Matrix[[1, 1, 0], [0, 1, 1], [1, 0, 1]].normal?
+    # # => true
+    # ```
+    def normal?
+      return false unless square?
+      rows.each_with_index do |row_i, i|
+        rows.each_with_index do |row_j, j|
+          s = 0
+          rows.each_with_index do |row_k, k|
+            s += row_i[k] * row_j[k] - row_k[i] * row_k[j]
+          end
+          return false unless s == 0
+        end
+      end
+      true
+    end
+
+    # Returns `true` if this is an orthogonal matrix
+    #
+    # ```
+    # Matrix[[1, 0], [0, 1]].orthogonal?
+    # # => true
+    # ```
+    def orthogonal?
+      return false unless square?
+      rows.each_with_index do |row, i|
+        column_count.times do |j|
+          s = 0
+          row_count.times do |k|
+            s += row[k] * rows[k][j]
+          end
+          return false unless s == (i == j ? 1 : 0)
+        end
+      end
+      true
+    end
+
+    # Returns `true` if this is a permutation matrix
+    #
+    # ```
+    # Matrix[[1, 0], [0, 1]].permutation?
+    # # => true
+    # ```
+    def permutation?
+      return false unless square?
+      cols = Array.new(column_count, false)
+      rows.each_with_index do |row, i|
+        found = false
+        row.each_with_index do |e, j|
+          if e == 1
+            return false if found || cols[j]
+            found = cols[j] = true
+          elsif e != 0
+            return false
+          end
+        end
+        return false unless found
+      end
+      true
+    end
+
+    # Returns `true` if this matrix contains real numbers,
+    # i.e. not `Complex`.
+    #
+    # ```
+    # require "complex"
+    # Matrix[[Complex.new(1, 0)], [Complex.new(0, 1)]].real?
+    # # => false
+    # ```
+    def real?
+      !(T.to_s == "Complex")
+    end
+
+    # Returns `true` if this is a regular (i.e. non-singular) matrix.
+    def regular?
+      !singular?
+    end
+
+    # Returns `true` if this is a singular matrix.
+    def singular?
+      determinant == 0
+    end
+
+    # Returns `true` if this is a square matrix.
+    def square?
+      column_count == row_count
+    end
+
+    # Returns +true+ if this is a symmetric matrix.
+    # Raises an error if matrix is not square.
+    #
+    def symmetric?
+      return false unless square?
+      result = true
+      each_with_index(:strict_upper) do |e, row, col|
+        if e != rows[col][row]
+          result = false
+        end
+      end
+      result
+    end
+
+    # Returns `true` if this is a unitary matrix
+    def unitary?
+      return false unless square?
+      result = true
+      rows.each_with_index do |row, i|
+        column_count.times do |j|
+          s = 0
+
+          row_count.times do |k|
+            s += row[k] * rows[k][j]
+          end
+
+          unless s == (i == j ? 1 : 0)
+            result = false
+          end
+        end
+      end
+      result
+    end
+
+    # Returns true if this matrix is a upper triangular matrix.
+    def upper_triangular?
+      els = [] of T
+      each(:strict_lower) { |e| els << e }
+      els.all?(&.zero?)
+    end
+
+    # Returns `true` if this is a matrix with only zero elements
+    def zero?
+      @rows.flatten.all?(&.zero?)
+    end
+
+    #--
+    # OBJECT METHODS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
+    # Equality operator
+    def ==(other : Matrix)
+      rows == other.rows && column_count == other.column_count
+    end
+
+    # Returns a clone of the matrix, so that the contents of each do not reference
+    # identical objects.
+    #
+    # There should be no good reason to do this since Matrices are immutable.
+    def clone
+      Matrix.new(@rows.map(&.dup), column_count)
+    end
+
+    #--
+    # ARITHMETIC -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
+    # Matrix multiplication
+    #
+    # ```
+    # Matrix[[2,4], [6,8]] * Matrix.identity(2)
+    # # => [ 2, 4,
+    # #      6, 8 ]
+    # ```
+    def *(other)
+      case other
+      when Number
+        rows = @rows.map do |row|
+          row.map { |e| (e * other).as(T) }
+        end
+        Matrix.new(rows, column_count)
+      when Vector
+        m = Matrix.column_vector(other)
+        r = self * m
+        r.column(0)
+      when Matrix
+          raise ErrDimensionMismatch.new if column_count != other.column_count
+          rows = Array.new(row_count) do |i|
+            Array.new(column_count) do |j|
+              (0...column_count).reduce(0) do |vij, k|
+                vij + self[i, k] * other[k, j]
+              end
+            end
+          end
+          Matrix.new(rows, column_count)
+      else
+        self * Matrix.rows(other)
+      end
+    end
+
+    # Matrix addition
+    #
+    # ```
+    # Matrix.scalar(2,5) + Matrix[[1,0], [-4,7]]
+    # # => [ 6,  0,
+    # #     -4,  1 ]
+    # ```
+    def +(other : Matrix | Indexable)
+      case other
+      when Vector
+        other = Matrix.column_vector(other)
+      when Matrix
+      else
+        other = Matrix.rows(other)
+      end
+
+      raise ErrDimensionMismatch.new unless row_count == other.row_count && column_count == other.column_count
+
+      rows = Array.new(row_count) do |i|
+        Array.new(column_count) do |j|
+          (self[i, j] + other[i, j]).as(T)
+        end
+      end
+
+      Matrix.new(rows, column_count)
+    end
+
+    # Matrix subtraction
+    #
+    # ```
+    # Matrix[[1,5], [4,2]] - Matrix[[9,3], [-4,1]]
+    # # => [-8, 2,
+    # #      8, 1 ]
+    # ```
+    def -(other : Matrix | Indexable)
+      case other
+      when Vector
+        other = Matrix.column_vector(other)
+      when Matrix
+      else
+        other = Matrix.rows(other)
+      end
+
+      raise ErrDimensionMismatch.new unless row_count == other.row_count && column_count == other.column_count
+
+      rows = Array.new(row_count) do |i|
+        Array.new(column_count) do |j|
+          (self[i, j] - other[i, j]).as(T)
+        end
+      end
+
+      Matrix.new(rows, column_count)
+    end
+
+    # Matrix division (multiplication by the inverse).
+    #
+    # ```
+    # Matrix[[7,6], [3,9]] / Matrix[[2,9], [3,1]]
+    # # => [ -7,  1,
+    # #      -3, -6 ]
+    # ```
+    def /(other)
+      case other
+      when Number
+        rows = @rows.map do |row|
+          row.map {|e| (e / other).as(T) }
+        end
+        return Matrix.new(rows, column_count)
+      when Matrix
+        return self * other.inverse
+      else
+        self / Matrix.rows(other)
+      end
+    end
+
+    # Hadamard product
+    #
+    # ```
+    # Matrix[[1,2], [3,4]].hadamard_product Matrix[[1,2], [3,2]]
+    # # => [ 1,  4,
+    # #      9,  8 ]
+    # ```
+    def hadamard_product(m)
+      combine(m){ |a, b| a * b }
+    end
+
+    # Returns the inverse of the matrix.
+    #
+    # NOTE: Always returns a `Float64` regardless of `T`s type. To coerce
+    # back into an `Int`, use `#coerce`.
+    #
+    # ```
+    # Matrix[[-1, -1], [0, -1]].inverse
+    # # => [ -1.0,  1.0,
+    # #       0.0, -1.0 ]
+    # ```
+    def inverse
+      raise ErrDimensionMismatch.new unless square?
+      last = row_count - 1
+      a = self.coerce(Float64)
+      m = Matrix(Float64).identity(row_count)
+
+      0.upto(last) do |k|
+        i = k
+        akk = a[k, k].abs
+        (k + 1).upto(last) do |j|
+          v = a[j, k].abs
+          if v > akk
+            i = j
+            akk = v
+          end
+        end
+        raise ErrNotRegular.new if akk == 0
+        if i != k
+          a.swap_rows(i, k)
+          m.swap_rows(i, k)
+        end
+        akk = a[k, k]
+        0.upto(last) do |ii|
+          next if ii == k
+          q = a[ii, k] / akk
+          a[ii, k] = 0.0
+          (k + 1).upto(last) do |j|
+            a[ii, j] -= a[k, j] * q
+          end
+          0.upto(last) { |j| m[ii, j] -= m[k, j] * q }
+        end
+        (k + 1).upto(last) { |j| a[k, j] = a[k, j] / akk }
+        0.upto(last) { |j| m[k, j] = m[k, j] / akk }
+      end
+
+      m
+    end
+
+    # Matrix exponentiation.
+    #
+    # Equivalent to multiplying the matrix by itself N times.
+    # Non integer exponents will be handled by diagonalizing the matrix.
+    #
+    # ```
+    # Matrix[[7,6], [3,9]] ** 2
+    # # => [ 67, 96,
+    # #      48, 99 ]
+    # ```
+    def **(other)
+      # TODO
+    end
+
+    # Attempt to coerce the elements in the matrix to another type.
+    def coerce(klass)
+      rws = @rows.map { |r| r.map { |i| klass.new(i) } }
+      Matrix.rows(rws)
+    end
+
+    def to_s(io)
+      if empty?
+        "Matrix.empty(#{row_count}, #{column_count})"
+      else
+        io << "Matrix["
+
+        io << rows.map { |row|
+          "[" + row.map { |e| e.to_s }.join(", ") + "]"
+        }.join(", ")
+
+        io << "]"
+      end
+    end
+
+    def pretty_print(pp) : Nil
+      pp.group(1, "[", "]") do
+        self.rows.each_with_index do |elem, i|
+          pp.comma if i > 0
+          elem.pretty_print(pp)
+        end
+      end
+    end
+
+    def to_json(json : JSON::Builder)
+      json.array do
+        each &.to_json(json)
+      end
+    end
+
+    # Returns this matrix as an `Array(Array(T))`
+    def to_a
+      @rows.clone
+    end
 
     def unsafe_fetch(i)
       @rows.unsafe_fetch(i)
