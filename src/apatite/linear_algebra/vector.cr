@@ -40,14 +40,22 @@ module Apatite::LinearAlgebra
     end
 
     # Returns `true` if all of vectors are linearly independent.
-    # def Vector.independent?(*vs)
-    #   vs.each do |v|
-    #     raise TypeError.new("expected Vector, got #{v.class}") unless v.is_a?(Vector)
-    #     raise ErrDimensionMismatch.new unless v.size == vs.first.size
-    #   end
-    #   return false if vs.size > vs.first.size
-    #   Matrix[*vs].rank.eql?(vs.size)
-    # end
+    #
+    # ```
+    # Vector.independent?(Vector[1,0], Vector[0,1])
+    # # => true
+    #
+    # Vector.independent?(Vector[1,2], Vector[2,4])
+    # # => false
+    # ```
+    def Vector.independent?(*vs)
+      vs.each do |v|
+        raise "expected Vector, but got #{v.class}" unless v.is_a?(Vector)
+        raise ErrDimensionMismatch.new unless v.size == vs.first.size
+      end
+      return false if vs.size > vs.first.size
+      Matrix.rows(vs.to_a).rank == vs.size
+    end
 
     # Return a zero vector.
     def self.zero(size)
@@ -62,8 +70,8 @@ module Apatite::LinearAlgebra
       when Number
         els = @elements.map { |e| (e * x).as(T) }
         self.class.elements(els, false)
-      # when Matrix
-      #   Matrix.column_vector(self) * x
+      when Matrix
+        Matrix.column_vector(self) * x
       when Vector
         self.elements.zip(x.elements).map { |(x, y)| x * y }
       else
@@ -77,8 +85,8 @@ module Apatite::LinearAlgebra
       when Number
         els = @elements.map { |e| (e + x).as(T) }
         self.class.elements(els, false)
-      # when Matrix
-      #   Matrix.column_vector(self) + x
+      when Matrix
+        Matrix.column_vector(self) + x
       when Vector
         self.elements.zip(x.elements).map { |(x, y)| x + y }
       else
@@ -92,8 +100,8 @@ module Apatite::LinearAlgebra
       when Number
         els = @elements.map { |e| (e - x).as(T) }
         self.class.elements(els, false)
-      # when Matrix
-      #   Matrix.column_vector(self) - x
+      when Matrix
+        Matrix.column_vector(self) - x
       when Vector
         self.elements.zip(x.elements).map { |(x, y)| x - y }
       else
@@ -107,8 +115,8 @@ module Apatite::LinearAlgebra
       when Number
         els = @elements.map { |e| (e / x).as(T) }
         self.class.elements(els, false)
-      # when Matrix
-      #   Matrix.column_vector(self) / x
+      when Matrix
+        Matrix.column_vector(self) / x
       when Vector
         self.elements.zip(x.elements).map { |(x, y)| x / y }
       else
@@ -162,9 +170,9 @@ module Apatite::LinearAlgebra
     end
 
     # Creates a single-row matrix from this vector.
-    # def covector
-    #   Matrix.row_vector(self)
-    # end
+    def covector
+      Matrix.row_vector(self)
+    end
 
     # Returns the cross product of this vector with the others.
     def cross_product(*vs)

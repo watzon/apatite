@@ -30,9 +30,9 @@ module Apatite::LinearAlgebra
     # # => [ 25, 93,
     # #      -1, 66 ]
     # ```
-    def self.rows(rows : Indexable(Array(T)), copy = true)
+    def self.rows(rows : Indexable(Indexable(T)), copy = true)
       rows = rows.dup if copy
-      rows = rows.to_a
+      rows = rows.map(&.to_a).to_a
       rows.map! do |row|
         row = row.dup if row
         row.to_a
@@ -169,7 +169,7 @@ module Apatite::LinearAlgebra
     # ```
     def self.row_vector(row)
       row = row.to_a
-      new([row])
+      Matrix.new([row])
     end
 
     # Creates a single-column matrix where the values of that column are as given
@@ -183,7 +183,7 @@ module Apatite::LinearAlgebra
     # ```
     def self.column_vector(column)
       column = column.to_a
-      new([column].transpose, 1)
+      Matrix.new([column].transpose, 1)
     end
 
     # Creates a empty matrix of `row_count` x `column_count`.
@@ -1409,6 +1409,11 @@ module Apatite::LinearAlgebra
       json.array do
         @rows.to_json(json)
       end
+    end
+
+    # Just in case
+    def to_matrix
+      self
     end
 
     #--
