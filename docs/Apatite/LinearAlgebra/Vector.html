@@ -167,7 +167,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L7" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L7" target="_blank">
         apatite/linear_algebra/vector.cr
       </a>
     
@@ -201,6 +201,13 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
         <a href="#elements%28array%2Ccopy%3Dtrue%29-class-method" class="signature"><strong>.elements</strong>(array, copy = <span class="n">true</span>)</a>
         
           <div class="summary"><p>Creates a vector from an Array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#independent%3F%28%2Avs%29-class-method" class="signature"><strong>.independent?</strong>(*vs)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if all of vectors are linearly independent.</p></div>
         
       </li>
     
@@ -278,6 +285,13 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
         <a href="#coerce%28klass%2C%2Aargs%29-instance-method" class="signature"><strong>#coerce</strong>(klass, *args)</a>
         
           <div class="summary"><p>The coerce method allows you to attempt to coerce the elements in the matrix to another type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#covector-instance-method" class="signature"><strong>#covector</strong></a>
+        
+          <div class="summary"><p>Creates a single-row matrix from this vector.</p></div>
         
       </li>
     
@@ -505,7 +519,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -523,7 +537,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -542,7 +556,31 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="independent?(*vs)-class-method">
+      <div class="signature">
+        
+        def self.<strong>independent?</strong>(*vs)
+
+        <a class="method-permalink" href="#independent%3F%28%2Avs%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if all of vectors are linearly independent.</p>
+
+<pre><code><span class="t">Vector</span>.independent?(<span class="t">Vector</span>[<span class="n">1</span>,<span class="n">0</span>], <span class="t">Vector</span>[<span class="n">0</span>,<span class="n">1</span>])
+<span class="c"># =&gt; true</span>
+
+<span class="t">Vector</span>.independent?(<span class="t">Vector</span>[<span class="n">1</span>,<span class="n">2</span>], <span class="t">Vector</span>[<span class="n">2</span>,<span class="n">4</span>])
+<span class="c"># =&gt; false</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -560,7 +598,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -583,7 +621,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -601,7 +639,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -619,7 +657,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -637,7 +675,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -655,7 +693,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L129" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -673,7 +711,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -691,7 +729,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L146" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -709,7 +747,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -728,7 +766,25 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L249" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L257" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="covector-instance-method">
+      <div class="signature">
+        
+        def <strong>covector</strong>
+
+        <a class="method-permalink" href="#covector-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a single-row matrix from this vector.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -746,7 +802,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L193" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L201" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -764,7 +820,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L170" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -782,7 +838,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L207" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L215" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -798,7 +854,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -814,7 +870,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -832,7 +888,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L212" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L220" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -850,7 +906,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L198" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L206" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -866,7 +922,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L286" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L294" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -884,7 +940,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L221" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L229" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -900,7 +956,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L151" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -916,7 +972,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L156" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -934,7 +990,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L226" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -952,7 +1008,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L231" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -970,7 +1026,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L246" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -988,7 +1044,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L243" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L251" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1006,7 +1062,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L268" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L276" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1024,7 +1080,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L273" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L281" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1040,7 +1096,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L277" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L285" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1056,7 +1112,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L290" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L298" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1074,7 +1130,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/6e67ceb81b0b3c61d48b74e5ca5154866a9abd1a/src/apatite/linear_algebra/vector.cr#L282" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L290" target="_blank">View source</a>]
         
       </div>
     </div>
