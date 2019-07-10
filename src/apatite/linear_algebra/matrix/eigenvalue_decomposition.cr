@@ -1,4 +1,4 @@
-module Apatite
+module Apatite::LinearAlgebra
   class Matrix(T)
     # Eigenvalues and eigenvectors of a real matrix.
     #

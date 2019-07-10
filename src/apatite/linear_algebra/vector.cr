@@ -244,9 +244,23 @@ module Apatite::LinearAlgebra
       map{ |e| e.round(ndigits) }
     end
 
-    # Attempt to coerce the elements in the vector to another type.
-    def coerce(klass)
-      els = @elements.map { |e| klass.new(e) }
+    # The coerce method allows you to attempt to coerce the elements
+    # in the matrix to another type. The type
+    def coerce(klass, *args)
+      case klass.to_s
+      when "Complex"
+        raise "coercing to a Complex requires a second argument" unless args[0]?
+        els = @elements.map { |e| Complex.new(e, args[0].as(Int32)) }
+      when "BigInt"
+        base = args[0]? || 10
+        els = @elements.map { |e| klass.new(e, base) }
+      when "BigRational"
+        raise "coercing to a BigRational requires a second argument to use as a denominator" unless args[0]?
+        els = @elements.map { |e| klass.new(e, args[0]) }
+      else
+        els = @elements.map { |e| klass.new(e) }
+      end
+
       Vector.elements(els)
     end
 
