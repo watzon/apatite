@@ -60,7 +60,7 @@ module Apatite::LinearAlgebra
     # Return a zero vector.
     def self.zero(size)
       raise ArgumentError.new("invalid size (#{size} for 0..)") if size < 0
-      array = Array.new(size, 0)
+      array = Array.new(size, T.new(0))
       new(array)
     end
 
