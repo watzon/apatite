@@ -1,5 +1,6 @@
 require "json"
-require "./vector"
+require "./matrix/eigenvalue_decomposition"
+require "./matrix/lup_decomposition"
 
 module Apatite::LinearAlgebra
   class Matrix(T)
@@ -1064,12 +1065,6 @@ module Apatite::LinearAlgebra
     # MATRIX FUNCTIONS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     #++
 
-    # Attempt to coerce the elements in the matrix to another type.
-    def coerce(klass)
-      rws = @rows.map { |r| r.map { |i| klass.new(i) } }
-      Matrix.rows(rws)
-    end
-
     # Returns the determinant of the matrix.
     #
     # Beware that using Float values can yield erroneous results
@@ -1260,6 +1255,115 @@ module Apatite::LinearAlgebra
     # ```
     def vstack(*matrices)
       self.class.vstack(self, *matrices)
+    end
+
+    #--
+    # DECOMPOSITIONS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    #++
+
+    # Returns the Eigensystem of the matrix
+    # See `EigenvalueDecomposition`.
+    #
+    # NOTE: Not working yet
+    #
+    # ```
+    # m = Matrix[[1, 2], [3, 4]]
+    # v, d, v_inv = m.eigensystem
+    # d.diagonal? # => true
+    # v.inv == v_inv # => true
+    # (v * d * v_inv).round(5) == m # => true
+    # ```
+    def eigensystem
+      EigenvalueDecomposition.new(self)
+    end
+
+    # Returns the LUP decomposition of the matrix
+    # See +LUPDecomposition+.
+    #
+    # NOTE: Not working yet
+    #
+    # ```
+    # a = Matrix[[1, 2], [3, 4]]
+    # l, u, p = a.lup
+    # l.lower_triangular? # => true
+    # u.upper_triangular? # => true
+    # p.permutation?      # => true
+    # l * u == p * a      # => true
+    # a.lup.solve([2, 5]) # => Vector[(1/1), (1/2)]
+    # ```
+    def lup
+      LUPDecomposition.new(self)
+    end
+
+    #--
+    # COMPLEX ARITHMETIC -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    #++
+
+    # Returns the conjugate of the matrix.
+    #
+    # ```
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # # => 1+2i   i  0
+    # #       1   2  3
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].conj
+    # # => 1-2i  -i  0
+    # #       1   2  3
+    # ```
+    def conj
+      raise ArgumentError.new("Matrix#conj only works with real matrices (i.e. Matrix(Complex))") unless real?
+      map(&.conj)
+    end
+
+    # Returns the imaginary part of the matrix.
+    #
+    # ```
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # # => [ 1+2i,  i,  0,
+    # #         1,  2,  3 ]
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].imag
+    # # => [ 2i,  i,  0,
+    # #       0,  0,  0 ]
+    # ```
+    def imag
+      raise ArgumentError.new("Matrix#imag only works with real matrices (i.e. Matrix(Complex))") unless real?
+      map(&.imag)
+    end
+
+    # Returns the real part of the matrix.
+    #
+    # ```
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # # => [ 1+2i,  i,  0,
+    # #         1,  2,  3 ]
+    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].real
+    # # => [ 1,  0,  0,
+    # #      1,  2,  3 ]
+    # ```
+    def real
+      raise ArgumentError.new("Matrix#real only works with real matrices (i.e. Matrix(Complex))") unless real?
+      map(&.real)
+    end
+
+    # Returns an array containing matrices corresponding to the real and imaginary
+    # parts of the matrix
+    #
+    # ```
+    # m.rect == [m.real, m.imag]
+    # # ==> true for all matrices m
+    # ```
+    def rect
+      raise ArgumentError.new("Matrix#real only works with real matrices (i.e. Matrix(Complex))") unless real?
+      [real, imag]
+    end
+
+    #--
+    # CONVERTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
+    # Attempt to coerce the elements in the matrix to another type.
+    def coerce(klass)
+      rws = @rows.map { |r| r.map { |i| klass.new(i) } }
+      Matrix.rows(rws)
     end
 
     def to_s(io)
