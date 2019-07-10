@@ -1060,10 +1060,206 @@ module Apatite::LinearAlgebra
       # TODO
     end
 
+    #--
+    # MATRIX FUNCTIONS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
     # Attempt to coerce the elements in the matrix to another type.
     def coerce(klass)
       rws = @rows.map { |r| r.map { |i| klass.new(i) } }
       Matrix.rows(rws)
+    end
+
+    # Returns the determinant of the matrix.
+    #
+    # Beware that using Float values can yield erroneous results
+    # because of their lack of precision.
+    # Consider using exact types like Rational or BigDecimal instead.
+    #
+    # ```
+    # Matrix[[7,6], [3,9]].determinant
+    # # => 45
+    # ```
+    def determinant
+      raise ErrDimensionMismatch.new unless square?
+      m = rows
+      case row_count
+      # Up to 4x4, give result using Laplacian expansion by minors.
+      # This will typically be faster, as well as giving good results
+      # in case of Floats
+      when 0
+        +1
+      when 1
+        +m[0][0]
+      when 2
+        +m[0][0] * m[1][1] - m[0][1] * m[1][0]
+      when 3
+        m0, m1, m2 = m
+        +m0[0] * m1[1] * m2[2] - m0[0] * m1[2] * m2[1] \
+          - m0[1] * m1[0] * m2[2] + m0[1] * m1[2] * m2[0] \
+            + m0[2] * m1[0] * m2[1] - m0[2] * m1[1] * m2[0]
+      when 4
+        m0, m1, m2, m3 = m
+        +m0[0] * m1[1] * m2[2] * m3[3] - m0[0] * m1[1] * m2[3] * m3[2] \
+          - m0[0] * m1[2] * m2[1] * m3[3] + m0[0] * m1[2] * m2[3] * m3[1] \
+            + m0[0] * m1[3] * m2[1] * m3[2] - m0[0] * m1[3] * m2[2] * m3[1] \
+              - m0[1] * m1[0] * m2[2] * m3[3] + m0[1] * m1[0] * m2[3] * m3[2] \
+                + m0[1] * m1[2] * m2[0] * m3[3] - m0[1] * m1[2] * m2[3] * m3[0] \
+                  - m0[1] * m1[3] * m2[0] * m3[2] + m0[1] * m1[3] * m2[2] * m3[0] \
+                    + m0[2] * m1[0] * m2[1] * m3[3] - m0[2] * m1[0] * m2[3] * m3[1] \
+                      - m0[2] * m1[1] * m2[0] * m3[3] + m0[2] * m1[1] * m2[3] * m3[0] \
+                        + m0[2] * m1[3] * m2[0] * m3[1] - m0[2] * m1[3] * m2[1] * m3[0] \
+                          - m0[3] * m1[0] * m2[1] * m3[2] + m0[3] * m1[0] * m2[2] * m3[1] \
+                            + m0[3] * m1[1] * m2[0] * m3[2] - m0[3] * m1[1] * m2[2] * m3[0] \
+                              - m0[3] * m1[2] * m2[0] * m3[1] + m0[3] * m1[2] * m2[1] * m3[0]
+      else
+        # For bigger matrices, use an efficient and general algorithm.
+        # Currently, we use the Gauss-Bareiss algorithm
+        determinant_bareiss
+      end
+    end
+
+    # Returns the determinant of the matrix, using Bareiss' multistep
+    # integer-preserving gaussian elimination. It has the same
+    # computational cost order O(n^3) as standard Gaussian elimination.
+    # Intermediate results are fraction free and of lower complexity.
+    # A matrix of Integers will have thus intermediate results that are also Integers,
+    # with smaller bignums (if any), while a matrix of Float will usually have
+    # intermediate results with better precision.
+    private def determinant_bareiss
+      size = row_count
+      last = size - 1
+      a = to_a
+      no_pivot = Proc(Int32).new { return 0 }
+      sign = +1
+      pivot = 1
+      size.times do |k|
+        previous_pivot = pivot
+        if (pivot = a[k][k]) == 0
+          switch = (k + 1...size).find(0) { |row|
+            a[row][k] != 0
+          }
+
+          a[switch], a[k] = a[k], a[switch]
+          pivot = a[k][k]
+          sign = -sign
+        end
+        (k + 1).upto(last) do |i|
+          ai = a[i]
+          (k + 1).upto(last) do |j|
+            ai[j] = (pivot * ai[j] - ai[k] * a[k][j]) / previous_pivot
+          end
+        end
+      end
+      sign * pivot
+    end
+
+    # Returns a new matrix resulting by stacking horizontally
+    # the receiver with the given matrices
+    #
+    # ```
+    # x = Matrix[[1, 2], [3, 4]]
+    # y = Matrix[[5, 6], [7, 8]]
+    # x.hstack(y) # => Matrix[[1, 2, 5, 6], [3, 4, 7, 8]]
+    # ```
+    def hstack(*matrices)
+      self.class.hstack(self, *matrices)
+    end
+
+    # Returns the rank of the matrix.
+    #
+    # Beware that using Float values can yield erroneous results
+    # because of their lack of precision.
+    # Consider using exact types like Rational or BigDecimal instead.
+    #
+    # ```
+    # Matrix[[7,6], [3,9]].rank
+    # # => 2
+    # ```
+    def rank
+      # We currently use Bareiss' multistep integer-preserving gaussian elimination
+      # (see comments on determinant)
+      a = to_a
+      last_column = column_count - 1
+      last_row = row_count - 1
+      pivot_row = 0
+      previous_pivot = 1
+      0.upto(last_column) do |k|
+        switch_row = (pivot_row .. last_row).find {|row|
+          a[row][k] != 0
+        }
+        if switch_row
+          a[switch_row], a[pivot_row] = a[pivot_row], a[switch_row] unless pivot_row == switch_row
+          pivot = a[pivot_row][k]
+          (pivot_row+1).upto(last_row) do |i|
+            ai = a[i]
+            (k+1).upto(last_column) do |j|
+              ai[j] =  (pivot * ai[j] - ai[k] * a[pivot_row][j]) / previous_pivot
+            end
+          end
+          pivot_row += 1
+          previous_pivot = pivot
+        end
+      end
+      pivot_row
+    end
+
+    # Returns a matrix with entries rounded to the given precision
+    # (see `Float#round`)
+    def round(n = 0)
+      map {|e| e.round(n) }
+    end
+
+    # Returns the trace (sum of diagonal elements) of the matrix.
+    #
+    # ```
+    # Matrix[[7,6], [3,9]].trace
+    # # => 16
+    # ```
+    def trace
+      raise ErrDimensionMismatch.new unless square?
+      (0...column_count).reduce(0) do |tr, i|
+        tr + @rows[i][i]
+      end
+    end
+
+    # ditto
+    def tr
+      trace
+    end
+
+    # Returns the transpose of the matrix.
+    #
+    # ```
+    # Matrix[[1,2], [3,4], [5,6]]
+    # # => [ 1, 2,
+    # #      3, 4,
+    # #      5, 6 ]
+    # Matrix[[1,2], [3,4], [5,6]].transpose
+    # # => [ 1, 3, 5,
+    # #      2, 4, 6 ]
+    # ```
+    def transpose
+      return self.class.empty(column_count, 0) if row_count.zero?
+      Matrix.new(@rows.transpose, row_count)
+    end
+
+    # ditto
+    def t
+      transpose
+    end
+
+    # Returns a new matrix resulting by stacking vertically
+    # the receiver with the given matrices
+    #
+    # ```
+    # x = Matrix[[1, 2], [3, 4]]
+    # y = Matrix[[5, 6], [7, 8]]
+    # x.vstack(y)
+    # # => Matrix[[1, 2], [3, 4], [5, 6], [7, 8]]
+    # ```
+    def vstack(*matrices)
+      self.class.vstack(self, *matrices)
     end
 
     def to_s(io)
