@@ -102,6 +102,22 @@ module Apatite::LinearAlgebra
       diagonal(values, nil)
     end
 
+    # Creates a new `Matrix` instance from a `JSON::PullParser`.
+    # Defaults to a Float64 matrix.
+    def self.new(pull : JSON::PullParser)
+      arr = [] of Array(Float64)
+      new(pull) do |element|
+        arr << element
+      end
+      rows(arr)
+    end
+
+    def self.new(pull : JSON::PullParser, &block)
+      pull.read_array do
+        yield Array(Float64).new(pull)
+      end
+    end
+
     # Creates an +n+ by +n+ diagonal matrix where each diagonal element is
     # `value`.
     #
@@ -116,8 +132,10 @@ module Apatite::LinearAlgebra
 
     # Creates an `n` by `n` identity matrix.
     #
+    # NOTE: An explicit type is required since it cannot be inferred.
+    #
     # ```
-    # Matrix.identity(2)
+    # Matrix(Int32).identity(2)
     # # => [ 1, 0,
     # #      0, 1 ]
     # ```
@@ -1389,7 +1407,7 @@ module Apatite::LinearAlgebra
     # Convert the matrix to a json array
     def to_json(json : JSON::Builder)
       json.array do
-        each &.to_json(json)
+        @rows.to_json(json)
       end
     end
 
