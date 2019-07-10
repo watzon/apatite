@@ -1,4 +1,5 @@
 require "json"
+require "./vector"
 require "./matrix/eigenvalue_decomposition"
 require "./matrix/lup_decomposition"
 

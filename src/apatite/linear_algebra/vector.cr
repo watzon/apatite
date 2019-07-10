@@ -1,4 +1,5 @@
 require "json"
+require "./matrix"
 
 module Apatite::LinearAlgebra
   # Represents a mathematical vector, and also constitutes a row or column
