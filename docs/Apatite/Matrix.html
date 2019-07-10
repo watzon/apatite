@@ -14,7 +14,7 @@
 </script>
 
   <meta id="repository-name" content="github.com/watzon/apatite">
-  <title>Apatite::LinearAlgebra - github.com/watzon/apatite</title>
+  <title>Apatite::Matrix(T) - github.com/watzon/apatite</title>
 </head>
 <body>
 
@@ -41,7 +41,7 @@
       
         <ul>
   
-  <li class="parent open current" data-id="github.com/watzon/apatite/Apatite/LinearAlgebra" data-name="apatite::linearalgebra">
+  <li class="parent " data-id="github.com/watzon/apatite/Apatite/LinearAlgebra" data-name="apatite::linearalgebra">
       <a href="../Apatite/LinearAlgebra.html">LinearAlgebra</a>
       
         <ul>
@@ -91,7 +91,7 @@
       
     </li>
   
-  <li class="parent " data-id="github.com/watzon/apatite/Apatite/Matrix" data-name="apatite::matrix(t)">
+  <li class="parent open current" data-id="github.com/watzon/apatite/Apatite/Matrix" data-name="apatite::matrix(t)">
       <a href="../Apatite/Matrix.html">Matrix</a>
       
         <ul>
@@ -130,11 +130,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Apatite::LinearAlgebra
+  <span class="kind">class</span> Apatite::Matrix(T)
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Apatite/Matrix.html">Apatite::Matrix(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -144,23 +145,10 @@
 
 
 
-  <h2>Extended Modules</h2>
-  <ul class="other-types-list">
-  
-    <li class="other-type"><a href="../Apatite/LinearAlgebra.html">Apatite::LinearAlgebra</a></li>
-  
-  </ul>
 
 
 
 
-
-  <h2>Direct including types</h2>
-  <ul class="other-types-list">
-  
-    <li class="other-type"><a href="../Apatite.html">Apatite</a></li>
-  
-  </ul>
 
 
 
@@ -168,36 +156,15 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/error.cr#L2" target="_blank">
-        apatite/linear_algebra/error.cr
+      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/matrix/eigenvalue_decomposition.cr#L2" target="_blank">
+        apatite/linear_algebra/matrix/eigenvalue_decomposition.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/vector.cr#L4" target="_blank">
-        apatite/linear_algebra/vector.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/matrix.cr#L6" target="_blank">
-        apatite/linear_algebra/matrix.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra.cr#L7" target="_blank">
-        apatite/linear_algebra.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/ndarray.cr#L1" target="_blank">
-        apatite/linear_algebra/ndarray.cr
+      <a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra/matrix/lup_decomposition.cr#L2" target="_blank">
+        apatite/linear_algebra/matrix/lup_decomposition.cr
       </a>
     
     <br/>
@@ -210,25 +177,6 @@
 
 
 
-
-  <h2>Instance Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#sigmoid%28input%3ANumber%29-instance-method" class="signature"><strong>#sigmoid</strong>(input : Number)</a>
-        
-          <div class="summary"><p>Calculates the sigmoid curve for a numeric input.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sigmoid_d%28input%3ANumber%29-instance-method" class="signature"><strong>#sigmoid_d</strong>(input : Number)</a>
-        
-          <div class="summary"><p>Calculates the derivative sigmoid curve for a numeric input.</p></div>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -236,57 +184,32 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
 
 
 
-
-  <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="sigmoid(input:Number)-instance-method">
-      <div class="signature">
-        
-        def <strong>sigmoid</strong>(input : Number)
-
-        <a class="method-permalink" href="#sigmoid%28input%3ANumber%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>Calculates the sigmoid curve for a numeric input.</p>
-
-<p><code>f(x) = 1/(1 + e^-x)</code></p>
-
-<p>See also: <a href="https://www.wikiwand.com/en/Sigmoid_function" target="_blank">Sigmoid function (WikiWand)</a></p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra.cr#L15" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sigmoid_d(input:Number)-instance-method">
-      <div class="signature">
-        
-        def <strong>sigmoid_d</strong>(input : Number)
-
-        <a class="method-permalink" href="#sigmoid_d%28input%3ANumber%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>Calculates the derivative sigmoid curve for a numeric input.</p>
-
-<p><code>f'(x) = f(x)(1 - f(x)),</code></p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/2e06b01822d214d8621254e69c4ac7d9918a47ec/src/apatite/linear_algebra.cr#L23" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 
