@@ -26,7 +26,7 @@ Check out the [documentation](https://watzon.github.io/apatite/) for usage examp
 
 - [ ] Linear Algebra
 	- [x] Vector
-	- [ ] Matrix (_in progress_)
+	- [x] Matrix
 	- [ ] NDArray
 	- [ ] Line
 	- [ ] Plane

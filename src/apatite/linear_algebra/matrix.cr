@@ -1,4 +1,3 @@
-require "json"
 require "./vector"
 require "./matrix/eigenvalue_decomposition"
 require "./matrix/lup_decomposition"
@@ -98,6 +97,7 @@ module Apatite::LinearAlgebra
       new(rows)
     end
 
+    # ditto
     def self.diagonal(*values : T)
       diagonal(values, nil)
     end
@@ -1367,6 +1367,36 @@ module Apatite::LinearAlgebra
       Matrix.rows(rws)
     end
 
+    # Returns an array of the row vectors of the matrix. See `Vector`.
+    def row_vectors
+      Array.new(row_count) {|i|
+        row(i)
+      }
+    end
+
+    # Returns an array of the column vectors of the matrix. See `Vector`.
+    def column_vectors
+      Array.new(column_count) {|i|
+        column(i)
+      }
+    end
+
+    # Returns an array of arrays that describe the rows of the matrix.
+    def to_a
+      @rows.clone
+    end
+
+    # Convert the matrix to a json array
+    def to_json(json : JSON::Builder)
+      json.array do
+        each &.to_json(json)
+      end
+    end
+
+    #--
+    # PRINTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    #++
+
     def to_s(io)
       if empty?
         "Matrix.empty(#{row_count}, #{column_count})"
@@ -1388,17 +1418,6 @@ module Apatite::LinearAlgebra
           elem.pretty_print(pp)
         end
       end
-    end
-
-    def to_json(json : JSON::Builder)
-      json.array do
-        each &.to_json(json)
-      end
-    end
-
-    # Returns this matrix as an `Array(Array(T))`
-    def to_a
-      @rows.clone
     end
 
     def unsafe_fetch(i)
