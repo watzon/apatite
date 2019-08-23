@@ -1,161 +1,259 @@
 require "../spec_helper"
 
 describe "Apatite::Vector" do
-  x = Apatite::Vector.new([3, 4])
+  describe ".[]" do
+    it "creates a new vector from a list of elements" do
+      vec = Apatite::Vector[1, 2, 3]
+      vec.should be_a Apatite::Vector(Int32)
+      vec[0].should eq 1
+      vec[2].should eq 3
+    end
+  end
+
+  describe ".elements" do
+    it "creates a new vector from an Array" do
+      arr = [1, 2, 3]
+      vec = Apatite::Vector.elements(arr)
+      vec.should be_a Apatite::Vector(Int32)
+      vec[0].should eq 1
+      vec[2].should eq 3
+    end
+  end
+
+  describe ".basis" do
+    it "creates a standard basis-n vector" do
+      vec = Apatite::Vector.basis(5, 1)
+      vec.should eq Apatite::Vector[0, 1, 0, 0, 0]
+
+      vec = Apatite::Vector.basis(3, 2)
+      vec.should eq Apatite::Vector[0, 0, 1]
+    end
+  end
+
+  describe ".independent?" do
+    it "returns true if all of vectors are linearly independent" do
+      Apatite::Vector.independent?(Apatite::Vector[1,0], Apatite::Vector[0,1]).should be_true
+      Apatite::Vector.independent?(Apatite::Vector[1,2], Apatite::Vector[2,4]).should be_false
+    end
+  end
+
+  describe ".zero" do
+    it "creates a new zero vector" do
+      vec = Apatite::Vector(Int32).zero(5)
+      vec.should eq Apatite::Vector[0, 0, 0, 0, 0]
+    end
+  end
 
   describe "#==" do
     it "is true if elements are the same" do
-      (x == Apatite::Vector.new([3, 4])).should be_true
+      x = Apatite::Vector.elements([3, 4])
+      (x == Apatite::Vector.elements([3, 4])).should be_true
     end
 
     it "is false if elements are different" do
-      (x == Apatite::Vector.new([7, 1])).should be_false
+      x = Apatite::Vector.elements([3, 4])
+      (x == Apatite::Vector.elements([7, 1])).should be_false
     end
   end
 
-  describe "#e" do
-    it "returns the `ith` element in the vector" do
-      x.e(2).should eq(4)
+  describe "#+" do
+    it "adds a number to every item in the vector" do
+      vec = Apatite::Vector[1, 2, 3]
+      vec2 = vec + 2
+      vec2.should eq Apatite::Vector[3, 4, 5]
     end
 
-    it "returns `nil` if `n` is out of range" do
-      x.e(7).should be_nil
+    it "adds the items in one vector to each parallel item in another" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[3, 2, 1]
+      vec3 = vec1 + vec2
+
+      vec3.should be_a Apatite::Vector(Int32)
+      vec3.should eq Apatite::Vector[4, 4, 4]
+    end
+
+    pending "adds a vector to a matrix"
+  end
+
+  describe "#-" do
+    it "subtracts a number from every item in the vector" do
+      vec = Apatite::Vector[3, 4, 5]
+      vec2 = vec - 2
+      vec2.should eq Apatite::Vector[1, 2, 3]
+    end
+
+    it "subtracts the items in one vector from each parallel item in another" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[3, 2, 1]
+      vec3 = vec1 - vec2
+
+      vec3.should be_a Apatite::Vector(Int32)
+      vec3.should eq Apatite::Vector[-2, 0, 2]
+    end
+
+    pending "subtracts a vector from a matrix"
+  end
+
+  describe "#*" do
+    it "multiplies every item in the vector by a number" do
+      vec = Apatite::Vector[2, 3, 4]
+      vec2 = vec * 2
+      vec2.should eq Apatite::Vector[4, 6, 8]
+    end
+
+    it "multiplies the items in one vector with each parallel item in another" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[3, 2, 1]
+      vec3 = vec1 * vec2
+
+      vec3.should be_a Apatite::Vector(Int32)
+      vec3.should eq Apatite::Vector[3, 4, 3]
+    end
+
+    pending "multiplies a vector with a matrix"
+  end
+
+  describe "#/" do
+    it "divides every item in the vector by a number" do
+      vec = Apatite::Vector[2.0, 3.0, 4.0]
+      vec2 = vec / 2
+      vec2.should eq Apatite::Vector[1.0, 1.5, 2.0]
+    end
+
+    it "divides the items in one vector by each parallel item in another" do
+      vec1 = Apatite::Vector[1.0, 2.0, 3.0]
+      vec2 = Apatite::Vector[3.0, 2.0, 1.0]
+      vec3 = vec1 / vec2
+
+      vec3.should be_a Apatite::Vector(Float64)
+      vec3.should eq Apatite::Vector[0.3333333333333333, 1.0, 3.0]
+    end
+
+    pending "divides a vector by a matrix"
+  end
+
+  describe "#==" do
+    it "ensures two vectors are equal" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[1, 2, 3]
+      (vec1 == vec2).should be_true
+    end
+
+    it "checks equality between a vector and an array" do
+      vec = Apatite::Vector[1, 2, 3]
+      arr = [1, 2, 3]
+      (vec == arr).should be_true
     end
   end
 
-  describe "#to_unit_vector" do
-    it "successfully converts a vector to a unit vector" do
-      res = [0.6, 0.8]
-      x.to_unit_vector.each_with_index do |e, i|
-        e.should be_close(res[i], 0.1)
+  describe "#angle_with" do
+    it "returns an angle with another vector" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[3, 2, 1]
+      vec1.angle_with(vec2).should eq 0.7751933733103613
+    end
+  end
+
+  describe "#clone" do
+    it "creates a copy of the vector" do
+      vec = Apatite::Vector[1, 2, 3]
+      cpy = vec.clone
+      vec.should eq cpy
+      vec.object_id.should_not eq cpy.object_id
+    end
+  end
+
+  describe "#map" do
+    it "should map over a vector's elements" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = vec1.map(&.succ)
+      vec2.should eq Apatite::Vector[2, 3, 4]
+    end
+
+    it "should map over two vectors simultaniously" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      vec2 = Apatite::Vector[4, 5, 6]
+      vec3 = vec1.map(vec2) { |v1, v2| v1 + v2 }
+      vec3.should eq Apatite::Vector[5, 7, 9]
+    end
+  end
+
+  describe "#covector" do
+    it "should create a single row matrix from the vector" do
+      vec = Apatite::Vector[1, 2, 3]
+      mat = vec.covector
+
+      mat.should be_a Apatite::Matrix(Int32)
+      mat.row_count.should eq 1
+      mat[0].should eq [1, 2, 3]
+    end
+  end
+
+  describe "#cross_product" do
+    it "should return the cross product of multiple vectors" do
+      vec1 = Apatite::Vector[1, 2, 3]
+      cross = vec1.cross_product(Apatite::Vector[3, 4, 5])
+      cross.should eq Apatite::Vector[-2, 4, -2]
+    end
+  end
+
+  describe "#inner_product" do
+    it "should return the inner product of two vectors" do
+      vec = Apatite::Vector[1, 2, 3]
+      prod = vec.inner_product(Apatite::Vector[3, 4, 5])
+      prod.should eq 26
+    end
+  end
+
+  describe "#each" do
+    it "should iterate over each item in the vector" do
+      vec = Apatite::Vector[1, 2, 3]
+      index = 0
+      vec.each do |n|
+        n.should eq index + 1
+        index += 1
       end
     end
   end
 
-  describe "#dimensions" do
-    it "gets vector's dimensions" do
-      x.dimensions.should eq({1, 2})
+  describe "#magnitude" do
+    it "should return the modulus of a vector" do
+      vec = Apatite::Vector[1, 2, 3]
+      vec.magnitude.should eq 3.7416573867739413
     end
   end
 
-  describe "#rows" do
-    it "gets vector's rows" do
-      x.rows.should eq(1)
+  describe "#normalize" do
+    it "should return a vector with the same direction, but norm 1" do
+      vec = Apatite::Vector[1, 2, 3]
+      vec.normalize.should eq Apatite::Vector[0.2672612419124244, 0.5345224838248488, 0.8017837257372732]
     end
   end
 
-  describe "#cols" do
-    it "gets vector's columns" do
-      x.cols.should eq(2)
+  describe "#round" do
+    it "should round each entry in the vector" do
+      vec = Apatite::Vector[0.2672612419124244, 0.5345224838248488, 0.8017837257372732]
+      vec.round(2).should eq Apatite::Vector[0.27, 0.53, 0.80]
     end
   end
 
-  describe "#product" do
-    it "computes the product of a vector" do
-      x.product.should eq(12)
-    end
-  end
-
-  describe "#angle_from" do
-    it "should compute the angle between `y` and `z`" do
-      y = Apatite::Vector.create([1, 1])
-      z = Apatite::Vector.create([1, 0])
-      y.angle_from(z).should be_close(Math::PI / 4, 0.1)
-    end
-  end
-
-  describe "#parallel_to?" do
-    it "correctly determines if a vector is parallel to another" do
-      x.parallel_to?(Apatite::Vector.create([6, 8])).should be_true
-      x.parallel_to?(Apatite::Vector.create([1, 1])).should be_false
-    end
-  end
-
-  describe "#antiparallel_to?" do
-    it "correctly determines if a vector is antiparallel to another" do
-      x.antiparallel_to?(Apatite::Vector.create([-3, -4])).should be_true
-      x.antiparallel_to?(x).should be_false
-    end
-  end
-
-  describe "#perpendicular_to?" do
-    it "correctly determines if a vector is antiparallel to another" do
-      x.perpendicular_to?(Apatite::Vector.create([-4, 3])).should be_true
-      x.perpendicular_to?(x).should be_false
-    end
-  end
-
-  describe "#dot" do
-    it "calculates the dot product of the vector and another vector" do
-      x.dot(Apatite::Vector.create([2, 3])).should eq(18)
-    end
-  end
-
-  describe "#add" do
-    it "adds a number to every item in a vector" do
-      x.add(2).should eq([5, 6])
+  describe "#coerce" do
+    it "should return a new vector with elements of a different type" do
+      vec = Apatite::Vector[1, 2, 3]
+      flt = vec.coerce(Float64)
+      flt.should be_a Apatite::Vector(Float64)
     end
 
-    it "adds an enumerable to a vector" do
-      x.add([3, 2]).should eq([6, 6])
-    end
-  end
-
-  describe "#subtract" do
-    it "subtracts a number from every item in a vector" do
-      x.subtract(2).should eq([1, 2])
+    it "should work with big rationals" do
+      vec = Apatite::Vector[1, 2, 3]
+      rat = vec.coerce(BigRational, 2)
+      rat.should be_a Apatite::Vector(BigRational)
     end
 
-    it "subtracts an enumerable from a vector" do
-      x.subtract([3, 2]).should eq([0, 2])
+    it "should work with complex numbers" do
+      vec = Apatite::Vector[1, 2, 3]
+      com = vec.coerce(Complex, 1)
+      com.should be_a Apatite::Vector(Complex)
     end
-  end
-
-  describe "#multiply" do
-    it "multiplies a number with every item in a vector" do
-      x.multiply(2).should eq([6, 8])
-    end
-
-    it "multiplies an enumerable with a vector" do
-      x.multiply([3, 2]).should eq([9, 8])
-    end
-  end
-
-  describe "#sum" do
-    it "sums all items in a vector" do
-      x.sum.should eq(7)
-    end
-  end
-
-  describe "#chomp" do
-    it "returns a new vector with the first `n` items of the old vector" do
-      x.chomp(1).should eq([4])
-    end
-  end
-
-  describe "#top" do
-    it "returns a new vector with the last `n` items of the old vector" do
-      x.top(1).should eq([3])
-    end
-  end
-
-  describe "#augment" do
-    it "creates a new vector with the elements fro vector b appended to those from vector a" do
-      y = x.clone
-      y.augment(Apatite::Vector.create([5])).should eq([3, 4, 5])
-    end
-  end
-
-  describe ".log" do
-    it "should calculate the log of the vector" do
-      pp x
-      x.log.should eq([1.0986122886681098, 1.3862943611198906])
-    end
-  end
-
-  it "should allow for scalar addition" do
-    a = Apatite::Vector.create([2, 3, 4])
-    b = a.add(1)
-    b.should eq([3, 4, 5])
   end
 end

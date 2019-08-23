@@ -292,6 +292,10 @@ module Apatite::LinearAlgebra
       @column_count = column_count || rows[0].try &.size
     end
 
+    def <=>(other : Matrix)
+      rows <=> other.rows
+    end
+
     # Returns row `i` of the matrix as an Array. Raises if the
     # index is not found.
     def [](i)
@@ -668,7 +672,7 @@ module Apatite::LinearAlgebra
       raise "laplace_expansion of empty matrix is not defined" if empty?
 
       unless 0 <= num && num < row_count
-        raise ArgumentError, "invalid num (#{num.inspect} for 0..#{row_count - 1})"
+        raise ArgumentError.new("invalid num (#{num.inspect} for 0..#{row_count - 1})")
       end
 
       if row
@@ -676,7 +680,7 @@ module Apatite::LinearAlgebra
           e * cofactor(num, k)
         end.reduce(&.+)
       else
-        col(num).map_with_index do |e, k|
+        column(num).map_with_index do |e, k|
           e * cofactor(k, num)
         end.reduce(&.+)
       end

@@ -1,5 +1,6 @@
+require "complex"
+require "big"
 require "json"
-require "./matrix"
 
 module Apatite::LinearAlgebra
   # Represents a mathematical vector, and also constitutes a row or column
@@ -48,7 +49,7 @@ module Apatite::LinearAlgebra
     # Vector.independent?(Vector[1,2], Vector[2,4])
     # # => false
     # ```
-    def Vector.independent?(*vs)
+    def self.independent?(*vs)
       vs.each do |v|
         raise "expected Vector, but got #{v.class}" unless v.is_a?(Vector)
         raise ErrDimensionMismatch.new unless v.size == vs.first.size
@@ -64,64 +65,82 @@ module Apatite::LinearAlgebra
       new(array)
     end
 
-    # Multiplies the vector by x, where x is a number or a matrix.
-    def *(x)
-      case x
-      when Number
-        els = @elements.map { |e| (e * x).as(T) }
-        self.class.elements(els, false)
-      when Matrix
-        Matrix.column_vector(self) * x
+    # Alien mothership
+    def <=>(other : Vector | Indexable)
+      case other
       when Vector
-        self.elements.zip(x.elements).map { |(x, y)| x * y }
-      else
-        raise ArgumentError.new
+        elements <=> other.elements
+      when Indexable
+        elements <=> other
       end
+    end
+
+    # Multiplies the vector by x, where x is a number.
+    def *(x : Number)
+      els = @elements.map { |e| (e * x).as(T) }
+      self.class.elements(els, false)
+    end
+
+    # Multiplies the vector by x, where x is a matrix.
+    def *(x : Matrix)
+      Matrix.column_vector(self) * x
+    end
+
+    # Multiplies the vector by x, where x is another vector.
+    def *(x : Vector)
+      els = self.elements.zip(x.elements).map { |(x, y)| x * y }
+      self.class.elements(els, false)
     end
 
     # Vector addition.
-    def +(x)
-      case x
-      when Number
-        els = @elements.map { |e| (e + x).as(T) }
-        self.class.elements(els, false)
-      when Matrix
-        Matrix.column_vector(self) + x
-      when Vector
-        self.elements.zip(x.elements).map { |(x, y)| x + y }
-      else
-        raise ArgumentError.new
-      end
+    def +(x : Number)
+      els = @elements.map { |e| (e + x).as(T) }
+      self.class.elements(els, false)
+    end
+
+    # Vector addition.
+    def +(x : Matrix)
+      Matrix.column_vector(self) + x
+    end
+
+    # Vector addition.
+    def +(x : Vector)
+     els = self.elements.zip(x.elements).map { |(x, y)| x + y }
+     self.class.elements(els, false)
     end
 
     # Vector subtraction.
-    def -(x)
-      case x
-      when Number
-        els = @elements.map { |e| (e - x).as(T) }
-        self.class.elements(els, false)
-      when Matrix
-        Matrix.column_vector(self) - x
-      when Vector
-        self.elements.zip(x.elements).map { |(x, y)| x - y }
-      else
-        raise ArgumentError.new
-      end
+    def -(x : Number)
+      els = @elements.map { |e| (e - x).as(T) }
+      self.class.elements(els, false)
+    end
+
+    # Vector subtraction.
+    def -(x : Matrix)
+      Matrix.column_vector(self) - x
+    end
+
+    # Vector subtraction.
+    def -(x : Vector)
+     els = self.elements.zip(x.elements).map { |(x, y)| x - y }
+     self.class.elements(els, false)
     end
 
     # Vector division.
-    def /(x)
-      case x
-      when Number
-        els = @elements.map { |e| (e / x).as(T) }
-        self.class.elements(els, false)
-      when Matrix
-        Matrix.column_vector(self) / x
-      when Vector
-        self.elements.zip(x.elements).map { |(x, y)| x / y }
-      else
-        raise ArgumentError.new
-      end
+    def /(x : Number)
+      els = @elements.map { |e| (e / x).as(T) }
+      self.class.elements(els, false)
+    end
+
+    # Vector division.
+    def /(x : Matrix)
+      Matrix.column_vector(self) / x
+    end
+
+    # Vector division.
+    def /(x : Vector)
+     els = self.elements.zip(x.elements).map { |(x, y)| x / y }
+     self.class.elements(els, false)
     end
 
     # Equality operator
@@ -156,12 +175,15 @@ module Apatite::LinearAlgebra
       self.class.elements(@elements)
     end
 
+    # Maps over a vector, passing each element to the block
     def map(&block : T -> _)
       els = @elements.map(&block)
       self.class.elements(els, false)
     end
 
-    def map2(v, &block : T, T -> _)
+    # Maps over the current vector and `v` in conjunction, passing each
+    # element in each to the block and returning a new vector
+    def map(v, &block : T, T -> _)
       raise ErrDimensionMismatch.new if size != v.size
       arr = Array.new(size) do |i|
         yield @elements[i], v[i]
@@ -192,7 +214,7 @@ module Apatite::LinearAlgebra
           v[0]*@elements[2] - v[2]*@elements[0],
           v[1]*@elements[0] - v[0]*@elements[1] ]
       else
-        rows = self + vs + Array.new(size) {|i| Vector.basis(size, i) }
+        rows = [self, vs.to_a, Array.new(size) {|i| Vector.basis(size, i) }].flatten
         Matrix.rows(rows).laplace_expansion(row: size - 1)
       end
     end
@@ -205,10 +227,7 @@ module Apatite::LinearAlgebra
     # Returns the inner product of this vector with the other.
     def inner_product(v)
       raise ErrDimensionMismatch.new if size != v.size
-
-      p = 0
-      each2(v) { |v1, v2| p += v1 * v2 }
-      p
+      map(v) { |v1, v2| v1 * v2 }.sum
     end
 
     # ditto
@@ -217,7 +236,7 @@ module Apatite::LinearAlgebra
     end
 
     # Iterate over the elements of this vector and `v` in conjunction.
-    def each2(v, &block)
+    def each(v, &block)
       raise ErrDimensionMismatch.new if size != v.size
       size.times do |i|
         yield @elements[i], v[i]
@@ -239,7 +258,7 @@ module Apatite::LinearAlgebra
     def normalize
       n = magnitude
       raise ZeroVectorError.new("Zero vectors can not be normalized") if n == 0
-      self / n
+      self.coerce(Float64) / n
     end
 
     # ditto
@@ -252,23 +271,31 @@ module Apatite::LinearAlgebra
       map{ |e| e.round(ndigits) }
     end
 
-    # The coerce method allows you to attempt to coerce the elements
-    # in the matrix to another type. The type
-    def coerce(klass, *args)
-      case klass.to_s
-      when "Complex"
-        raise "coercing to a Complex requires a second argument" unless args[0]?
-        els = @elements.map { |e| Complex.new(e, args[0].as(Int32)) }
-      when "BigInt"
-        base = args[0]? || 10
-        els = @elements.map { |e| klass.new(e, base) }
-      when "BigRational"
-        raise "coercing to a BigRational requires a second argument to use as a denominator" unless args[0]?
-        els = @elements.map { |e| klass.new(e, args[0]) }
-      else
-        els = @elements.map { |e| klass.new(e) }
-      end
+    # Attempt to coerce the elements in a vector to Complex with
+    # `imag` as the imaginary number.
+    def coerce(klass : Complex.class, imag : Number)
+      els = @elements.map { |e| Complex.new(e, imag) }
+      Vector.elements(els)
+    end
 
+    # Attempt to coerce the elements in a vector to BigInt with
+    # an optional `base` value.
+    def coerce(klass : BigInt.class, base = 10)
+      els = @elements.map { |e| BigInt.new(e, base) }
+      Vector.elements(els)
+    end
+
+    # Attempt to coerce the elements in a vector to BigRational
+    # with the given `denominator`.
+    def coerce(klass : BigRational.class, denominator : Int)
+      els = @elements.map { |e| BigRational.new(e, denominator) }
+      Vector.elements(els)
+    end
+
+    # The coerce method allows you to attempt to coerce the elements
+    # in the matrix to another type.
+    def coerce(klass : U.class) : Vector(U) forall U
+      els = @elements.map { |e| klass.new(e).as(U) }
       Vector.elements(els)
     end
 

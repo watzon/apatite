@@ -1,6 +1,6 @@
 # Apatite
 
-Apatite is meant to be a collecion of mathmatical and scientific computing algorithms for the Crystal programming language. I don't expect it to ever reach the level of completeness as numpy, but hopefully it can save some people the trouble of implementing these methods on their own.
+Apatite is a collection of mathematical and scientific algorithms. Currently it implements the API from Ruby's `Matrix` class for both `Matrix` and `Vector`. This API will be added to as needs arise. The goal is for this project to eventually contain everything you could get from SciPy, but in pure Crystal.
 
 ## Installation
 

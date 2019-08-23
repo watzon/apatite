@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.29.0">
+<meta name="generator" content="Crystal Docs 0.30.1">
 
 
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
@@ -167,7 +167,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L7" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L8" target="_blank">
         apatite/linear_algebra/vector.cr
       </a>
     
@@ -184,35 +184,35 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28%2Aarray%29-class-method" class="signature"><strong>.[]</strong>(*array)</a>
+        <a href="#[](*array)-class-method" class="signature"><strong>.[]</strong>(*array)</a>
         
           <div class="summary"><p>Creates a new vector from a list of elements.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#basis%28size%2Cindex%29-class-method" class="signature"><strong>.basis</strong>(size, index)</a>
+        <a href="#basis(size,index)-class-method" class="signature"><strong>.basis</strong>(size, index)</a>
         
           <div class="summary"><p>Returns a standard basis <code>n</code>-vector.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#elements%28array%2Ccopy%3Dtrue%29-class-method" class="signature"><strong>.elements</strong>(array, copy = <span class="n">true</span>)</a>
+        <a href="#elements(array,copy=true)-class-method" class="signature"><strong>.elements</strong>(array, copy = <span class="n">true</span>)</a>
         
           <div class="summary"><p>Creates a vector from an Array.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#independent%3F%28%2Avs%29-class-method" class="signature"><strong>.independent?</strong>(*vs)</a>
+        <a href="#independent?(*vs)-class-method" class="signature"><strong>.independent?</strong>(*vs)</a>
         
           <div class="summary"><p>Returns <code>true</code> if all of vectors are linearly independent.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#zero%28size%29-class-method" class="signature"><strong>.zero</strong>(size)</a>
+        <a href="#zero(size)-class-method" class="signature"><strong>.zero</strong>(size)</a>
         
           <div class="summary"><p>Return a zero vector.</p></div>
         
@@ -226,28 +226,84 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28x%29-instance-method" class="signature"><strong>#*</strong>(x)</a>
+        <a href="#*(x:Number)-instance-method" class="signature"><strong>#*</strong>(x : Number)</a>
         
-          <div class="summary"><p>Multiplies the vector by x, where x is a number or a matrix.</p></div>
+          <div class="summary"><p>Multiplies the vector by x, where x is a number.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28x%29-instance-method" class="signature"><strong>#+</strong>(x)</a>
+        <a href="#*(x:Vector)-instance-method" class="signature"><strong>#*</strong>(x : Vector)</a>
+        
+          <div class="summary"><p>Multiplies the vector by x, where x is another vector.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#*(x:Matrix)-instance-method" class="signature"><strong>#*</strong>(x : Matrix)</a>
+        
+          <div class="summary"><p>Multiplies the vector by x, where x is a matrix.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#+(x:Matrix)-instance-method" class="signature"><strong>#+</strong>(x : Matrix)</a>
         
           <div class="summary"><p>Vector addition.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28x%29-instance-method" class="signature"><strong>#-</strong>(x)</a>
+        <a href="#+(x:Number)-instance-method" class="signature"><strong>#+</strong>(x : Number)</a>
+        
+          <div class="summary"><p>Vector addition.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#+(x:Vector)-instance-method" class="signature"><strong>#+</strong>(x : Vector)</a>
+        
+          <div class="summary"><p>Vector addition.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-(x:Matrix)-instance-method" class="signature"><strong>#-</strong>(x : Matrix)</a>
         
           <div class="summary"><p>Vector subtraction.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28x%29-instance-method" class="signature"><strong>#/</strong>(x)</a>
+        <a href="#-(x:Vector)-instance-method" class="signature"><strong>#-</strong>(x : Vector)</a>
+        
+          <div class="summary"><p>Vector subtraction.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-(x:Number)-instance-method" class="signature"><strong>#-</strong>(x : Number)</a>
+        
+          <div class="summary"><p>Vector subtraction.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#/(x:Matrix)-instance-method" class="signature"><strong>#/</strong>(x : Matrix)</a>
+        
+          <div class="summary"><p>Vector division.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#/(x:Number)-instance-method" class="signature"><strong>#/</strong>(x : Number)</a>
+        
+          <div class="summary"><p>Vector division.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#/(x:Vector)-instance-method" class="signature"><strong>#/</strong>(x : Vector)</a>
         
           <div class="summary"><p>Vector division.</p></div>
         
@@ -261,14 +317,21 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#%3D%3D%28other%29-instance-method" class="signature"><strong>#==</strong>(other)</a>
+        <a href="#(other:Vector%7CIndexable)-instance-method" class="signature"><strong>#<=></strong>(other : Vector | Indexable)</a>
+        
+          <div class="summary"><p>Alien mothership</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#==(other)-instance-method" class="signature"><strong>#==</strong>(other)</a>
         
           <div class="summary"><p>Equality operator</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#angle_with%28v%29-instance-method" class="signature"><strong>#angle_with</strong>(v)</a>
+        <a href="#angle_with(v)-instance-method" class="signature"><strong>#angle_with</strong>(v)</a>
         
           <div class="summary"><p>Returns an angle with another vector.</p></div>
         
@@ -282,9 +345,30 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#coerce%28klass%2C%2Aargs%29-instance-method" class="signature"><strong>#coerce</strong>(klass, *args)</a>
+        <a href="#coerce(klass:BigRational.class,denominator:Int)-instance-method" class="signature"><strong>#coerce</strong>(klass : <span class="t">BigRational</span>.<span class="k">class</span>, denominator : Int)</a>
+        
+          <div class="summary"><p>Attempt to coerce the elements in a vector to BigRational with the given <code>denominator</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#coerce(klass:U.class):Apatite::LinearAlgebra::Vector(U)forallU-instance-method" class="signature"><strong>#coerce</strong>(klass : <span class="t">U</span>.<span class="k">class</span>) : Apatite::LinearAlgebra::Vector(U) forall U</a>
         
           <div class="summary"><p>The coerce method allows you to attempt to coerce the elements in the matrix to another type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#coerce(klass:BigInt.class,base=10)-instance-method" class="signature"><strong>#coerce</strong>(klass : <span class="t">BigInt</span>.<span class="k">class</span>, base = <span class="n">10</span>)</a>
+        
+          <div class="summary"><p>Attempt to coerce the elements in a vector to BigInt with an optional <code>base</code> value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#coerce(klass:Complex.class,imag:Number)-instance-method" class="signature"><strong>#coerce</strong>(klass : <span class="t">Complex</span>.<span class="k">class</span>, imag : Number)</a>
+        
+          <div class="summary"><p>Attempt to coerce the elements in a vector to Complex with <code>imag</code> as the imaginary number.</p></div>
         
       </li>
     
@@ -296,45 +380,45 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#cross%28v%29-instance-method" class="signature"><strong>#cross</strong>(v)</a>
+        <a href="#cross(v)-instance-method" class="signature"><strong>#cross</strong>(v)</a>
         
           <div class="summary"><p>Returns the cross product of this vector with the others.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#cross_product%28%2Avs%29-instance-method" class="signature"><strong>#cross_product</strong>(*vs)</a>
+        <a href="#cross_product(*vs)-instance-method" class="signature"><strong>#cross_product</strong>(*vs)</a>
         
           <div class="summary"><p>Returns the cross product of this vector with the others.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dot%28v%29-instance-method" class="signature"><strong>#dot</strong>(v)</a>
+        <a href="#dot(v)-instance-method" class="signature"><strong>#dot</strong>(v)</a>
         
           <div class="summary"><p>Returns the inner product of this vector with the other.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#each</strong>(*args, **options)</a>
+        <a href="#each(*args,**options,&block)-instance-method" class="signature"><strong>#each</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#each</strong>(*args, **options, &block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#each2%28v%2C%26block%29-instance-method" class="signature"><strong>#each2</strong>(v, &block)</a>
+        <a href="#each(v,&block)-instance-method" class="signature"><strong>#each</strong>(v, &block)</a>
         
           <div class="summary"><p>Iterate over the elements of this vector and <code>v</code> in conjunction.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#inner_product%28v%29-instance-method" class="signature"><strong>#inner_product</strong>(v)</a>
+        <a href="#each(*args,**options)-instance-method" class="signature"><strong>#each</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inner_product(v)-instance-method" class="signature"><strong>#inner_product</strong>(v)</a>
         
           <div class="summary"><p>Returns the inner product of this vector with the other.</p></div>
         
@@ -353,12 +437,16 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#map%28%26block%3AT-%3EUNDERSCORE%29-instance-method" class="signature"><strong>#map</strong>(&block : T -> UNDERSCORE)</a>
+        <a href="#map(&block:T-%3EUNDERSCORE)-instance-method" class="signature"><strong>#map</strong>(&block : T -> UNDERSCORE)</a>
+        
+          <div class="summary"><p>Maps over a vector, passing each element to the block</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#map2%28v%2C%26block%3AT%2CT-%3EUNDERSCORE%29-instance-method" class="signature"><strong>#map2</strong>(v, &block : T, T -> UNDERSCORE)</a>
+        <a href="#map(v,&block:T,T-%3EUNDERSCORE)-instance-method" class="signature"><strong>#map</strong>(v, &block : T, T -> UNDERSCORE)</a>
+        
+          <div class="summary"><p>Maps over the current vector and <code>v</code> in conjunction, passing each element in each to the block and returning a new vector</p></div>
         
       </li>
     
@@ -384,7 +472,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#round%28ndigits%3D0%29-instance-method" class="signature"><strong>#round</strong>(ndigits = <span class="n">0</span>)</a>
+        <a href="#round(ndigits=0)-instance-method" class="signature"><strong>#round</strong>(ndigits = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Returns a vector with entries rounded to the given precision.</p></div>
         
@@ -410,12 +498,12 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       </li>
     
       <li class="entry-summary">
-        <a href="#unsafe_fetch%28i%29-instance-method" class="signature"><strong>#unsafe_fetch</strong>(i)</a>
+        <a href="#unsafe_fetch(i)-instance-method" class="signature"><strong>#unsafe_fetch</strong>(i)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#zero%3F-instance-method" class="signature"><strong>#zero?</strong></a>
+        <a href="#zero?-instance-method" class="signature"><strong>#zero?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if all elements are zero.</p></div>
         
@@ -511,7 +599,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
         
         def self.<strong>[]</strong>(*array)
 
-        <a class="method-permalink" href="#%5B%5D%28%2Aarray%29-class-method">#</a>
+        <a class="method-permalink" href="#[](*array)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a new vector from a list of elements.</p></div>
@@ -519,7 +607,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -529,7 +617,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
         
         def self.<strong>basis</strong>(size, index)
 
-        <a class="method-permalink" href="#basis%28size%2Cindex%29-class-method">#</a>
+        <a class="method-permalink" href="#basis(size,index)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a standard basis <code>n</code>-vector.</p></div>
@@ -537,7 +625,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -547,7 +635,7 @@ of a <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code></
         
         def self.<strong>elements</strong>(array, copy = <span class="n">true</span>)
 
-        <a class="method-permalink" href="#elements%28array%2Ccopy%3Dtrue%29-class-method">#</a>
+        <a class="method-permalink" href="#elements(array,copy=true)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a vector from an Array. The optional second argument specifies
@@ -556,7 +644,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -566,7 +654,7 @@ whether the array itself or a copy is used internally.</p></div>
         
         def self.<strong>independent?</strong>(*vs)
 
-        <a class="method-permalink" href="#independent%3F%28%2Avs%29-class-method">#</a>
+        <a class="method-permalink" href="#independent?(*vs)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if all of vectors are linearly independent.</p>
@@ -580,7 +668,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -590,7 +678,7 @@ whether the array itself or a copy is used internally.</p></div>
         
         def self.<strong>zero</strong>(size)
 
-        <a class="method-permalink" href="#zero%28size%29-class-method">#</a>
+        <a class="method-permalink" href="#zero(size)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Return a zero vector.</p></div>
@@ -598,7 +686,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -608,30 +696,66 @@ whether the array itself or a copy is used internally.</p></div>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="*(x)-instance-method">
+    <div class="entry-detail" id="*(x:Number)-instance-method">
       <div class="signature">
         
-        def <strong>*</strong>(x)
+        def <strong>*</strong>(x : Number)
 
-        <a class="method-permalink" href="#%2A%28x%29-instance-method">#</a>
+        <a class="method-permalink" href="#*(x:Number)-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Multiplies the vector by x, where x is a number or a matrix.</p></div>
+        <div class="doc"><p>Multiplies the vector by x, where x is a number.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="+(x)-instance-method">
+    <div class="entry-detail" id="*(x:Vector)-instance-method">
       <div class="signature">
         
-        def <strong>+</strong>(x)
+        def <strong>*</strong>(x : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a>)
 
-        <a class="method-permalink" href="#%2B%28x%29-instance-method">#</a>
+        <a class="method-permalink" href="#*(x:Vector)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Multiplies the vector by x, where x is another vector.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(x:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(x : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#*(x:Matrix)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Multiplies the vector by x, where x is a matrix.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(x:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(x : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#+(x:Matrix)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Vector addition.</p></div>
@@ -639,17 +763,53 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="-(x)-instance-method">
+    <div class="entry-detail" id="+(x:Number)-instance-method">
       <div class="signature">
         
-        def <strong>-</strong>(x)
+        def <strong>+</strong>(x : Number)
 
-        <a class="method-permalink" href="#-%28x%29-instance-method">#</a>
+        <a class="method-permalink" href="#+(x:Number)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector addition.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(x:Vector)-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(x : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a>)
+
+        <a class="method-permalink" href="#+(x:Vector)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector addition.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L107" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(x:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(x : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#-(x:Matrix)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Vector subtraction.</p></div>
@@ -657,17 +817,53 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L98" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="/(x)-instance-method">
+    <div class="entry-detail" id="-(x:Vector)-instance-method">
       <div class="signature">
         
-        def <strong>/</strong>(x)
+        def <strong>-</strong>(x : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a>)
 
-        <a class="method-permalink" href="#%2F%28x%29-instance-method">#</a>
+        <a class="method-permalink" href="#-(x:Vector)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector subtraction.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L124" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(x:Number)-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(x : Number)
+
+        <a class="method-permalink" href="#-(x:Number)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector subtraction.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L113" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(x:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(x : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#/(x:Matrix)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Vector division.</p></div>
@@ -675,7 +871,43 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(x:Number)-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(x : Number)
+
+        <a class="method-permalink" href="#/(x:Number)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector division.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(x:Vector)-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(x : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a>)
+
+        <a class="method-permalink" href="#/(x:Vector)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Vector division.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L141" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -693,7 +925,25 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L137" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L156" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="(other:Vector|Indexable)-instance-method">
+      <div class="signature">
+        
+        def <strong><=></strong>(other : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a> | Indexable)
+
+        <a class="method-permalink" href="#(other:Vector%7CIndexable)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Alien mothership</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -703,7 +953,7 @@ whether the array itself or a copy is used internally.</p></div>
         
         def <strong>==</strong>(other)
 
-        <a class="method-permalink" href="#%3D%3D%28other%29-instance-method">#</a>
+        <a class="method-permalink" href="#==(other)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Equality operator</p></div>
@@ -711,7 +961,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -721,7 +971,7 @@ whether the array itself or a copy is used internally.</p></div>
         
         def <strong>angle_with</strong>(v)
 
-        <a class="method-permalink" href="#angle_with%28v%29-instance-method">#</a>
+        <a class="method-permalink" href="#angle_with(v)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns an angle with another vector. Result is within the [0…Math::PI].</p></div>
@@ -729,7 +979,7 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L146" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L165" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -747,26 +997,83 @@ whether the array itself or a copy is used internally.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L174" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="coerce(klass,*args)-instance-method">
+    <div class="entry-detail" id="coerce(klass:BigRational.class,denominator:Int)-instance-method">
       <div class="signature">
         
-        def <strong>coerce</strong>(klass, *args)
+        def <strong>coerce</strong>(klass : <span class="t">BigRational</span>.<span class="k">class</span>, denominator : Int)
 
-        <a class="method-permalink" href="#coerce%28klass%2C%2Aargs%29-instance-method">#</a>
+        <a class="method-permalink" href="#coerce(klass:BigRational.class,denominator:Int)-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>The coerce method allows you to attempt to coerce the elements
-in the matrix to another type. The type</p></div>
+        <div class="doc"><p>Attempt to coerce the elements in a vector to BigRational
+with the given <code>denominator</code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L290" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="coerce(klass:U.class):Apatite::LinearAlgebra::Vector(U)forallU-instance-method">
+      <div class="signature">
+        
+        def <strong>coerce</strong>(klass : <span class="t">U</span>.<span class="k">class</span>) : <a href="../../Apatite/LinearAlgebra/Vector.html">Apatite::LinearAlgebra::Vector</a>(U) forall U
+
+        <a class="method-permalink" href="#coerce(klass:U.class):Apatite::LinearAlgebra::Vector(U)forallU-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>The coerce method allows you to attempt to coerce the elements
+in the matrix to another type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L297" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="coerce(klass:BigInt.class,base=10)-instance-method">
+      <div class="signature">
+        
+        def <strong>coerce</strong>(klass : <span class="t">BigInt</span>.<span class="k">class</span>, base = <span class="n">10</span>)
+
+        <a class="method-permalink" href="#coerce(klass:BigInt.class,base=10)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Attempt to coerce the elements in a vector to BigInt with
+an optional <code>base</code> value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L283" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="coerce(klass:Complex.class,imag:Number)-instance-method">
+      <div class="signature">
+        
+        def <strong>coerce</strong>(klass : <span class="t">Complex</span>.<span class="k">class</span>, imag : Number)
+
+        <a class="method-permalink" href="#coerce(klass:Complex.class,imag:Number)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Attempt to coerce the elements in a vector to Complex with
+<code>imag</code> as the imaginary number.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L276" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -784,7 +1091,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L195" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -794,7 +1101,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>cross</strong>(v)
 
-        <a class="method-permalink" href="#cross%28v%29-instance-method">#</a>
+        <a class="method-permalink" href="#cross(v)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the cross product of this vector with the others.</p></div>
@@ -802,7 +1109,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L201" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L223" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -812,7 +1119,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>cross_product</strong>(*vs)
 
-        <a class="method-permalink" href="#cross_product%28%2Avs%29-instance-method">#</a>
+        <a class="method-permalink" href="#cross_product(*vs)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the cross product of this vector with the others.</p></div>
@@ -820,7 +1127,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L200" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -830,7 +1137,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>dot</strong>(v)
 
-        <a class="method-permalink" href="#dot%28v%29-instance-method">#</a>
+        <a class="method-permalink" href="#dot(v)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the inner product of this vector with the other.</p></div>
@@ -838,23 +1145,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L215" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="each(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>each</strong>(*args, **options)
-
-        <a class="method-permalink" href="#each%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -864,23 +1155,23 @@ in the matrix to another type. The type</p></div>
         
         def <strong>each</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#each%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#each(*args,**options,&block)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each2(v,&amp;block)-instance-method">
+    <div class="entry-detail" id="each(v,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>each2</strong>(v, &block)
+        def <strong>each</strong>(v, &block)
 
-        <a class="method-permalink" href="#each2%28v%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#each(v,&block)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Iterate over the elements of this vector and <code>v</code> in conjunction.</p></div>
@@ -888,7 +1179,23 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L220" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L239" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(*args, **options)
+
+        <a class="method-permalink" href="#each(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -898,7 +1205,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>inner_product</strong>(v)
 
-        <a class="method-permalink" href="#inner_product%28v%29-instance-method">#</a>
+        <a class="method-permalink" href="#inner_product(v)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the inner product of this vector with the other.</p></div>
@@ -906,7 +1213,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L228" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -922,7 +1229,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L294" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L321" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -940,7 +1247,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L229" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L248" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -950,29 +1257,34 @@ in the matrix to another type. The type</p></div>
         
         def <strong>map</strong>(&block : T -> UNDERSCORE)
 
-        <a class="method-permalink" href="#map%28%26block%3AT-%3EUNDERSCORE%29-instance-method">#</a>
+        <a class="method-permalink" href="#map(&block:T-%3EUNDERSCORE)-instance-method">#</a>
       </div>
+      
+        <div class="doc"><p>Maps over a vector, passing each element to the block</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L179" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="map2(v,&amp;block:T,T-&gt;UNDERSCORE)-instance-method">
+    <div class="entry-detail" id="map(v,&amp;block:T,T-&gt;UNDERSCORE)-instance-method">
       <div class="signature">
         
-        def <strong>map2</strong>(v, &block : T, T -> UNDERSCORE)
+        def <strong>map</strong>(v, &block : T, T -> UNDERSCORE)
 
-        <a class="method-permalink" href="#map2%28v%2C%26block%3AT%2CT-%3EUNDERSCORE%29-instance-method">#</a>
+        <a class="method-permalink" href="#map(v,&block:T,T-%3EUNDERSCORE)-instance-method">#</a>
       </div>
+      
+        <div class="doc"><p>Maps over the current vector and <code>v</code> in conjunction, passing each
+element in each to the block and returning a new vector</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L164" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L186" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -990,7 +1302,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L234" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L253" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1008,7 +1320,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L239" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L258" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1026,7 +1338,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L246" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L265" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1036,7 +1348,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>round</strong>(ndigits = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#round%28ndigits%3D0%29-instance-method">#</a>
+        <a class="method-permalink" href="#round(ndigits=0)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a vector with entries rounded to the given precision.</p></div>
@@ -1044,7 +1356,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L251" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L270" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1062,7 +1374,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L276" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L303" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1080,7 +1392,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L281" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L308" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1096,7 +1408,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L285" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L312" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1106,13 +1418,13 @@ in the matrix to another type. The type</p></div>
         
         def <strong>unsafe_fetch</strong>(i)
 
-        <a class="method-permalink" href="#unsafe_fetch%28i%29-instance-method">#</a>
+        <a class="method-permalink" href="#unsafe_fetch(i)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L298" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L325" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1122,7 +1434,7 @@ in the matrix to another type. The type</p></div>
         
         def <strong>zero?</strong>
 
-        <a class="method-permalink" href="#zero%3F-instance-method">#</a>
+        <a class="method-permalink" href="#zero?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if all elements are zero.</p></div>
@@ -1130,7 +1442,7 @@ in the matrix to another type. The type</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/vector.cr#L290" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/vector.cr#L317" target="_blank">View source</a>]
         
       </div>
     </div>

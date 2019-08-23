@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.29.0">
+<meta name="generator" content="Crystal Docs 0.30.1">
 
 
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
@@ -162,21 +162,21 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix/eigenvalue_decomposition.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix/eigenvalue_decomposition.cr#L2" target="_blank">
         apatite/linear_algebra/matrix/eigenvalue_decomposition.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix/lup_decomposition.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix/lup_decomposition.cr#L2" target="_blank">
         apatite/linear_algebra/matrix/lup_decomposition.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L6" target="_blank">
+      <a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L6" target="_blank">
         apatite/linear_algebra/matrix.cr
       </a>
     
@@ -203,14 +203,14 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
           <div class="summary"><p>Creates a new <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code> instance from a <code>JSON::PullParser</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%2C%26block%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser, &block)</a>
+        <a href="#new(pull:JSON::PullParser,&block)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser, &block)</a>
         
       </li>
     
@@ -222,112 +222,112 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28%2Arows%29-class-method" class="signature"><strong>.[]</strong>(*rows)</a>
+        <a href="#[](*rows)-class-method" class="signature"><strong>.[]</strong>(*rows)</a>
         
           <div class="summary"><p>Creates a matrix where each argument is a row.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28row_count%2Ccolumn_count%3Drow_count%2C%26block%3AInt32%2CInt32-%3ET%29-class-method" class="signature"><strong>.build</strong>(row_count, column_count = row_count, &block : Int32, Int32 -> T)</a>
+        <a href="#build(row_count,column_count=row_count,&block:Int32,Int32-%3ET)-class-method" class="signature"><strong>.build</strong>(row_count, column_count = row_count, &block : Int32, Int32 -> T)</a>
         
           <div class="summary"><p>Creates a matrix of size +row_count+ x +column_count+.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column_vector%28column%29-class-method" class="signature"><strong>.column_vector</strong>(column)</a>
+        <a href="#column_vector(column)-class-method" class="signature"><strong>.column_vector</strong>(column)</a>
         
-          <div class="summary"><p>Creates a single-column matrix where the values of that column are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance-method">#column</a></code>.</p></div>
+          <div class="summary"><p>Creates a single-column matrix where the values of that column are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column(j)-instance-method">#column</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#columns%28columns%29-class-method" class="signature"><strong>.columns</strong>(columns)</a>
+        <a href="#columns(columns)-class-method" class="signature"><strong>.columns</strong>(columns)</a>
         
           <div class="summary"><p>Creates a matrix using +columns+ as an array of column vectors.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#combine%28%2Amatrices%2C%26block%29-class-method" class="signature"><strong>.combine</strong>(*matrices, &block)</a>
+        <a href="#combine(*matrices,&block)-class-method" class="signature"><strong>.combine</strong>(*matrices, &block)</a>
         
           <div class="summary"><p>Create a matrix by combining matrices entrywise, using the given block</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#diagonal%28%2Avalues%3AT%29-class-method" class="signature"><strong>.diagonal</strong>(*values : T)</a>
+        <a href="#diagonal(*values:T)-class-method" class="signature"><strong>.diagonal</strong>(*values : T)</a>
         
           <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#diagonal%28values%3AIndexable%28T%29%2Cdummy%3Dnil%29-class-method" class="signature"><strong>.diagonal</strong>(values : Indexable(T), dummy = <span class="n">nil</span>)</a>
+        <a href="#diagonal(values:Indexable(T),dummy=nil)-class-method" class="signature"><strong>.diagonal</strong>(values : Indexable(T), dummy = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#empty%28row_count%3D0%2Ccolumn_count%3D0%29-class-method" class="signature"><strong>.empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)</a>
+        <a href="#empty(row_count=0,column_count=0)-class-method" class="signature"><strong>.empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)</a>
         
-          <div class="summary"><p>Creates a empty matrix of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> x <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count%3AInt32-instance-method">#column_count</a></code>.</p></div>
+          <div class="summary"><p>Creates a empty matrix of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> x <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count:Int32-instance-method">#column_count</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hstack%28x%2C%2Amatrices%29-class-method" class="signature"><strong>.hstack</strong>(x, *matrices)</a>
+        <a href="#hstack(x,*matrices)-class-method" class="signature"><strong>.hstack</strong>(x, *matrices)</a>
         
           <div class="summary"><p>Create a matrix by stacking matrices horizontally</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#identity%28n%29-class-method" class="signature"><strong>.identity</strong>(n)</a>
+        <a href="#identity(n)-class-method" class="signature"><strong>.identity</strong>(n)</a>
         
           <div class="summary"><p>Creates an <code>n</code> by <code>n</code> identity matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#row_vector%28row%29-class-method" class="signature"><strong>.row_vector</strong>(row)</a>
+        <a href="#row_vector(row)-class-method" class="signature"><strong>.row_vector</strong>(row)</a>
         
-          <div class="summary"><p>Creates a single-row matrix where the values of that row are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row%28i%2C%26block%3AVector-%3E%29-instance-method">#row</a></code>.</p></div>
+          <div class="summary"><p>Creates a single-row matrix where the values of that row are as given in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row(i,&block:Vector-%3E)-instance-method">#row</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rows%28rows%3AIndexable%28Indexable%28T%29%29%2Ccopy%3Dtrue%29-class-method" class="signature"><strong>.rows</strong>(rows : Indexable(Indexable(T)), copy = <span class="n">true</span>)</a>
+        <a href="#rows(rows:Indexable(Indexable(T)),copy=true)-class-method" class="signature"><strong>.rows</strong>(rows : Indexable(Indexable(T)), copy = <span class="n">true</span>)</a>
         
           <div class="summary"><p>Creates a matrix where +rows+ is an array of arrays, each of which is a row of the matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#scalar%28n%2Cvalue%3AT%29-class-method" class="signature"><strong>.scalar</strong>(n, value : T)</a>
+        <a href="#scalar(n,value:T)-class-method" class="signature"><strong>.scalar</strong>(n, value : T)</a>
         
           <div class="summary"><p>Creates an +n+ by +n+ diagonal matrix where each diagonal element is <code>value</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#unit%28n%3AT%29-class-method" class="signature"><strong>.unit</strong>(n : T)</a>
+        <a href="#unit(n:T)-class-method" class="signature"><strong>.unit</strong>(n : T)</a>
         
           <div class="summary"><p>Creates an <code>n</code> by <code>n</code> identity matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#vstack%28x%2C%2Amatrices%29-class-method" class="signature"><strong>.vstack</strong>(x, *matrices)</a>
+        <a href="#vstack(x,*matrices)-class-method" class="signature"><strong>.vstack</strong>(x, *matrices)</a>
         
           <div class="summary"><p>Create a matrix by stacking matrices vertically</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#zero%28row_count%2Ccolumn_count%3Drow_count%29-class-method" class="signature"><strong>.zero</strong>(row_count, column_count = row_count)</a>
+        <a href="#zero(row_count,column_count=row_count)-class-method" class="signature"><strong>.zero</strong>(row_count, column_count = row_count)</a>
         
           <div class="summary"><p>Creates a zero matrix.</p></div>
         
@@ -341,77 +341,82 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28other%29-instance-method" class="signature"><strong>#*</strong>(other)</a>
+        <a href="#*(other)-instance-method" class="signature"><strong>#*</strong>(other)</a>
         
           <div class="summary"><p>Matrix multiplication</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%2A%28other%29-instance-method" class="signature"><strong>#**</strong>(other)</a>
+        <a href="#**(other)-instance-method" class="signature"><strong>#**</strong>(other)</a>
         
           <div class="summary"><p>Matrix exponentiation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28other%3AMatrix%7CIndexable%29-instance-method" class="signature"><strong>#+</strong>(other : Matrix | Indexable)</a>
+        <a href="#+(other:Matrix%7CIndexable)-instance-method" class="signature"><strong>#+</strong>(other : Matrix | Indexable)</a>
         
           <div class="summary"><p>Matrix addition</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28other%3AMatrix%7CIndexable%29-instance-method" class="signature"><strong>#-</strong>(other : Matrix | Indexable)</a>
+        <a href="#-(other:Matrix%7CIndexable)-instance-method" class="signature"><strong>#-</strong>(other : Matrix | Indexable)</a>
         
           <div class="summary"><p>Matrix subtraction</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28other%29-instance-method" class="signature"><strong>#/</strong>(other)</a>
+        <a href="#/(other)-instance-method" class="signature"><strong>#/</strong>(other)</a>
         
           <div class="summary"><p>Matrix division (multiplication by the inverse).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%3D%3D%28other%3AMatrix%29-instance-method" class="signature"><strong>#==</strong>(other : Matrix)</a>
+        <a href="#(other:Matrix)-instance-method" class="signature"><strong>#<=></strong>(other : Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#==(other:Matrix)-instance-method" class="signature"><strong>#==</strong>(other : Matrix)</a>
         
           <div class="summary"><p>Equality operator</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28i%29-instance-method" class="signature"><strong>#[]</strong>(i)</a>
-        
-          <div class="summary"><p>Returns row <code>i</code> of the matrix as an Array.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%28i%2Cj%29-instance-method" class="signature"><strong>#[]</strong>(i, j)</a>
+        <a href="#[](i,j)-instance-method" class="signature"><strong>#[]</strong>(i, j)</a>
         
           <div class="summary"><p>Returns element (<code>i</code>, <code>j</code>) of the matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3D%28i%2Cj%2Cv%3AT%29-instance-method" class="signature"><strong>#[]=</strong>(i, j, v : T)</a>
-        
-          <div class="summary"><p>Set the value at index (<code>i</code>, <code>j</code>).</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%3F%28i%29-instance-method" class="signature"><strong>#[]?</strong>(i)</a>
+        <a href="#[](i)-instance-method" class="signature"><strong>#[]</strong>(i)</a>
         
           <div class="summary"><p>Returns row <code>i</code> of the matrix as an Array.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3F%28i%2Cj%29-instance-method" class="signature"><strong>#[]?</strong>(i, j)</a>
+        <a href="#[]=(i,j,v:T)-instance-method" class="signature"><strong>#[]=</strong>(i, j, v : T)</a>
+        
+          <div class="summary"><p>Set the value at index (<code>i</code>, <code>j</code>).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#[]?(i)-instance-method" class="signature"><strong>#[]?</strong>(i)</a>
+        
+          <div class="summary"><p>Returns row <code>i</code> of the matrix as an Array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#[]?(i,j)-instance-method" class="signature"><strong>#[]?</strong>(i, j)</a>
         
           <div class="summary"><p>Returns element (<code>i</code>, <code>j</code>) of the matrix.</p></div>
         
@@ -432,42 +437,42 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#coerce%28klass%29-instance-method" class="signature"><strong>#coerce</strong>(klass)</a>
+        <a href="#coerce(klass)-instance-method" class="signature"><strong>#coerce</strong>(klass)</a>
         
           <div class="summary"><p>Attempt to coerce the elements in the matrix to another type.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#cofactor%28row%2Ccolumn%29-instance-method" class="signature"><strong>#cofactor</strong>(row, column)</a>
+        <a href="#cofactor(row,column)-instance-method" class="signature"><strong>#cofactor</strong>(row, column)</a>
         
           <div class="summary"><p>Returns the (row, column) cofactor which is obtained by multiplying the first minor by (-1)**(row + column).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column%28j%29-instance-method" class="signature"><strong>#column</strong>(j)</a>
+        <a href="#column(j)-instance-method" class="signature"><strong>#column</strong>(j)</a>
         
           <div class="summary"><p>Returns column vector <code>j</code> of the Matrix as a Vector (starting at 0).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column%28j%2C%26block%3AT-%3E%29-instance-method" class="signature"><strong>#column</strong>(j, &block : T -> )</a>
+        <a href="#column(j,&block:T-%3E)-instance-method" class="signature"><strong>#column</strong>(j, &block : T -> )</a>
         
           <div class="summary"><p>Returns a block which yields every item in column <code>j</code> of the Matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column%3F%28j%29-instance-method" class="signature"><strong>#column?</strong>(j)</a>
+        <a href="#column?(j)-instance-method" class="signature"><strong>#column?</strong>(j)</a>
         
           <div class="summary"><p>Returns column vector <code>j</code> of the Matrix as a Vector (starting at 0).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column_count%3AInt32-instance-method" class="signature"><strong>#column_count</strong> : Int32</a>
+        <a href="#column_count:Int32-instance-method" class="signature"><strong>#column_count</strong> : Int32</a>
         
           <div class="summary"><p>Returns the number of columns.</p></div>
         
@@ -481,7 +486,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#combine%28%2Amatrices%2C%26block%29-instance-method" class="signature"><strong>#combine</strong>(*matrices, &block)</a>
+        <a href="#combine(*matrices,&block)-instance-method" class="signature"><strong>#combine</strong>(*matrices, &block)</a>
         
           <div class="summary"><p>Create a matrix by combining matrices entrywise, using the given block</p></div>
         
@@ -502,21 +507,21 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#diagonal%3F-instance-method" class="signature"><strong>#diagonal?</strong></a>
+        <a href="#diagonal?-instance-method" class="signature"><strong>#diagonal?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a diagonal matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28which%3D%3Aall%2C%26block%3AT-%3E%29-instance-method" class="signature"><strong>#each</strong>(which = <span class="n">:all</span>, &block : T -> )</a>
+        <a href="#each(which=:all,&block:T-%3E)-instance-method" class="signature"><strong>#each</strong>(which = <span class="n">:all</span>, &block : T -> )</a>
         
           <div class="summary"><p>Yields all elements of the matrix, starting with those of the first row, or returns an Enumerator if no block given.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_with_index%28which%3D%3Aall%2C%26block%3AT%2CInt32%2CInt32-%3E%29-instance-method" class="signature"><strong>#each_with_index</strong>(which = <span class="n">:all</span>, &block : T, Int32, Int32 -> )</a>
+        <a href="#each_with_index(which=:all,&block:T,Int32,Int32-%3E)-instance-method" class="signature"><strong>#each_with_index</strong>(which = <span class="n">:all</span>, &block : T, Int32, Int32 -> )</a>
         
           <div class="summary"><p>Same as #each, but the row index and column index in addition to the element</p></div>
         
@@ -530,35 +535,35 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
+        <a href="#empty?-instance-method" class="signature"><strong>#empty?</strong></a>
         
           <div class="summary"><p>Returns true if this matrix is empty.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#first_minor%28row%2Ccolumn%29-instance-method" class="signature"><strong>#first_minor</strong>(row, column)</a>
+        <a href="#first_minor(row,column)-instance-method" class="signature"><strong>#first_minor</strong>(row, column)</a>
         
           <div class="summary"><p>Returns the submatrix obtained by deleting the specified row and column.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hadamard_product%28m%29-instance-method" class="signature"><strong>#hadamard_product</strong>(m)</a>
+        <a href="#hadamard_product(m)-instance-method" class="signature"><strong>#hadamard_product</strong>(m)</a>
         
           <div class="summary"><p>Hadamard product</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hermitian%3F-instance-method" class="signature"><strong>#hermitian?</strong></a>
+        <a href="#hermitian?-instance-method" class="signature"><strong>#hermitian?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is an hermitian matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hstack%28%2Amatrices%29-instance-method" class="signature"><strong>#hstack</strong>(*matrices)</a>
+        <a href="#hstack(*matrices)-instance-method" class="signature"><strong>#hstack</strong>(*matrices)</a>
         
           <div class="summary"><p>Returns a new matrix resulting by stacking horizontally the receiver with the given matrices</p></div>
         
@@ -572,14 +577,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#index%28i%2Cselector%3D%3Aall%29-instance-method" class="signature"><strong>#index</strong>(i, selector = <span class="n">:all</span>)</a>
+        <a href="#index(i,selector=:all)-instance-method" class="signature"><strong>#index</strong>(i, selector = <span class="n">:all</span>)</a>
         
-          <div class="summary"><p>The index method is specialized to return the index as {row, column} It also accepts an optional <code>selector</code> argument, see <code><a href="../../Apatite/LinearAlgebra/Matrix.html#each%28which%3D%3Aall%2C%26block%3AT-%3E%29-instance-method">#each</a></code> for details.</p></div>
+          <div class="summary"><p>The index method is specialized to return the index as {row, column} It also accepts an optional <code>selector</code> argument, see <code><a href="../../Apatite/LinearAlgebra/Matrix.html#each(which=:all,&block:T-%3E)-instance-method">#each</a></code> for details.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#index%28selector%3D%3Aall%2C%26block%3AT-%3EBool%29-instance-method" class="signature"><strong>#index</strong>(selector = <span class="n">:all</span>, &block : T -> Bool)</a>
+        <a href="#index(selector=:all,&block:T-%3EBool)-instance-method" class="signature"><strong>#index</strong>(selector = <span class="n">:all</span>, &block : T -> Bool)</a>
         
           <div class="summary"><p>Returns the index as {row, column}, using <code>&block</code> to filter the result.</p></div>
         
@@ -593,14 +598,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#laplace_expansion%28%2A%2Crow%3Dnil%2Ccolumn%3Dnil%29-instance-method" class="signature"><strong>#laplace_expansion</strong>(*, row = <span class="n">nil</span>, column = <span class="n">nil</span>)</a>
+        <a href="#laplace_expansion(*,row=nil,column=nil)-instance-method" class="signature"><strong>#laplace_expansion</strong>(*, row = <span class="n">nil</span>, column = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Returns the Laplace expansion along given row or column.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#lower_triangular%3F-instance-method" class="signature"><strong>#lower_triangular?</strong></a>
+        <a href="#lower_triangular?-instance-method" class="signature"><strong>#lower_triangular?</strong></a>
         
           <div class="summary"><p>Returns true if this matrix is a lower triangular matrix.</p></div>
         
@@ -614,49 +619,49 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#map%28%26block%3AT-%3ET%29-instance-method" class="signature"><strong>#map</strong>(&block : T -> T)</a>
+        <a href="#map(&block:T-%3ET)-instance-method" class="signature"><strong>#map</strong>(&block : T -> T)</a>
         
           <div class="summary"><p>Returns a Matrix that is the result of iteration of the given block over all elements in the matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#minor%28from_row%3AInt%2Cnrows%3AInt%2Cfrom_col%3AInt%2Cncols%3AInt%29-instance-method" class="signature"><strong>#minor</strong>(from_row : Int, nrows : Int, from_col : Int, ncols : Int)</a>
+        <a href="#minor(from_row:Int,nrows:Int,from_col:Int,ncols:Int)-instance-method" class="signature"><strong>#minor</strong>(from_row : Int, nrows : Int, from_col : Int, ncols : Int)</a>
         
           <div class="summary"><p>Returns a section of the Matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#minor%28row_range%3ARange%2Ccol_range%3ARange%29-instance-method" class="signature"><strong>#minor</strong>(row_range : Range, col_range : Range)</a>
+        <a href="#minor(row_range:Range,col_range:Range)-instance-method" class="signature"><strong>#minor</strong>(row_range : Range, col_range : Range)</a>
         
           <div class="summary"><p>Returns a section of the Matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#normal%3F-instance-method" class="signature"><strong>#normal?</strong></a>
+        <a href="#normal?-instance-method" class="signature"><strong>#normal?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a normal matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#orthogonal%3F-instance-method" class="signature"><strong>#orthogonal?</strong></a>
+        <a href="#orthogonal?-instance-method" class="signature"><strong>#orthogonal?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is an orthogonal matrix</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#permutation%3F-instance-method" class="signature"><strong>#permutation?</strong></a>
+        <a href="#permutation?-instance-method" class="signature"><strong>#permutation?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a permutation matrix</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pretty_print%28pp%29%3ANil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
+        <a href="#pretty_print(pp):Nil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
         
       </li>
     
@@ -675,7 +680,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#real%3F-instance-method" class="signature"><strong>#real?</strong></a>
+        <a href="#real?-instance-method" class="signature"><strong>#real?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this matrix contains real numbers, i.e.</p></div>
         
@@ -689,35 +694,35 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#regular%3F-instance-method" class="signature"><strong>#regular?</strong></a>
+        <a href="#regular?-instance-method" class="signature"><strong>#regular?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a regular (i.e.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#round%28n%3D0%29-instance-method" class="signature"><strong>#round</strong>(n = <span class="n">0</span>)</a>
+        <a href="#round(n=0)-instance-method" class="signature"><strong>#round</strong>(n = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Returns a matrix with entries rounded to the given precision (see <code>Float#round</code>)</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#row%28i%2C%26block%3AVector-%3E%29-instance-method" class="signature"><strong>#row</strong>(i, &block : Vector -> )</a>
+        <a href="#row(i,&block:Vector-%3E)-instance-method" class="signature"><strong>#row</strong>(i, &block : Vector -> )</a>
         
           <div class="summary"><p>Returns a block which yields every Vector in the row (starting at 0).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#row%28i%29-instance-method" class="signature"><strong>#row</strong>(i)</a>
+        <a href="#row(i)-instance-method" class="signature"><strong>#row</strong>(i)</a>
         
           <div class="summary"><p>Returns row vector number <code>i</code> of the Matrix as a Vector (starting at 0 like a good boy).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#row%3F%28i%29-instance-method" class="signature"><strong>#row?</strong>(i)</a>
+        <a href="#row?(i)-instance-method" class="signature"><strong>#row?</strong>(i)</a>
         
           <div class="summary"><p>Returns row vector number <code>i</code> of the Matrix as a Vector (starting at 0 like a good boy).</p></div>
         
@@ -738,35 +743,35 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#singular%3F-instance-method" class="signature"><strong>#singular?</strong></a>
+        <a href="#singular?-instance-method" class="signature"><strong>#singular?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a singular matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#square%3F-instance-method" class="signature"><strong>#square?</strong></a>
+        <a href="#square?-instance-method" class="signature"><strong>#square?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a square matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#swap_columns%28col1%2Ccol2%29-instance-method" class="signature"><strong>#swap_columns</strong>(col1, col2)</a>
+        <a href="#swap_columns(col1,col2)-instance-method" class="signature"><strong>#swap_columns</strong>(col1, col2)</a>
         
           <div class="summary"><p>Swaps <code>col1</code> and <code>col2</code></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#swap_rows%28row1%2Crow2%29-instance-method" class="signature"><strong>#swap_rows</strong>(row1, row2)</a>
+        <a href="#swap_rows(row1,row2)-instance-method" class="signature"><strong>#swap_rows</strong>(row1, row2)</a>
         
           <div class="summary"><p>Swaps <code>row1</code> and <code>row2</code></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#symmetric%3F-instance-method" class="signature"><strong>#symmetric?</strong></a>
+        <a href="#symmetric?-instance-method" class="signature"><strong>#symmetric?</strong></a>
         
           <div class="summary"><p>Returns +true+ if this is a symmetric matrix.</p></div>
         
@@ -787,7 +792,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
+        <a href="#to_json(json:JSON::Builder)-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
         
           <div class="summary"><p>Convert the matrix to a json array</p></div>
         
@@ -801,7 +806,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        <a href="#to_s(io)-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
         
       </li>
     
@@ -827,33 +832,33 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#unitary%3F-instance-method" class="signature"><strong>#unitary?</strong></a>
+        <a href="#unitary?-instance-method" class="signature"><strong>#unitary?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a unitary matrix</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#unsafe_fetch%28i%29-instance-method" class="signature"><strong>#unsafe_fetch</strong>(i)</a>
+        <a href="#unsafe_fetch(i)-instance-method" class="signature"><strong>#unsafe_fetch</strong>(i)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#upper_triangular%3F-instance-method" class="signature"><strong>#upper_triangular?</strong></a>
+        <a href="#upper_triangular?-instance-method" class="signature"><strong>#upper_triangular?</strong></a>
         
           <div class="summary"><p>Returns true if this matrix is a upper triangular matrix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#vstack%28%2Amatrices%29-instance-method" class="signature"><strong>#vstack</strong>(*matrices)</a>
+        <a href="#vstack(*matrices)-instance-method" class="signature"><strong>#vstack</strong>(*matrices)</a>
         
           <div class="summary"><p>Returns a new matrix resulting by stacking vertically the receiver with the given matrices</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#zero%3F-instance-method" class="signature"><strong>#zero?</strong></a>
+        <a href="#zero?-instance-method" class="signature"><strong>#zero?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if this is a matrix with only zero elements</p></div>
         
@@ -947,7 +952,7 @@
         
         def self.<strong>new</strong>(pull : JSON::PullParser)
 
-        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
+        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a new <code><a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a></code> instance from a <code>JSON::PullParser</code>.
@@ -956,7 +961,7 @@ Defaults to a Float64 matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -966,13 +971,13 @@ Defaults to a Float64 matrix.</p></div>
         
         def self.<strong>new</strong>(pull : JSON::PullParser, &block)
 
-        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%2C%26block%29-class-method">#</a>
+        <a class="method-permalink" href="#new(pull:JSON::PullParser,&block)-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -987,7 +992,7 @@ Defaults to a Float64 matrix.</p></div>
         
         def self.<strong>[]</strong>(*rows)
 
-        <a class="method-permalink" href="#%5B%5D%28%2Arows%29-class-method">#</a>
+        <a class="method-permalink" href="#[](*rows)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix where each argument is a row.</p>
@@ -999,7 +1004,7 @@ Defaults to a Float64 matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1009,7 +1014,7 @@ Defaults to a Float64 matrix.</p></div>
         
         def self.<strong>build</strong>(row_count, column_count = row_count, &block : Int32, Int32 -> T)
 
-        <a class="method-permalink" href="#build%28row_count%2Ccolumn_count%3Drow_count%2C%26block%3AInt32%2CInt32-%3ET%29-class-method">#</a>
+        <a class="method-permalink" href="#build(row_count,column_count=row_count,&block:Int32,Int32-%3ET)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix of size +row_count+ x +column_count+.
@@ -1025,7 +1030,7 @@ m <span class="o">=</span> <span class="t">Matrix</span>.build(<span class="n">3
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1035,11 +1040,11 @@ m <span class="o">=</span> <span class="t">Matrix</span>.build(<span class="n">3
         
         def self.<strong>column_vector</strong>(column)
 
-        <a class="method-permalink" href="#column_vector%28column%29-class-method">#</a>
+        <a class="method-permalink" href="#column_vector(column)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a single-column matrix where the values of that column are as given
-in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance-method">#column</a></code>.</p>
+in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column(j)-instance-method">#column</a></code>.</p>
 
 <pre><code><span class="t">Matrix</span>.column_vector([<span class="n">4</span>,<span class="n">5</span>,<span class="n">6</span>])
 <span class="c"># =&gt; [ 4,</span>
@@ -1049,7 +1054,7 @@ in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1059,7 +1064,7 @@ in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance
         
         def self.<strong>columns</strong>(columns)
 
-        <a class="method-permalink" href="#columns%28columns%29-class-method">#</a>
+        <a class="method-permalink" href="#columns(columns)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix using +columns+ as an array of column vectors.</p>
@@ -1071,7 +1076,7 @@ in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1081,7 +1086,7 @@ in <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column%28j%29-instance
         
         def self.<strong>combine</strong>(*matrices, &block)
 
-        <a class="method-permalink" href="#combine%28%2Amatrices%2C%26block%29-class-method">#</a>
+        <a class="method-permalink" href="#combine(*matrices,&block)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create a matrix by combining matrices entrywise, using the given block</p>
@@ -1094,7 +1099,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L263" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L263" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1104,7 +1109,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
         
         def self.<strong>diagonal</strong>(*values : T)
 
-        <a class="method-permalink" href="#diagonal%28%2Avalues%3AT%29-class-method">#</a>
+        <a class="method-permalink" href="#diagonal(*values:T)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p>
@@ -1117,7 +1122,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1127,7 +1132,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
         
         def self.<strong>diagonal</strong>(values : Indexable(T), dummy = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#diagonal%28values%3AIndexable%28T%29%2Cdummy%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#diagonal(values:Indexable(T),dummy=nil)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix where the diagonal elements are composed of <code>values</code>.</p>
@@ -1140,7 +1145,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1150,11 +1155,11 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
         
         def self.<strong>empty</strong>(row_count = <span class="n">0</span>, column_count = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#empty%28row_count%3D0%2Ccolumn_count%3D0%29-class-method">#</a>
+        <a class="method-permalink" href="#empty(row_count=0,column_count=0)-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Creates a empty matrix of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> x <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count%3AInt32-instance-method">#column_count</a></code>.
-At least one of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> or <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count%3AInt32-instance-method">#column_count</a></code> must be 0.</p>
+        <div class="doc"><p>Creates a empty matrix of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> x <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count:Int32-instance-method">#column_count</a></code>.
+At least one of <code><a href="../../Apatite/LinearAlgebra/Matrix.html#row_count-instance-method">#row_count</a></code> or <code><a href="../../Apatite/LinearAlgebra/Matrix.html#column_count:Int32-instance-method">#column_count</a></code> must be 0.</p>
 
 <pre><code>m <span class="o">=</span> <span class="t">Matrix</span>(<span class="t">Int32</span>).empty(<span class="n">2</span>, <span class="n">0</span>)
 m <span class="o">==</span> <span class="t">Matrix</span>[ <span class="o">[]</span>, <span class="o">[]</span> ]
@@ -1166,7 +1171,7 @@ m <span class="o">*</span> n
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L200" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L200" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1176,7 +1181,7 @@ m <span class="o">*</span> n
         
         def self.<strong>hstack</strong>(x, *matrices)
 
-        <a class="method-permalink" href="#hstack%28x%2C%2Amatrices%29-class-method">#</a>
+        <a class="method-permalink" href="#hstack(x,*matrices)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create a matrix by stacking matrices horizontally</p>
@@ -1189,7 +1194,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L235" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L235" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1199,7 +1204,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def self.<strong>identity</strong>(n)
 
-        <a class="method-permalink" href="#identity%28n%29-class-method">#</a>
+        <a class="method-permalink" href="#identity(n)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates an <code>n</code> by <code>n</code> identity matrix.</p>
@@ -1213,7 +1218,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L142" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1223,11 +1228,11 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def self.<strong>row_vector</strong>(row)
 
-        <a class="method-permalink" href="#row_vector%28row%29-class-method">#</a>
+        <a class="method-permalink" href="#row_vector(row)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a single-row matrix where the values of that row are as given in
-<code><a href="../../Apatite/LinearAlgebra/Matrix.html#row%28i%2C%26block%3AVector-%3E%29-instance-method">#row</a></code>.</p>
+<code><a href="../../Apatite/LinearAlgebra/Matrix.html#row(i,&block:Vector-%3E)-instance-method">#row</a></code>.</p>
 
 <pre><code><span class="t">Matrix</span>.row_vector([<span class="n">4</span>,<span class="n">5</span>,<span class="n">6</span>])
 <span class="c"># =&gt; [ 4, 5, 6 ]</span></code></pre></div>
@@ -1235,7 +1240,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L170" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1245,7 +1250,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def self.<strong>rows</strong>(rows : Indexable(Indexable(T)), copy = <span class="n">true</span>)
 
-        <a class="method-permalink" href="#rows%28rows%3AIndexable%28Indexable%28T%29%29%2Ccopy%3Dtrue%29-class-method">#</a>
+        <a class="method-permalink" href="#rows(rows:Indexable(Indexable(T)),copy=true)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a matrix where +rows+ is an array of arrays, each of which is a row
@@ -1259,7 +1264,7 @@ arrays as the internal structure of the matrix without copying.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1269,7 +1274,7 @@ arrays as the internal structure of the matrix without copying.</p>
         
         def self.<strong>scalar</strong>(n, value : T)
 
-        <a class="method-permalink" href="#scalar%28n%2Cvalue%3AT%29-class-method">#</a>
+        <a class="method-permalink" href="#scalar(n,value:T)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates an +n+ by +n+ diagonal matrix where each diagonal element is
@@ -1282,7 +1287,7 @@ arrays as the internal structure of the matrix without copying.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L129" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1292,7 +1297,7 @@ arrays as the internal structure of the matrix without copying.</p>
         
         def self.<strong>unit</strong>(n : T)
 
-        <a class="method-permalink" href="#unit%28n%3AT%29-class-method">#</a>
+        <a class="method-permalink" href="#unit(n:T)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates an <code>n</code> by <code>n</code> identity matrix.</p>
@@ -1306,7 +1311,7 @@ arrays as the internal structure of the matrix without copying.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1316,7 +1321,7 @@ arrays as the internal structure of the matrix without copying.</p>
         
         def self.<strong>vstack</strong>(x, *matrices)
 
-        <a class="method-permalink" href="#vstack%28x%2C%2Amatrices%29-class-method">#</a>
+        <a class="method-permalink" href="#vstack(x,*matrices)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create a matrix by stacking matrices vertically</p>
@@ -1329,7 +1334,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L215" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L215" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1339,7 +1344,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def self.<strong>zero</strong>(row_count, column_count = row_count)
 
-        <a class="method-permalink" href="#zero%28row_count%2Ccolumn_count%3Drow_count%29-class-method">#</a>
+        <a class="method-permalink" href="#zero(row_count,column_count=row_count)-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a zero matrix.</p>
@@ -1351,7 +1356,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L158" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L158" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1366,7 +1371,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def <strong>*</strong>(other)
 
-        <a class="method-permalink" href="#%2A%28other%29-instance-method">#</a>
+        <a class="method-permalink" href="#*(other)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Matrix multiplication</p>
@@ -1378,7 +1383,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L909" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L913" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1388,7 +1393,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">5</spa
         
         def <strong>**</strong>(other)
 
-        <a class="method-permalink" href="#%2A%2A%28other%29-instance-method">#</a>
+        <a class="method-permalink" href="#**(other)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Matrix exponentiation.</p>
@@ -1403,7 +1408,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1079" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1083" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1413,7 +1418,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
         
         def <strong>+</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a> | Indexable)
 
-        <a class="method-permalink" href="#%2B%28other%3AMatrix%7CIndexable%29-instance-method">#</a>
+        <a class="method-permalink" href="#+(other:Matrix%7CIndexable)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Matrix addition</p>
@@ -1425,7 +1430,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L942" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L946" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1435,7 +1440,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
         
         def <strong>-</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a> | Indexable)
 
-        <a class="method-permalink" href="#-%28other%3AMatrix%7CIndexable%29-instance-method">#</a>
+        <a class="method-permalink" href="#-(other:Matrix%7CIndexable)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Matrix subtraction</p>
@@ -1447,7 +1452,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L969" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L973" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1457,7 +1462,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
         
         def <strong>/</strong>(other)
 
-        <a class="method-permalink" href="#%2F%28other%29-instance-method">#</a>
+        <a class="method-permalink" href="#/(other)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Matrix division (multiplication by the inverse).</p>
@@ -1469,7 +1474,23 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L996" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1000" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="(other:Matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong><=></strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
+
+        <a class="method-permalink" href="#(other:Matrix)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L295" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1479,7 +1500,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
         
         def <strong>==</strong>(other : <a href="../../Apatite/LinearAlgebra/Matrix.html">Matrix</a>)
 
-        <a class="method-permalink" href="#%3D%3D%28other%3AMatrix%29-instance-method">#</a>
+        <a class="method-permalink" href="#==(other:Matrix)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Equality operator</p></div>
@@ -1487,26 +1508,7 @@ Non integer exponents will be handled by diagonalizing the matrix.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L886" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="[](i)-instance-method">
-      <div class="signature">
-        
-        def <strong>[]</strong>(i)
-
-        <a class="method-permalink" href="#%5B%5D%28i%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>Returns row <code>i</code> of the matrix as an Array. Raises if the
-index is not found.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L297" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L890" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1516,7 +1518,7 @@ index is not found.</p></div>
         
         def <strong>[]</strong>(i, j)
 
-        <a class="method-permalink" href="#%5B%5D%28i%2Cj%29-instance-method">#</a>
+        <a class="method-permalink" href="#[](i,j)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns element (<code>i</code>, <code>j</code>) of the matrix.  That is: row <code>i</code>, column <code>j</code>.
@@ -1525,7 +1527,26 @@ Raises if either index is not found.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L309" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L313" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](i)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(i)
+
+        <a class="method-permalink" href="#[](i)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns row <code>i</code> of the matrix as an Array. Raises if the
+index is not found.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L301" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1535,7 +1556,7 @@ Raises if either index is not found.</p></div>
         
         def <strong>[]=</strong>(i, j, v : T)
 
-        <a class="method-permalink" href="#%5B%5D%3D%28i%2Cj%2Cv%3AT%29-instance-method">#</a>
+        <a class="method-permalink" href="#[]=(i,j,v:T)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Set the value at index (<code>i</code>, <code>j</code>). That is: row <code>i</code>, column <code>j</code>.</p></div>
@@ -1543,7 +1564,7 @@ Raises if either index is not found.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L320" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L324" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1553,7 +1574,7 @@ Raises if either index is not found.</p></div>
         
         def <strong>[]?</strong>(i)
 
-        <a class="method-permalink" href="#%5B%5D%3F%28i%29-instance-method">#</a>
+        <a class="method-permalink" href="#[]?(i)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns row <code>i</code> of the matrix as an Array. Returns nil if the
@@ -1562,7 +1583,7 @@ index is not found.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L303" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L307" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1572,7 +1593,7 @@ index is not found.</p></div>
         
         def <strong>[]?</strong>(i, j)
 
-        <a class="method-permalink" href="#%5B%5D%3F%28i%2Cj%29-instance-method">#</a>
+        <a class="method-permalink" href="#[]?(i,j)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns element (<code>i</code>, <code>j</code>) of the matrix.  That is: row <code>i</code>, column <code>j</code>.
@@ -1581,7 +1602,7 @@ Returns nil if either index is not found.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L315" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L319" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1607,7 +1628,7 @@ Returns nil if either index is not found.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L644" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L648" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1628,7 +1649,7 @@ identical objects.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L894" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L898" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1638,7 +1659,7 @@ identical objects.</p>
         
         def <strong>coerce</strong>(klass)
 
-        <a class="method-permalink" href="#coerce%28klass%29-instance-method">#</a>
+        <a class="method-permalink" href="#coerce(klass)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Attempt to coerce the elements in the matrix to another type.</p></div>
@@ -1646,7 +1667,7 @@ identical objects.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1383" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1387" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1656,7 +1677,7 @@ identical objects.</p>
         
         def <strong>cofactor</strong>(row, column)
 
-        <a class="method-permalink" href="#cofactor%28row%2Ccolumn%29-instance-method">#</a>
+        <a class="method-permalink" href="#cofactor(row,column)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the (row, column) cofactor which is obtained by multiplying
@@ -1668,7 +1689,7 @@ the first minor by (-1)**(row + column).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L630" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L634" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1678,7 +1699,7 @@ the first minor by (-1)**(row + column).</p>
         
         def <strong>column</strong>(j)
 
-        <a class="method-permalink" href="#column%28j%29-instance-method">#</a>
+        <a class="method-permalink" href="#column(j)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns column vector <code>j</code> of the Matrix as a Vector (starting at 0).
@@ -1687,7 +1708,7 @@ Raises if the column doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L354" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L358" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1697,7 +1718,7 @@ Raises if the column doesn't exist.</p></div>
         
         def <strong>column</strong>(j, &block : T -> )
 
-        <a class="method-permalink" href="#column%28j%2C%26block%3AT-%3E%29-instance-method">#</a>
+        <a class="method-permalink" href="#column(j,&block:T-%3E)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a block which yields every item in column <code>j</code> of the Matrix.</p></div>
@@ -1705,7 +1726,7 @@ Raises if the column doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L371" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L375" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1715,7 +1736,7 @@ Raises if the column doesn't exist.</p></div>
         
         def <strong>column?</strong>(j)
 
-        <a class="method-permalink" href="#column%3F%28j%29-instance-method">#</a>
+        <a class="method-permalink" href="#column?(j)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns column vector <code>j</code> of the Matrix as a Vector (starting at 0).
@@ -1724,7 +1745,7 @@ Returns nil if the column doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L364" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L368" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1734,7 +1755,7 @@ Returns nil if the column doesn't exist.</p></div>
         
         def <strong>column_count</strong> : Int32
 
-        <a class="method-permalink" href="#column_count%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#column_count:Int32-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the number of columns.</p></div>
@@ -1742,7 +1763,7 @@ Returns nil if the column doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L332" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L336" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1760,7 +1781,7 @@ Returns nil if the column doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1396" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1400" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1770,7 +1791,7 @@ Returns nil if the column doesn't exist.</p></div>
         
         def <strong>combine</strong>(*matrices, &block)
 
-        <a class="method-permalink" href="#combine%28%2Amatrices%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#combine(*matrices,&block)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Create a matrix by combining matrices entrywise, using the given block</p>
@@ -1783,7 +1804,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L282" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L282" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1808,7 +1829,7 @@ y <span class="o">=</span> <span class="t">Matrix</span>[[<span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1331" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1335" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1833,7 +1854,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1097" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1843,7 +1864,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
         
         def <strong>diagonal?</strong>
 
-        <a class="method-permalink" href="#diagonal%3F-instance-method">#</a>
+        <a class="method-permalink" href="#diagonal?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a diagonal matrix.</p></div>
@@ -1851,7 +1872,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L715" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L719" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1861,7 +1882,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
         
         def <strong>each</strong>(which = <span class="n">:all</span>, &block : T -> )
 
-        <a class="method-permalink" href="#each%28which%3D%3Aall%2C%26block%3AT-%3E%29-instance-method">#</a>
+        <a class="method-permalink" href="#each(which=:all,&block:T-%3E)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Yields all elements of the matrix, starting with those of the first row,
@@ -1877,7 +1898,7 @@ Elements can be restricted by passing an argument:</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L398" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L402" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1887,7 +1908,7 @@ Elements can be restricted by passing an argument:</p>
         
         def <strong>each_with_index</strong>(which = <span class="n">:all</span>, &block : T, Int32, Int32 -> )
 
-        <a class="method-permalink" href="#each_with_index%28which%3D%3Aall%2C%26block%3AT%2CInt32%2CInt32-%3E%29-instance-method">#</a>
+        <a class="method-permalink" href="#each_with_index(which=:all,&block:T,Int32,Int32-%3E)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Same as #each, but the row index and column index in addition to the element</p>
@@ -1904,7 +1925,7 @@ puts <span class="s">&quot;</span><span class="i">#{</span>e<span class="i">}</s
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L456" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L460" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1931,7 +1952,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1295" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1299" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1941,7 +1962,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
         
         def <strong>empty?</strong>
 
-        <a class="method-permalink" href="#empty%3F-instance-method">#</a>
+        <a class="method-permalink" href="#empty?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns true if this matrix is empty.</p></div>
@@ -1949,7 +1970,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L723" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L727" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1959,7 +1980,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
         
         def <strong>first_minor</strong>(row, column)
 
-        <a class="method-permalink" href="#first_minor%28row%2Ccolumn%29-instance-method">#</a>
+        <a class="method-permalink" href="#first_minor(row,column)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the submatrix obtained by deleting the specified row and column.</p>
@@ -1972,7 +1993,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L603" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L607" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1982,7 +2003,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
         
         def <strong>hadamard_product</strong>(m)
 
-        <a class="method-permalink" href="#hadamard_product%28m%29-instance-method">#</a>
+        <a class="method-permalink" href="#hadamard_product(m)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Hadamard product</p>
@@ -1994,7 +2015,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1017" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1021" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2004,7 +2025,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
         
         def <strong>hermitian?</strong>
 
-        <a class="method-permalink" href="#hermitian%3F-instance-method">#</a>
+        <a class="method-permalink" href="#hermitian?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is an hermitian matrix.</p></div>
@@ -2012,7 +2033,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L728" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L732" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2022,7 +2043,7 @@ v.inv <span class="o">==</span> v_inv <span class="c"># =&gt; true</span>
         
         def <strong>hstack</strong>(*matrices)
 
-        <a class="method-permalink" href="#hstack%28%2Amatrices%29-instance-method">#</a>
+        <a class="method-permalink" href="#hstack(*matrices)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a new matrix resulting by stacking horizontally
@@ -2035,7 +2056,7 @@ x.hstack(y) <span class="c"># =&gt; Matrix[[1, 2, 5, 6], [3, 4, 7, 8]]</span></c
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1179" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1183" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2060,7 +2081,7 @@ x.hstack(y) <span class="c"># =&gt; Matrix[[1, 2, 5, 6], [3, 4, 7, 8]]</span></c
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1346" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1350" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2070,11 +2091,11 @@ x.hstack(y) <span class="c"># =&gt; Matrix[[1, 2, 5, 6], [3, 4, 7, 8]]</span></c
         
         def <strong>index</strong>(i, selector = <span class="n">:all</span>)
 
-        <a class="method-permalink" href="#index%28i%2Cselector%3D%3Aall%29-instance-method">#</a>
+        <a class="method-permalink" href="#index(i,selector=:all)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>The index method is specialized to return the index as {row, column}
-It also accepts an optional <code>selector</code> argument, see <code><a href="../../Apatite/LinearAlgebra/Matrix.html#each%28which%3D%3Aall%2C%26block%3AT-%3E%29-instance-method">#each</a></code> for details.</p>
+It also accepts an optional <code>selector</code> argument, see <code><a href="../../Apatite/LinearAlgebra/Matrix.html#each(which=:all,&block:T-%3E)-instance-method">#each</a></code> for details.</p>
 
 <pre><code><span class="t">Matrix</span>[ [<span class="n">1</span>,<span class="n">1</span>], [<span class="n">1</span>,<span class="n">1</span>] ].index(<span class="n">1</span>, <span class="n">:strict_lower</span>)
 <span class="c"># =&gt; {1, 0}</span></code></pre></div>
@@ -2082,7 +2103,7 @@ It also accepts an optional <code>selector</code> argument, see <code><a href=".
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L513" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L517" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2092,12 +2113,12 @@ It also accepts an optional <code>selector</code> argument, see <code><a href=".
         
         def <strong>index</strong>(selector = <span class="n">:all</span>, &block : T -> Bool)
 
-        <a class="method-permalink" href="#index%28selector%3D%3Aall%2C%26block%3AT-%3EBool%29-instance-method">#</a>
+        <a class="method-permalink" href="#index(selector=:all,&block:T-%3EBool)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the index as {row, column}, using <code>&block</code> to filter the
 result. It also accepts an optional <code>selector</code> argument, see
-<code><a href="../../Apatite/LinearAlgebra/Matrix.html#each%28which%3D%3Aall%2C%26block%3AT-%3E%29-instance-method">#each</a></code> for details.</p>
+<code><a href="../../Apatite/LinearAlgebra/Matrix.html#each(which=:all,&block:T-%3E)-instance-method">#each</a></code> for details.</p>
 
 <pre><code><span class="t">Matrix</span>[ [<span class="n">1</span>,<span class="n">2</span>], [<span class="n">3</span>,<span class="n">4</span>] ].index(<span class="o">&amp;</span>.even?)
 <span class="c"># =&gt; {0, 1}</span></code></pre></div>
@@ -2105,7 +2126,7 @@ result. It also accepts an optional <code>selector</code> argument, see
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L532" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L536" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2121,7 +2142,7 @@ result. It also accepts an optional <code>selector</code> argument, see
         <div class="doc"><p>Returns the inverse of the matrix.</p>
 
 <p><span class="flag purple">NOTE</span>  Always returns a <code>Float64</code> regardless of <code>T</code>s type. To coerce
-back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Matrix.html#coerce%28klass%29-instance-method">#coerce</a></code>.</p>
+back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Matrix.html#coerce(klass)-instance-method">#coerce</a></code>.</p>
 
 <pre><code><span class="t">Matrix</span>[[<span class="n">-1</span>, <span class="n">-1</span>], [<span class="n">0</span>, <span class="n">-1</span>]].inverse
 <span class="c"># =&gt; [ -1.0,  1.0,</span>
@@ -2130,7 +2151,7 @@ back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Ma
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1031" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1035" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2140,7 +2161,7 @@ back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Ma
         
         def <strong>laplace_expansion</strong>(*, row = <span class="n">nil</span>, column = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#laplace_expansion%28%2A%2Crow%3Dnil%2Ccolumn%3Dnil%29-instance-method">#</a>
+        <a class="method-permalink" href="#laplace_expansion(*,row=nil,column=nil)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns the Laplace expansion along given row or column.</p>
@@ -2154,7 +2175,7 @@ back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Ma
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L660" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L664" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2164,7 +2185,7 @@ back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Ma
         
         def <strong>lower_triangular?</strong>
 
-        <a class="method-permalink" href="#lower_triangular%3F-instance-method">#</a>
+        <a class="method-permalink" href="#lower_triangular?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns true if this matrix is a lower triangular matrix.</p></div>
@@ -2172,7 +2193,7 @@ back into an <code>Int</code>, use <code><a href="../../Apatite/LinearAlgebra/Ma
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L738" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L742" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2201,7 +2222,7 @@ a.lup.solve([<span class="n">2</span>, <span class="n">5</span>]) <span class="c
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1313" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1317" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2211,7 +2232,7 @@ a.lup.solve([<span class="n">2</span>, <span class="n">5</span>]) <span class="c
         
         def <strong>map</strong>(&block : T -> T)
 
-        <a class="method-permalink" href="#map%28%26block%3AT-%3ET%29-instance-method">#</a>
+        <a class="method-permalink" href="#map(&block:T-%3ET)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a Matrix that is the result of iteration of the given block
@@ -2220,7 +2241,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L377" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L381" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2230,7 +2251,7 @@ over all elements in the matrix.</p></div>
         
         def <strong>minor</strong>(from_row : Int, nrows : Int, from_col : Int, ncols : Int)
 
-        <a class="method-permalink" href="#minor%28from_row%3AInt%2Cnrows%3AInt%2Cfrom_col%3AInt%2Cncols%3AInt%29-instance-method">#</a>
+        <a class="method-permalink" href="#minor(from_row:Int,nrows:Int,from_col:Int,ncols:Int)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a section of the Matrix.</p>
@@ -2242,7 +2263,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L581" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L585" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2252,7 +2273,7 @@ over all elements in the matrix.</p></div>
         
         def <strong>minor</strong>(row_range : Range, col_range : Range)
 
-        <a class="method-permalink" href="#minor%28row_range%3ARange%2Ccol_range%3ARange%29-instance-method">#</a>
+        <a class="method-permalink" href="#minor(row_range:Range,col_range:Range)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a section of the Matrix.</p>
@@ -2264,7 +2285,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L550" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L554" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2274,7 +2295,7 @@ over all elements in the matrix.</p></div>
         
         def <strong>normal?</strong>
 
-        <a class="method-permalink" href="#normal%3F-instance-method">#</a>
+        <a class="method-permalink" href="#normal?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a normal matrix.</p>
@@ -2285,7 +2306,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L750" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L754" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2295,7 +2316,7 @@ over all elements in the matrix.</p></div>
         
         def <strong>orthogonal?</strong>
 
-        <a class="method-permalink" href="#orthogonal%3F-instance-method">#</a>
+        <a class="method-permalink" href="#orthogonal?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is an orthogonal matrix</p>
@@ -2306,7 +2327,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L770" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L774" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2316,7 +2337,7 @@ over all elements in the matrix.</p></div>
         
         def <strong>permutation?</strong>
 
-        <a class="method-permalink" href="#permutation%3F-instance-method">#</a>
+        <a class="method-permalink" href="#permutation?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a permutation matrix</p>
@@ -2327,7 +2348,7 @@ over all elements in the matrix.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L790" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L794" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2337,13 +2358,13 @@ over all elements in the matrix.</p></div>
         
         def <strong>pretty_print</strong>(pp) : Nil
 
-        <a class="method-permalink" href="#pretty_print%28pp%29%3ANil-instance-method">#</a>
+        <a class="method-permalink" href="#pretty_print(pp):Nil-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1437" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1441" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2368,7 +2389,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1193" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1197" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2393,7 +2414,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1361" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1365" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2403,7 +2424,7 @@ Consider using exact types like Rational or BigDecimal instead.</p>
         
         def <strong>real?</strong>
 
-        <a class="method-permalink" href="#real%3F-instance-method">#</a>
+        <a class="method-permalink" href="#real?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this matrix contains real numbers,
@@ -2416,7 +2437,7 @@ i.e. not <code>Complex</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L816" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L820" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2438,7 +2459,7 @@ parts of the matrix</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1373" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1377" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2448,7 +2469,7 @@ parts of the matrix</p>
         
         def <strong>regular?</strong>
 
-        <a class="method-permalink" href="#regular%3F-instance-method">#</a>
+        <a class="method-permalink" href="#regular?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a regular (i.e. non-singular) matrix.</p></div>
@@ -2456,7 +2477,7 @@ parts of the matrix</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L821" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L825" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2466,7 +2487,7 @@ parts of the matrix</p>
         
         def <strong>round</strong>(n = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#round%28n%3D0%29-instance-method">#</a>
+        <a class="method-permalink" href="#round(n=0)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a matrix with entries rounded to the given precision
@@ -2475,7 +2496,7 @@ parts of the matrix</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1223" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1227" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2485,7 +2506,7 @@ parts of the matrix</p>
         
         def <strong>row</strong>(i, &block : <a href="../../Apatite/LinearAlgebra/Vector.html">Vector</a> -> )
 
-        <a class="method-permalink" href="#row%28i%2C%26block%3AVector-%3E%29-instance-method">#</a>
+        <a class="method-permalink" href="#row(i,&block:Vector-%3E)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a block which yields every Vector in the row (starting at 0).</p></div>
@@ -2493,7 +2514,7 @@ parts of the matrix</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L340" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L344" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2503,7 +2524,7 @@ parts of the matrix</p>
         
         def <strong>row</strong>(i)
 
-        <a class="method-permalink" href="#row%28i%29-instance-method">#</a>
+        <a class="method-permalink" href="#row(i)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns row vector number <code>i</code> of the Matrix as a Vector (starting
@@ -2512,7 +2533,7 @@ at 0 like a good boy). Raises if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L334" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L338" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2522,7 +2543,7 @@ at 0 like a good boy). Raises if the row doesn't exist.</p></div>
         
         def <strong>row?</strong>(i)
 
-        <a class="method-permalink" href="#row%3F%28i%29-instance-method">#</a>
+        <a class="method-permalink" href="#row?(i)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns row vector number <code>i</code> of the Matrix as a Vector (starting
@@ -2531,7 +2552,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L346" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L350" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2549,7 +2570,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L325" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L329" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2567,7 +2588,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1389" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1393" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2577,7 +2598,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
         
         def <strong>singular?</strong>
 
-        <a class="method-permalink" href="#singular%3F-instance-method">#</a>
+        <a class="method-permalink" href="#singular?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a singular matrix.</p></div>
@@ -2585,7 +2606,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L826" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L830" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2595,7 +2616,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
         
         def <strong>square?</strong>
 
-        <a class="method-permalink" href="#square%3F-instance-method">#</a>
+        <a class="method-permalink" href="#square?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a square matrix.</p></div>
@@ -2603,7 +2624,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L831" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L835" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2613,7 +2634,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
         
         def <strong>swap_columns</strong>(col1, col2)
 
-        <a class="method-permalink" href="#swap_columns%28col1%2Ccol2%29-instance-method">#</a>
+        <a class="method-permalink" href="#swap_columns(col1,col2)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Swaps <code>col1</code> and <code>col2</code></p></div>
@@ -2621,7 +2642,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L698" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L702" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2631,7 +2652,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
         
         def <strong>swap_rows</strong>(row1, row2)
 
-        <a class="method-permalink" href="#swap_rows%28row1%2Crow2%29-instance-method">#</a>
+        <a class="method-permalink" href="#swap_rows(row1,row2)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Swaps <code>row1</code> and <code>row2</code></p></div>
@@ -2639,7 +2660,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L686" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L690" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2649,7 +2670,7 @@ at 0 like a good boy). Returns nil if the row doesn't exist.</p></div>
         
         def <strong>symmetric?</strong>
 
-        <a class="method-permalink" href="#symmetric%3F-instance-method">#</a>
+        <a class="method-permalink" href="#symmetric?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns +true+ if this is a symmetric matrix.
@@ -2658,7 +2679,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L838" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L842" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2684,7 +2705,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1262" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1266" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2702,7 +2723,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1403" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1407" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2712,7 +2733,7 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>to_json</strong>(json : JSON::Builder)
 
-        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_json(json:JSON::Builder)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Convert the matrix to a json array</p></div>
@@ -2720,7 +2741,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1408" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1412" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2738,7 +2759,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1415" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1419" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2748,13 +2769,13 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>to_s</strong>(io)
 
-        <a class="method-permalink" href="#to_s%28io%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_s(io)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1423" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1427" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2775,7 +2796,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1241" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1245" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2796,7 +2817,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1233" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1237" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2822,7 +2843,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1256" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1260" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2832,7 +2853,7 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>unitary?</strong>
 
-        <a class="method-permalink" href="#unitary%3F-instance-method">#</a>
+        <a class="method-permalink" href="#unitary?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a unitary matrix</p></div>
@@ -2840,7 +2861,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L850" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L854" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2850,13 +2871,13 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>unsafe_fetch</strong>(i)
 
-        <a class="method-permalink" href="#unsafe_fetch%28i%29-instance-method">#</a>
+        <a class="method-permalink" href="#unsafe_fetch(i)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1446" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1450" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2866,7 +2887,7 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>upper_triangular?</strong>
 
-        <a class="method-permalink" href="#upper_triangular%3F-instance-method">#</a>
+        <a class="method-permalink" href="#upper_triangular?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns true if this matrix is a upper triangular matrix.</p></div>
@@ -2874,7 +2895,7 @@ Raises an error if matrix is not square.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L870" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L874" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2884,7 +2905,7 @@ Raises an error if matrix is not square.</p></div>
         
         def <strong>vstack</strong>(*matrices)
 
-        <a class="method-permalink" href="#vstack%28%2Amatrices%29-instance-method">#</a>
+        <a class="method-permalink" href="#vstack(*matrices)-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns a new matrix resulting by stacking vertically
@@ -2898,7 +2919,7 @@ x.vstack(y)
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L1275" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L1279" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2908,7 +2929,7 @@ x.vstack(y)
         
         def <strong>zero?</strong>
 
-        <a class="method-permalink" href="#zero%3F-instance-method">#</a>
+        <a class="method-permalink" href="#zero?-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code>true</code> if this is a matrix with only zero elements</p></div>
@@ -2916,7 +2937,7 @@ x.vstack(y)
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/apatite/blob/fd6da99f9d1de3a90a6315a813fcb7206a053d9a/src/apatite/linear_algebra/matrix.cr#L877" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/apatite/blob/c7bc6f4f5ec3f4b2725b0b6bdf03d9524007e864/src/apatite/linear_algebra/matrix.cr#L881" target="_blank">View source</a>]
         
       </div>
     </div>
