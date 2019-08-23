@@ -70,7 +70,7 @@ module Apatite::LinearAlgebra
       row_count = row_count.to_i
       column_count = column_count.to_i
       raise ArgumentError.new if row_count < 0 || column_count < 0
-      rows = Array(T).new(row_count) do |i|
+      rows = Array(Array(T)).new(row_count) do |i|
         Array(T).new(column_count) do |j|
           yield i, j
         end
