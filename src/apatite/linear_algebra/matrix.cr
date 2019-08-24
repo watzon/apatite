@@ -1403,6 +1403,11 @@ module Apatite::LinearAlgebra
       }
     end
 
+    # Return the row and column size as a `Tuple(Int32, Int32)`
+    def size
+      {row_count, column_count}
+    end
+
     # Returns an array of arrays that describe the rows of the matrix.
     def to_a
       @rows.clone
