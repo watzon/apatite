@@ -148,10 +148,11 @@ module Apatite::LinearAlgebra
       identity(n)
     end
 
-    # Creates a zero matrix.
+    # Creates a zero matrix. Note that a type definition is
+    # required.
     #
     # ```
-    # Matrix.zero(2)
+    # Matrix(Int32).zero(2)
     # # => [ 0, 0,
     # #      0, 0 ]
     # ```
