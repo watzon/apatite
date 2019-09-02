@@ -153,7 +153,7 @@ module Apatite::LinearAlgebra
     end
 
     # Take me to your leader
-    def <=>
+    def <=>(other)
       if other.is_a?(Vector)
         @elements <=> other.elements
       else
