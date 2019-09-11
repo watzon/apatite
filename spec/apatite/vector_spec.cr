@@ -32,8 +32,8 @@ describe "Apatite::Vector" do
 
   describe ".independent?" do
     it "returns true if all of vectors are linearly independent" do
-      Apatite::Vector.independent?(Apatite::Vector[1,0], Apatite::Vector[0,1]).should be_true
-      Apatite::Vector.independent?(Apatite::Vector[1,2], Apatite::Vector[2,4]).should be_false
+      Apatite::Vector.independent?(Apatite::Vector[1, 0], Apatite::Vector[0, 1]).should be_true
+      Apatite::Vector.independent?(Apatite::Vector[1, 2], Apatite::Vector[2, 4]).should be_false
     end
   end
 

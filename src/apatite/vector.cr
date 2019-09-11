@@ -43,10 +43,10 @@ module Apatite
     # Returns `true` if all of vectors are linearly independent.
     #
     # ```
-    # Vector.independent?(Vector[1,0], Vector[0,1])
+    # Vector.independent?(Vector[1, 0], Vector[0, 1])
     # # => true
     #
-    # Vector.independent?(Vector[1,2], Vector[2,4])
+    # Vector.independent?(Vector[1, 2], Vector[2, 4])
     # # => false
     # ```
     def self.independent?(*vs)
@@ -105,8 +105,8 @@ module Apatite
 
     # Vector addition.
     def +(x : Vector)
-     els = self.elements.zip(x.elements).map { |(x, y)| x + y }
-     self.class.elements(els, false)
+      els = self.elements.zip(x.elements).map { |(x, y)| x + y }
+      self.class.elements(els, false)
     end
 
     # Vector subtraction.
@@ -122,8 +122,8 @@ module Apatite
 
     # Vector subtraction.
     def -(x : Vector)
-     els = self.elements.zip(x.elements).map { |(x, y)| x - y }
-     self.class.elements(els, false)
+      els = self.elements.zip(x.elements).map { |(x, y)| x - y }
+      self.class.elements(els, false)
     end
 
     # Vector division.
@@ -139,8 +139,8 @@ module Apatite
 
     # Vector division.
     def /(x : Vector)
-     els = self.elements.zip(x.elements).map { |(x, y)| x / y }
-     self.class.elements(els, false)
+      els = self.elements.zip(x.elements).map { |(x, y)| x / y }
+      self.class.elements(els, false)
     end
 
     # Equality operator
@@ -167,7 +167,7 @@ module Apatite
       prod = magnitude * v.magnitude
       raise ZeroVectorError.new("Can't get angle of zero vector") if prod == 0
 
-      Math.acos( inner_product(v) / prod )
+      Math.acos(inner_product(v) / prod)
     end
 
     # Returns a copy of the vector.
@@ -210,11 +210,11 @@ module Apatite
         Vector[-@elements[1], @elements[0]]
       when 3
         v = vs[0]
-        Vector[ v[2]*@elements[1] - v[1]*@elements[2],
+        Vector[v[2]*@elements[1] - v[1]*@elements[2],
           v[0]*@elements[2] - v[2]*@elements[0],
-          v[1]*@elements[0] - v[0]*@elements[1] ]
+          v[1]*@elements[0] - v[0]*@elements[1]]
       else
-        rows = [self, vs.to_a, Array.new(size) {|i| Vector.basis(size, i) }].flatten
+        rows = [self, vs.to_a, Array.new(size) { |i| Vector.basis(size, i) }].flatten
         Matrix.rows(rows).laplace_expansion(row: size - 1)
       end
     end
@@ -268,7 +268,7 @@ module Apatite
 
     # Returns a vector with entries rounded to the given precision.
     def round(ndigits = 0)
-      map{ |e| e.round(ndigits) }
+      map { |e| e.round(ndigits) }
     end
 
     # Attempt to coerce the elements in a vector to Complex with

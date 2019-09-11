@@ -82,7 +82,7 @@ module Apatite
     #
     # ```
     # Matrix.diagonal(9, 5, -3)
-    # # =>  [ 9,  0,  0,
+    # # => [ 9,  0,  0,
     # #       0,  5,  0,
     # #       0,  0, -3 ]
     # ```
@@ -165,7 +165,7 @@ module Apatite
     # `row`.
     #
     # ```
-    # Matrix.row_vector([4,5,6])
+    # Matrix.row_vector([4, 5, 6])
     # # => [ 4, 5, 6 ]
     # ```
     def self.row_vector(row)
@@ -177,7 +177,7 @@ module Apatite
     # in `column`.
     #
     # ```
-    # Matrix.column_vector([4,5,6])
+    # Matrix.column_vector([4, 5, 6])
     # # => [ 4,
     # #      5,
     # #      6 ]
@@ -258,7 +258,7 @@ module Apatite
     # ```
     # x = Matrix[[6, 6], [4, 4]]
     # y = Matrix[[1, 2], [3, 4]]
-    # Matrix.combine(x, y) {|a, b| a - b}
+    # Matrix.combine(x, y) { |a, b| a - b }
     # # => Matrix[[5, 4], [1, 0]]
     # ```
     def self.combine(*matrices, &block)
@@ -272,7 +272,7 @@ module Apatite
 
       rows = Array(T).new(x.row_count) do |i|
         Array(T).new(x.column_count) do |j|
-          yield matrices.map{ |m| m[i,j] }
+          yield matrices.map { |m| m[i, j] }
         end
       end
 
@@ -396,9 +396,9 @@ module Apatite
     # * :upper: yields only elements on or above the diagonal
     #
     # ```
-    # Matrix[ [1,2], [3,4] ].each { |e| puts e }
+    # Matrix[[1, 2], [3, 4]].each { |e| puts e }
     # # => prints the numbers 1 to 4
-    # Matrix[ [1,2], [3,4] ].each(:strict_lower).to_a # => [3]
+    # Matrix[[1, 2], [3, 4]].each(:strict_lower).to_a # => [3]
     # ```
     def each(which = :all, &block : T ->)
       last = column_count
@@ -409,7 +409,7 @@ module Apatite
         end
       when "diagonal"
         @rows.each_with_index do |row, row_index|
-          yield row.fetch(row_index){ return self }
+          yield row.fetch(row_index) { return self }
         end
       when "off_diagonal"
         @rows.each_with_index do |row, row_index|
@@ -431,7 +431,7 @@ module Apatite
         end
       when "strict_upper"
         @rows.each_with_index do |row, row_index|
-          (row_index+1).upto(last - 1) do |col_index|
+          (row_index + 1).upto(last - 1) do |col_index|
             yield row[col_index]
           end
         end
@@ -449,8 +449,8 @@ module Apatite
     # Same as #each, but the row index and column index in addition to the element
     #
     # ```
-    # Matrix[ [1,2], [3,4] ].each_with_index do |e, row, col|
-    # puts "#{e} at #{row}, #{col}"
+    # Matrix[[1, 2], [3, 4]].each_with_index do |e, row, col|
+    #   puts "#{e} at #{row}, #{col}"
     # end
     # # => Prints:
     # #    1 at 0, 0
@@ -469,7 +469,7 @@ module Apatite
         end
       when "diagonal"
         @rows.each_with_index do |row, row_index|
-          block.call(row.fetch(row_index){return self}, row_index, row_index)
+          block.call(row.fetch(row_index) { return self }, row_index, row_index)
         end
       when "off_diagonal"
         @rows.each_with_index do |row, row_index|
@@ -491,7 +491,7 @@ module Apatite
         end
       when "strict_upper"
         @rows.each_with_index do |row, row_index|
-          (row_index+1).upto(last - 1) do |col_index|
+          (row_index + 1).upto(last - 1) do |col_index|
             block.call(row[col_index], row_index, col_index)
           end
         end
@@ -512,7 +512,7 @@ module Apatite
     # It also accepts an optional `selector` argument, see `#each` for details.
     #
     # ```
-    # Matrix[ [1,1], [1,1] ].index(1, :strict_lower)
+    # Matrix[[1, 1], [1, 1]].index(1, :strict_lower)
     # # => {1, 0}
     # ```
     def index(i, selector = :all)
@@ -531,7 +531,7 @@ module Apatite
     # `#each` for details.
     #
     # ```
-    # Matrix[ [1,2], [3,4] ].index(&.even?)
+    # Matrix[[1, 2], [3, 4]].index(&.even?)
     # # => {0, 1}
     # ```
     def index(selector = :all, &block : T -> Bool)
@@ -656,7 +656,7 @@ module Apatite
     # Returns the Laplace expansion along given row or column.
     #
     # ```
-    # Matrix[[7,6], [3,9]].laplace_expansion(column: 1)
+    # Matrix[[7, 6], [3, 9]].laplace_expansion(column: 1)
     # # => 45
     #
     # Matrix[[Vector[1, 0], Vector[0, 1]], [2, 3]].laplace_expansion(row: 0)
@@ -711,9 +711,9 @@ module Apatite
       self
     end
 
-    #--
+    # --
     # TESTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     # Returns `true` if this is a diagonal matrix.
     #
@@ -883,9 +883,9 @@ module Apatite
       @rows.flatten.all?(&.zero?)
     end
 
-    #--
+    # --
     # OBJECT METHODS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     # Equality operator
     def ==(other : Matrix)
@@ -900,14 +900,14 @@ module Apatite
       Matrix.new(@rows.map(&.dup), column_count)
     end
 
-    #--
+    # --
     # ARITHMETIC -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     # Matrix multiplication
     #
     # ```
-    # Matrix[[2,4], [6,8]] * Matrix.identity(2)
+    # Matrix[[2, 4], [6, 8]] * Matrix.identity(2)
     # # => [ 2, 4,
     # #      6, 8 ]
     # ```
@@ -923,15 +923,15 @@ module Apatite
         r = self * m
         r.column(0)
       when Matrix
-          raise ErrDimensionMismatch.new if column_count != other.column_count
-          rows = Array.new(row_count) do |i|
-            Array.new(column_count) do |j|
-              (0...column_count).reduce(0) do |vij, k|
-                vij + self[i, k] * other[k, j]
-              end
+        raise ErrDimensionMismatch.new if column_count != other.column_count
+        rows = Array.new(row_count) do |i|
+          Array.new(column_count) do |j|
+            (0...column_count).reduce(0) do |vij, k|
+              vij + self[i, k] * other[k, j]
             end
           end
-          Matrix.new(rows, column_count)
+        end
+        Matrix.new(rows, column_count)
       else
         self * Matrix.rows(other)
       end
@@ -940,7 +940,7 @@ module Apatite
     # Matrix addition
     #
     # ```
-    # Matrix.scalar(2,5) + Matrix[[1,0], [-4,7]]
+    # Matrix.scalar(2, 5) + Matrix[[1, 0], [-4, 7]]
     # # => [ 6,  0,
     # #     -4,  1 ]
     # ```
@@ -967,7 +967,7 @@ module Apatite
     # Matrix subtraction
     #
     # ```
-    # Matrix[[1,5], [4,2]] - Matrix[[9,3], [-4,1]]
+    # Matrix[[1, 5], [4, 2]] - Matrix[[9, 3], [-4, 1]]
     # # => [-8, 2,
     # #      8, 1 ]
     # ```
@@ -994,7 +994,7 @@ module Apatite
     # Matrix division (multiplication by the inverse).
     #
     # ```
-    # Matrix[[7,6], [3,9]] / Matrix[[2,9], [3,1]]
+    # Matrix[[7, 6], [3, 9]] / Matrix[[2, 9], [3, 1]]
     # # => [ -7,  1,
     # #      -3, -6 ]
     # ```
@@ -1002,7 +1002,7 @@ module Apatite
       case other
       when Number
         rows = @rows.map do |row|
-          row.map {|e| (e / other).as(T) }
+          row.map { |e| (e / other).as(T) }
         end
         return Matrix.new(rows, column_count)
       when Matrix
@@ -1015,12 +1015,12 @@ module Apatite
     # Hadamard product
     #
     # ```
-    # Matrix[[1,2], [3,4]].hadamard_product Matrix[[1,2], [3,2]]
+    # Matrix[[1, 2], [3, 4]].hadamard_product Matrix[[1, 2], [3, 2]]
     # # => [ 1,  4,
     # #      9,  8 ]
     # ```
     def hadamard_product(m)
-      combine(m){ |a, b| a * b }
+      combine(m) { |a, b| a * b }
     end
 
     # Returns the inverse of the matrix.
@@ -1077,7 +1077,7 @@ module Apatite
     # Non integer exponents will be handled by diagonalizing the matrix.
     #
     # ```
-    # Matrix[[7,6], [3,9]] ** 2
+    # Matrix[[7, 6], [3, 9]] ** 2
     # # => [ 67, 96,
     # #      48, 99 ]
     # ```
@@ -1085,9 +1085,9 @@ module Apatite
       # TODO
     end
 
-    #--
+    # --
     # MATRIX FUNCTIONS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     # Returns the determinant of the matrix.
     #
@@ -1096,7 +1096,7 @@ module Apatite
     # Consider using exact types like Rational or BigDecimal instead.
     #
     # ```
-    # Matrix[[7,6], [3,9]].determinant
+    # Matrix[[7, 6], [3, 9]].determinant
     # # => 45
     # ```
     def determinant
@@ -1192,7 +1192,7 @@ module Apatite
     # Consider using exact types like Rational or BigDecimal instead.
     #
     # ```
-    # Matrix[[7,6], [3,9]].rank
+    # Matrix[[7, 6], [3, 9]].rank
     # # => 2
     # ```
     def rank
@@ -1204,16 +1204,16 @@ module Apatite
       pivot_row = 0
       previous_pivot = 1
       0.upto(last_column) do |k|
-        switch_row = (pivot_row .. last_row).find {|row|
+        switch_row = (pivot_row..last_row).find { |row|
           a[row][k] != 0
         }
         if switch_row
           a[switch_row], a[pivot_row] = a[pivot_row], a[switch_row] unless pivot_row == switch_row
           pivot = a[pivot_row][k]
-          (pivot_row+1).upto(last_row) do |i|
+          (pivot_row + 1).upto(last_row) do |i|
             ai = a[i]
-            (k+1).upto(last_column) do |j|
-              ai[j] =  (pivot * ai[j] - ai[k] * a[pivot_row][j]) / previous_pivot
+            (k + 1).upto(last_column) do |j|
+              ai[j] = (pivot * ai[j] - ai[k] * a[pivot_row][j]) / previous_pivot
             end
           end
           pivot_row += 1
@@ -1226,13 +1226,13 @@ module Apatite
     # Returns a matrix with entries rounded to the given precision
     # (see `Float#round`)
     def round(n = 0)
-      map {|e| e.round(n) }
+      map { |e| e.round(n) }
     end
 
     # Returns the trace (sum of diagonal elements) of the matrix.
     #
     # ```
-    # Matrix[[7,6], [3,9]].trace
+    # Matrix[[7, 6], [3, 9]].trace
     # # => 16
     # ```
     def trace
@@ -1250,11 +1250,11 @@ module Apatite
     # Returns the transpose of the matrix.
     #
     # ```
-    # Matrix[[1,2], [3,4], [5,6]]
+    # Matrix[[1, 2], [3, 4], [5, 6]]
     # # => [ 1, 2,
     # #      3, 4,
     # #      5, 6 ]
-    # Matrix[[1,2], [3,4], [5,6]].transpose
+    # Matrix[[1, 2], [3, 4], [5, 6]].transpose
     # # => [ 1, 3, 5,
     # #      2, 4, 6 ]
     # ```
@@ -1281,9 +1281,9 @@ module Apatite
       self.class.vstack(self, *matrices)
     end
 
-    #--
+    # --
     # DECOMPOSITIONS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    #++
+    # ++
 
     # Returns the Eigensystem of the matrix
     # See `EigenvalueDecomposition`.
@@ -1293,8 +1293,8 @@ module Apatite
     # ```
     # m = Matrix[[1, 2], [3, 4]]
     # v, d, v_inv = m.eigensystem
-    # d.diagonal? # => true
-    # v.inv == v_inv # => true
+    # d.diagonal?                   # => true
+    # v.inv == v_inv                # => true
     # (v * d * v_inv).round(5) == m # => true
     # ```
     def eigensystem
@@ -1319,17 +1319,17 @@ module Apatite
       LUPDecomposition.new(self)
     end
 
-    #--
+    # --
     # COMPLEX ARITHMETIC -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    #++
+    # ++
 
     # Returns the conjugate of the matrix.
     #
     # ```
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]]
     # # => 1+2i   i  0
     # #       1   2  3
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].conj
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]].conj
     # # => 1-2i  -i  0
     # #       1   2  3
     # ```
@@ -1341,10 +1341,10 @@ module Apatite
     # Returns the imaginary part of the matrix.
     #
     # ```
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]]
     # # => [ 1+2i,  i,  0,
     # #         1,  2,  3 ]
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].imag
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]].imag
     # # => [ 2i,  i,  0,
     # #       0,  0,  0 ]
     # ```
@@ -1356,10 +1356,10 @@ module Apatite
     # Returns the real part of the matrix.
     #
     # ```
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]]
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]]
     # # => [ 1+2i,  i,  0,
     # #         1,  2,  3 ]
-    # Matrix[[Complex(1,2), Complex(0,1), 0], [1, 2, 3]].real
+    # Matrix[[Complex(1, 2), Complex(0, 1), 0], [1, 2, 3]].real
     # # => [ 1,  0,  0,
     # #      1,  2,  3 ]
     # ```
@@ -1380,9 +1380,9 @@ module Apatite
       [real, imag]
     end
 
-    #--
+    # --
     # CONVERTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     # Attempt to coerce the elements in the matrix to another type.
     def coerce(klass)
@@ -1392,14 +1392,14 @@ module Apatite
 
     # Returns an array of the row vectors of the matrix. See `Vector`.
     def row_vectors
-      Array.new(row_count) {|i|
+      Array.new(row_count) { |i|
         row(i)
       }
     end
 
     # Returns an array of the column vectors of the matrix. See `Vector`.
     def column_vectors
-      Array.new(column_count) {|i|
+      Array.new(column_count) { |i|
         column(i)
       }
     end
@@ -1426,9 +1426,9 @@ module Apatite
       self
     end
 
-    #--
+    # --
     # PRINTING -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    #++
+    # ++
 
     def to_s(io)
       if empty?

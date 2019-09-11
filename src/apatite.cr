@@ -7,5 +7,4 @@ require "./apatite/*"
 # of NumPy sitting atop the blazing speed and beautiful syntax
 # of Crystal.
 module Apatite
-  
 end
