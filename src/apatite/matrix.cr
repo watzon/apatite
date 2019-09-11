@@ -2,7 +2,7 @@ require "./vector"
 require "./matrix/eigenvalue_decomposition"
 require "./matrix/lup_decomposition"
 
-module Apatite::LinearAlgebra
+module Apatite
   class Matrix(T)
     include Enumerable(Vector)
     include Indexable(Vector)

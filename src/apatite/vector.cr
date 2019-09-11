@@ -2,7 +2,7 @@ require "complex"
 require "big"
 require "json"
 
-module Apatite::LinearAlgebra
+module Apatite
   # Represents a mathematical vector, and also constitutes a row or column
   # of a `Matrix`
   class Vector(T)
