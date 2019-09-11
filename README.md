@@ -1,6 +1,6 @@
 # Apatite
 
-[![Actions Status](https://github.com/watzon/apatite/workflows/Crystal CI/badge.svg)](https://github.com/watzon/apatite/actions)
+[<img src="https://github.com/watzon/apatite/workflows/Crystal CI/badge.svg">](https://github.com/watzon/apatite/actions)
 
 Apatite is a collection of mathematical and scientific algorithms. Currently it implements the API from Ruby's `Matrix` class for both `Matrix` and `Vector`. This API will be added to as needs arise. The goal is for this project to eventually contain everything you could get from SciPy, but in pure Crystal.
 
