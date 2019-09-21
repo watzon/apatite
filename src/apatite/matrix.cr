@@ -384,6 +384,18 @@ module Apatite
       Matrix.new(rows, column_count)
     end
 
+    # Same as #map, but yields the row index and column index in addition to the element
+    #
+    # ```
+    # matrix = Matrix[[1, 2], [3, 4]].map_with_index do |e, row, col|
+    #   e*row + col
+    # end
+    # matrix == Matrix[[0, 1], [3, 5]] # => true
+    # ```
+    def map_with_index(&block : T, Int32, Int32 -> U) forall U
+      Matrix(U).build(@rows.size, @column_count) { |i, j| yield @rows[i][j], i, j }
+    end
+
     # Yields all elements of the matrix, starting with those of the first row,
     # or returns an Enumerator if no block given.
     # Elements can be restricted by passing an argument:
@@ -446,7 +458,7 @@ module Apatite
       end
     end
 
-    # Same as #each, but the row index and column index in addition to the element
+    # Same as #each, but yields the row index and column index in addition to the element
     #
     # ```
     # Matrix[[1, 2], [3, 4]].each_with_index do |e, row, col|
