@@ -1161,7 +1161,6 @@ module Apatite
       size = row_count
       last = size - 1
       a = to_a
-      no_pivot = Proc(Int32).new { return 0 }
       sign = +1
       pivot = 1
       size.times do |k|
@@ -1178,7 +1177,7 @@ module Apatite
         (k + 1).upto(last) do |i|
           ai = a[i]
           (k + 1).upto(last) do |j|
-            ai[j] = (pivot * ai[j] - ai[k] * a[k][j]) / previous_pivot
+            ai[j] = (pivot * ai[j] - ai[k] * a[k][j]) // previous_pivot
           end
         end
       end
@@ -1225,7 +1224,7 @@ module Apatite
           (pivot_row + 1).upto(last_row) do |i|
             ai = a[i]
             (k + 1).upto(last_column) do |j|
-              ai[j] = (pivot * ai[j] - ai[k] * a[pivot_row][j]) / previous_pivot
+              ai[j] = (pivot * ai[j] - ai[k] * a[pivot_row][j]) // previous_pivot
             end
           end
           pivot_row += 1
