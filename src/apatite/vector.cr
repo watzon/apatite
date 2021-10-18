@@ -12,7 +12,7 @@ module Apatite
 
     protected getter elements : Array(T)
 
-    delegate :each, to: @elements
+    delegate :each, :size, to: @elements
 
     private def initialize(array : Indexable(T))
       {% raise "Vectors must be one type only" if T.union? %}
