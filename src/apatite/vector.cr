@@ -275,28 +275,28 @@ module Apatite
     # `imag` as the imaginary number.
     def coerce(klass : Complex.class, imag : Number)
       els = @elements.map { |e| Complex.new(e, imag) }
-      Vector.elements(els)
+      self.class.elements(els)
     end
 
     # Attempt to coerce the elements in a vector to BigInt with
     # an optional `base` value.
     def coerce(klass : BigInt.class, base = 10)
       els = @elements.map { |e| BigInt.new(e, base) }
-      Vector.elements(els)
+      self.class.elements(els)
     end
 
     # Attempt to coerce the elements in a vector to BigRational
     # with the given `denominator`.
     def coerce(klass : BigRational.class, denominator : Int)
       els = @elements.map { |e| BigRational.new(e, denominator) }
-      Vector.elements(els)
+      self.class.elements(els)
     end
 
     # The coerce method allows you to attempt to coerce the elements
     # in the matrix to another type.
     def coerce(klass : U.class) : Vector(U) forall U
       els = @elements.map { |e| klass.new(e).as(U) }
-      Vector.elements(els)
+      self.class.elements(els)
     end
 
     # Returns the elements of the vector in an array.
