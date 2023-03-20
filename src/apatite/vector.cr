@@ -78,7 +78,7 @@ module Apatite
     # Multiplies the vector by x, where x is a number.
     def *(x : Number)
       els = @elements.map { |e| (e * x).as(T) }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Multiplies the vector by x, where x is a matrix.
@@ -89,13 +89,13 @@ module Apatite
     # Multiplies the vector by x, where x is another vector.
     def *(x : Vector)
       els = self.elements.zip(x.elements).map { |(x, y)| x * y }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector addition.
     def +(x : Number)
       els = @elements.map { |e| (e + x).as(T) }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector addition.
@@ -106,13 +106,13 @@ module Apatite
     # Vector addition.
     def +(x : Vector)
       els = self.elements.zip(x.elements).map { |(x, y)| x + y }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector subtraction.
     def -(x : Number)
       els = @elements.map { |e| (e - x).as(T) }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector subtraction.
@@ -123,13 +123,13 @@ module Apatite
     # Vector subtraction.
     def -(x : Vector)
       els = self.elements.zip(x.elements).map { |(x, y)| x - y }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector division.
     def /(x : Number)
       els = @elements.map { |e| (e / x).as(T) }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Vector division.
@@ -140,7 +140,7 @@ module Apatite
     # Vector division.
     def /(x : Vector)
       els = self.elements.zip(x.elements).map { |(x, y)| x / y }
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Equality operator
@@ -172,13 +172,13 @@ module Apatite
 
     # Returns a copy of the vector.
     def clone
-      self.class.elements(@elements)
+      {{ @type.name(generic_args: false) }}.elements(@elements)
     end
 
     # Maps over a vector, passing each element to the block
     def map(&block : T -> _)
       els = @elements.map(&block)
-      self.class.elements(els, false)
+      {{ @type.name(generic_args: false) }}.elements(els, false)
     end
 
     # Maps over the current vector and `v` in conjunction, passing each
@@ -188,7 +188,7 @@ module Apatite
       arr = Array.new(size) do |i|
         yield @elements[i], v[i]
       end
-      self.class.elements(arr, false)
+      {{ @type.name(generic_args: false) }}.elements(arr, false)
     end
 
     # Creates a single-row matrix from this vector.
@@ -275,28 +275,28 @@ module Apatite
     # `imag` as the imaginary number.
     def coerce(klass : Complex.class, imag : Number)
       els = @elements.map { |e| Complex.new(e, imag) }
-      self.class.elements(els)
+      {{ @type.name(generic_args: false) }}.elements(els)
     end
 
     # Attempt to coerce the elements in a vector to BigInt with
     # an optional `base` value.
     def coerce(klass : BigInt.class, base = 10)
       els = @elements.map { |e| BigInt.new(e, base) }
-      self.class.elements(els)
+      {{ @type.name(generic_args: false) }}.elements(els)
     end
 
     # Attempt to coerce the elements in a vector to BigRational
     # with the given `denominator`.
     def coerce(klass : BigRational.class, denominator : Int)
       els = @elements.map { |e| BigRational.new(e, denominator) }
-      self.class.elements(els)
+      {{ @type.name(generic_args: false) }}.elements(els)
     end
 
     # The coerce method allows you to attempt to coerce the elements
     # in the matrix to another type.
     def coerce(klass : U.class) : Vector(U) forall U
       els = @elements.map { |e| klass.new(e).as(U) }
-      self.class.elements(els)
+      {{ @type.name(generic_args: false) }}.elements(els)
     end
 
     # Returns the elements of the vector in an array.
@@ -318,12 +318,17 @@ module Apatite
       all?(&:zero?)
     end
 
+    # Returns the number of elements in the vector.
+    def size
+      @elements.size
+    end
+
     def inspect
       "<#Vector(#{T}) [#{@elements.join(", ")}]>"
     end
 
-    def unsafe_fetch(i)
-      @elements.unsafe_fetch(i)
+    def unsafe_fetch(index : Int)
+      @elements.unsafe_fetch(index)
     end
   end
 end

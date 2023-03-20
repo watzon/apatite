@@ -1464,8 +1464,8 @@ module Apatite
       end
     end
 
-    def unsafe_fetch(i)
-      @rows.unsafe_fetch(i)
+    def unsafe_fetch(index : Int)
+      @rows.unsafe_fetch(index)
     end
   end
 end
